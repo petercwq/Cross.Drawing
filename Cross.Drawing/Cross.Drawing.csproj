@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CFCA646F-C6D5-4016-9F61-23A77DDF8F3C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cross.Drawing</RootNamespace>
+    <AssemblyName>Cross.Drawing</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Buffer\BgrPixelBuffer.cs" />
+    <Compile Include="Buffer\IPixelBuffer.cs" />
+    <Compile Include="Buffer\MaskBuffer.cs" />
+    <Compile Include="Buffer\PixelBuffer.cs" />
+    <Compile Include="Buffer\PixelFormat.cs" />
+    <Compile Include="Color\Base\Color.cs" />
+    <Compile Include="Color\Base\Colors.cs" />
+    <Compile Include="Color\Color spaces\CieLab.cs" />
+    <Compile Include="Color\Color spaces\CieXyz.cs" />
+    <Compile Include="Color\Color spaces\ColorConverter.cs" />
+    <Compile Include="Color\Color spaces\ColorWheel.cs" />
+    <Compile Include="Color\Color spaces\Cymk.cs" />
+    <Compile Include="Color\Color spaces\Hsb.cs" />
+    <Compile Include="Color\Color spaces\Hsl.cs" />
+    <Compile Include="Color\Color spaces\Yuv.cs" />
+    <Compile Include="Drawing\Drawer\Drawer.cs" />
+    <Compile Include="Drawing\Drawer\DrawerState.cs" />
+    <Compile Include="Drawing\Drawer\IBufferDrawer.cs" />
+    <Compile Include="Drawing\Drawer\IDrawer.cs" />
+    <Compile Include="Drawing\Drawer\MaskDrawer.cs" />
+    <Compile Include="Drawing\Internal structures\AlphaCache.cs" />
+    <Compile Include="Drawing\Internal structures\RawPolygonList.cs" />
+    <Compile Include="Drawing\Path\Path.cs" />
+    <Compile Include="Drawing\Path\PathCommands.cs" />
+    <Compile Include="Drawing\Path\PathGenerator.cs" />
+    <Compile Include="Drawing\Rasterizer\Analytic\AnalyticalRasterizer.cs" />
+    <Compile Include="Drawing\Rasterizer\Analytic\DataStruture\CellData.cs" />
+    <Compile Include="Drawing\Rasterizer\Analytic\DataStruture\RowData.cs" />
+    <Compile Include="Drawing\Rasterizer\Analytic\Implementation\ColorRasterizer.cs" />
+    <Compile Include="Drawing\Rasterizer\Analytic\Implementation\Gradient\GradientRasterizer.cs" />
+    <Compile Include="Drawing\Rasterizer\Analytic\Implementation\Gradient\LinearGradientRasterizer.cs" />
+    <Compile Include="Drawing\Rasterizer\Analytic\Implementation\Gradient\RadialGradientRasterizer.cs" />
+    <Compile Include="Drawing\Rasterizer\Analytic\Implementation\TextureRasterizer.cs" />
+    <Compile Include="Drawing\Rasterizer\Analytic\Implementation\TranformableRasterizer.cs" />
+    <Compile Include="Drawing\Rasterizer\Base\AnalyticalAlgorithm.cs" />
+    <Compile Include="Drawing\Rasterizer\Base\IPolygonRasterizer.cs" />
+    <Compile Include="Drawing\Rasterizer\Base\WindingRule.cs" />
+    <Compile Include="Drawing\Rasterizer\Mask Rasterizer\MaskRasterizer.cs" />
+    <Compile Include="Exception\DrawingException.cs" />
+    <Compile Include="Exception\ExceptionBase.cs" />
+    <Compile Include="Exception\FillingException.cs" />
+    <Compile Include="Exception\IncompatibleTypeException.cs" />
+    <Compile Include="Exception\NotMatchPaintTypeException.cs" />
+    <Compile Include="Exception\NullArgumentException.cs" />
+    <Compile Include="Exception\UnsupportedException.cs" />
+    <Compile Include="Gamma Correction\IGammaCorrector.cs" />
+    <Compile Include="Gamma Correction\PowerGammaCorrector.cs" />
+    <Compile Include="Log.cs" />
+    <Compile Include="Matrix\Matrix3x3.cs" />
+    <Compile Include="Matrix\Matrix3x3Stack.cs" />
+    <Compile Include="Matrix\Stack.cs" />
+    <Compile Include="Paint\Fill\Fill.cs" />
+    <Compile Include="Paint\Fill\FillingRule.cs" />
+    <Compile Include="Paint\Fill\Fills.cs" />
+    <Compile Include="Paint\Paint\Base\Paint.cs" />
+    <Compile Include="Paint\Paint\Base\PaintMaterial.cs" />
+    <Compile Include="Paint\Paint\Color\ColorPaint.cs" />
+    <Compile Include="Paint\Paint\Gradient\Color ramp\ColorRamp.cs" />
+    <Compile Include="Paint\Paint\Gradient\Color ramp\ColorStop.cs" />
+    <Compile Include="Paint\Paint\Gradient\GradientPaint.cs" />
+    <Compile Include="Paint\Paint\Gradient\GradientStyle.cs" />
+    <Compile Include="Paint\Paint\Gradient\LinearGradient.cs" />
+    <Compile Include="Paint\Paint\Gradient\LinearGradientMode.cs" />
+    <Compile Include="Paint\Paint\Gradient\RadialGradient.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="License_GPLv3.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
