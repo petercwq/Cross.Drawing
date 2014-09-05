@@ -38,7 +38,7 @@
             this.btnInverseDrawStar = new System.Windows.Forms.Button();
             this.btnBufferInBufferDraw = new System.Windows.Forms.Button();
             this.txtDescription = new System.Windows.Forms.TextBox();
-            this.pbView = new Cross.Helpers.ScrollablePictureBox();
+            this.pbView = new Demo.Helpers.ScrollablePictureBox();
             this.SuspendLayout();
             // 
             // sbZoom
@@ -180,7 +180,7 @@
         private System.Windows.Forms.HScrollBar sbZoom;
         private System.Windows.Forms.Label lblZoomFactor;
         private System.Windows.Forms.Label label1;
-        private Cross.Helpers.ScrollablePictureBox pbView;
+        private Demo.Helpers.ScrollablePictureBox pbView;
         private System.Windows.Forms.Button btnBufferInBuffer;
         private System.Windows.Forms.Button btnInverseDraw;
         private System.Windows.Forms.Button btnDrawPixels;

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pbView = new Cross.Helpers.ScrollablePictureBox();
+            this.pbView = new Demo.Helpers.ScrollablePictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lstFills = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -148,7 +148,7 @@
 
         #endregion
 
-        private Cross.Helpers.ScrollablePictureBox pbView;
+        private Demo.Helpers.ScrollablePictureBox pbView;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox lstFills;
         private System.Windows.Forms.Label label2;

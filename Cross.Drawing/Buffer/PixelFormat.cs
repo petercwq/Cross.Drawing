@@ -86,7 +86,7 @@ namespace Cross.Drawing
         { get { return mArgb; } }
         #endregion
 
-        #region Argb
+        #region Abgr
         static PixelFormats mAbgr = new PixelFormats(3, 2, 1, 0, 4);
         /// <summary>
         /// Gets 32-bit ABGR format

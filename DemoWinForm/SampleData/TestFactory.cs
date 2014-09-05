@@ -1,6 +1,6 @@
 using System;
 
-namespace Cross.Helpers
+namespace Demo.Helpers
 {
     /// <summary>
     /// Helper class to provide coordinates used in common tests
@@ -166,24 +166,21 @@ namespace Cross.Helpers
         #region Complex 1
         public static double[] Complex1()
         {
-            ComplexDataHelper.BuildCache(1);
-            return ComplexDataHelper.GetComplexPolygon();
+            return (double[])DataSamples.ComplexData1.Clone();
         }
         #endregion
 
         #region Complex 2
         public static double[] Complex2()
         {
-            ComplexDataHelper.BuildCache(2);
-            return ComplexDataHelper.GetComplexPolygon();
+            return (double[])DataSamples.ComplexData1.Clone();
         }
         #endregion
 
         #region Complex data 3
         public static double[] Complex3()
         {
-            ComplexDataHelper.BuildCache(3);
-            return ComplexDataHelper.GetComplexPolygon();
+            return (double[])DataSamples.ComplexData1.Clone();
         }
         #endregion
 

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pbView = new Cross.Helpers.ScrollablePictureBox();
+            this.pbView = new Demo.Helpers.ScrollablePictureBox();
             this.sbZoom = new System.Windows.Forms.HScrollBar();
             this.lblZoomFactor = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -129,7 +129,7 @@
 
         #endregion
 
-        private Cross.Helpers.ScrollablePictureBox pbView;
+        private Demo.Helpers.ScrollablePictureBox pbView;
         private System.Windows.Forms.HScrollBar sbZoom;
         private System.Windows.Forms.Label lblZoomFactor;
         private System.Windows.Forms.Label label1;

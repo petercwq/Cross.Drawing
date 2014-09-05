@@ -40,7 +40,7 @@
             this.sbZoom = new System.Windows.Forms.HScrollBar();
             this.lblZoomFactor = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pbView = new Cross.Helpers.ScrollablePictureBox();
+            this.pbView = new Demo.Helpers.ScrollablePictureBox();
             this.pnlNav.SuspendLayout();
             this.pnlControls.SuspendLayout();
             this.SuspendLayout();
@@ -219,7 +219,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.HScrollBar sbZoom;
         private System.Windows.Forms.Label lblZoomFactor;
-        private Cross.Helpers.ScrollablePictureBox pbView;
+        private Demo.Helpers.ScrollablePictureBox pbView;
         private System.Windows.Forms.Button btnDrawRoundRect;
     }
 }

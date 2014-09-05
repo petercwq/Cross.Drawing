@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 using Cross.Drawing;
-using Cross.Helpers;
+using Demo.Helpers;
 
 namespace DemoWinForm
 {

@@ -10,7 +10,6 @@ namespace Cross.Helpers
     /// </summary>
     public class BufferToBitmap
     {
-        #region Get Buffer
         /// <summary>
         /// Obtains a rendering buffer from a gdi+ System.Drawing.Bitmap
         /// </summary>
@@ -20,17 +19,15 @@ namespace Cross.Helpers
             DrawBitmapToBuffer(source, result);
             return result;
         }
-        #endregion
 
-        #region Draw System.Drawing.Bitmap To Buffer
         /// <summary>
         /// Draw a gdi+ System.Drawing.Bitmap to the rendering buffer
         /// </summary>
         public static void DrawBitmapToBuffer(Image source, PixelBuffer buffer)
         {
             //make sure we have a ABGR System.Drawing.Bitmap
-            System.Drawing.Bitmap bmp = null;
-            bmp = new System.Drawing.Bitmap(source.Width, source.Height, PixelFormat.Format32bppArgb);
+            Bitmap bmp = null;
+            bmp = new Bitmap(source.Width, source.Height, PixelFormat.Format32bppArgb);
             Graphics g = Graphics.FromImage(bmp);
             g.DrawImage(source, new Rectangle(0, 0, source.Width, source.Height));
             g.Dispose();
@@ -47,9 +44,7 @@ namespace Cross.Helpers
             //copy to pixel buffer
             buffer.FromBytes(tmpBuffer, PixelFormats.Bgra);
         }
-        #endregion
 
-        #region Get System.Drawing.Bitmap
         /// <summary>
         /// Obtain a gdi+ System.Drawing.Bitmap from <see cref="RenderingBuffer"/>
         /// </summary>
@@ -113,14 +108,5 @@ namespace Cross.Helpers
 
             return bmp;
         }
-        #endregion
-
-        #region Constructors
-        /// <summary>
-        /// Default constructor
-        /// </summary>
-        public BufferToBitmap()
-        { }
-        #endregion
     }
 }
