@@ -25,7 +25,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;Droid</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
@@ -35,7 +35,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;Droid</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
@@ -50,6 +50,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\DemoWinForm\SampleData\DataSamples.cs">
+      <Link>SampleData\DataSamples.cs</Link>
+    </Compile>
+    <Compile Include="..\DemoWinForm\SampleData\LionPathHelper.cs">
+      <Link>SampleData\LionPathHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\DemoWinForm\SampleData\TestFactory.cs">
+      <Link>SampleData\TestFactory.cs</Link>
+    </Compile>
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -75,6 +84,10 @@
     <ProjectReference Include="..\Cross.Drawing\Cross.Drawing.csproj">
       <Project>{cfca646f-c6d5-4016-9f61-23a77ddf8f3c}</Project>
       <Name>Cross.Drawing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HelpersAndroid\HelpersAndroid.csproj">
+      <Project>{5f586062-2f71-4e9e-9ae5-7c1f16703a7f}</Project>
+      <Name>HelpersAndroid</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

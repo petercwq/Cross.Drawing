@@ -35,11 +35,11 @@
             this.btnRotate = new System.Windows.Forms.Button();
             this.btnTranslate = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.pbOriginal = new Cross.Helpers.ScrollablePictureBox();
+            this.pbOriginal = new Demo.Helpers.ScrollablePictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.pbAfter1 = new Cross.Helpers.ScrollablePictureBox();
-            this.pbAfter2 = new Cross.Helpers.ScrollablePictureBox();
-            this.pbAfter3 = new Cross.Helpers.ScrollablePictureBox();
+            this.pbAfter1 = new Demo.Helpers.ScrollablePictureBox();
+            this.pbAfter2 = new Demo.Helpers.ScrollablePictureBox();
+            this.pbAfter3 = new Demo.Helpers.ScrollablePictureBox();
             this.txtDesc1 = new System.Windows.Forms.TextBox();
             this.txtDesc2 = new System.Windows.Forms.TextBox();
             this.txtDesc3 = new System.Windows.Forms.TextBox();
@@ -216,11 +216,11 @@
 
         private System.Windows.Forms.Panel pnlNav;
         private System.Windows.Forms.Label label1;
-        private Cross.Helpers.ScrollablePictureBox pbOriginal;
+        private Demo.Helpers.ScrollablePictureBox pbOriginal;
         private System.Windows.Forms.Label label2;
-        private Cross.Helpers.ScrollablePictureBox pbAfter1;
-        private Cross.Helpers.ScrollablePictureBox pbAfter2;
-        private Cross.Helpers.ScrollablePictureBox pbAfter3;
+        private Demo.Helpers.ScrollablePictureBox pbAfter1;
+        private Demo.Helpers.ScrollablePictureBox pbAfter2;
+        private Demo.Helpers.ScrollablePictureBox pbAfter3;
         private System.Windows.Forms.TextBox txtDesc1;
         private System.Windows.Forms.TextBox txtDesc2;
         private System.Windows.Forms.TextBox txtDesc3;

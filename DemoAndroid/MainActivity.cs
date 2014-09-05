@@ -4,6 +4,8 @@ using Android.Graphics;
 using Android.OS;
 using Android.Widget;
 using Cross.Drawing;
+using Cross.Helpers;
+using Demo.Helpers;
 
 namespace DemoAndroid
 {
@@ -65,15 +67,18 @@ namespace DemoAndroid
                 PixelBuffer view = buffer.CreateView(margin, margin, buffer.Width - margin * 2, buffer.Height - margin * 2, true);
                 DrawFrame(view, Colors.OrangeRed);
                 DrawLine(view, Colors.Olive);
+
             }
+            DrawLion(buffer, 200, 200);
+
             if (bmp != null)
                 bmp.Dispose();
-            bmp = Bitmap.CreateBitmap(Array.ConvertAll<uint, int>(buffer.Data, new Converter<uint, int>(x => (int)x)), buffer.StartOffset, buffer.Stride, buffer.Width, buffer.Height, Bitmap.Config.Argb8888);
-            //show to screen
+            bmp = BufferToBitmap.GetBitmap(buffer);
 
+            //show to screen
             var icon = BitmapFactory.DecodeResource(this.Resources, Resource.Drawable.Icon);
 
-            imageView.SetImageBitmap(Overlay(icon, bmp));
+            imageView.SetImageBitmap(BufferToBitmap.Overlay(new Bitmap[] { icon, bmp }));
             Android.Util.Log.Debug("Draw " + times, "Draw: " + (DateTime.Now - startDraw).TotalSeconds.ToString() + " Total: " + (DateTime.Now - start).TotalSeconds.ToString());
         }
 
@@ -87,18 +92,7 @@ namespace DemoAndroid
             path.MoveTo(200, 100);
             path.CurveTo(200, 350, 340, 30, 360, 200);
             path.CurveTo(200, 100, 40, 200, 60, 30);
-
             return path;
-        }
-
-        private Bitmap Overlay(Bitmap bmp1, Bitmap bmp2)
-        {
-            Bitmap bmOverlay = Bitmap.CreateBitmap(Math.Max(bmp1.Width, bmp2.Width), Math.Max(bmp1.Height, bmp2.Height), bmp1.GetConfig());
-            Canvas canvas = new Canvas(bmOverlay);
-            canvas.DrawBitmap(bmp1, new Matrix(), null);
-            canvas.DrawBitmap(bmp2, new Matrix(), null);
-            canvas.Dispose();
-            return bmOverlay;
         }
 
         double[] GetPath(int index)
@@ -130,6 +124,27 @@ namespace DemoAndroid
             }
 
             return result;
+        }
+
+        void DrawLion(PixelBuffer buffer, int x, int y)
+        {
+            //create a new drawing context
+            //PixelBuffer buffer = new PixelBuffer(400, 400);
+            IDrawer drawer = new Drawer(buffer);
+
+            //get coordinates and colors
+            double[][] polygons = LionPathHelper.GetLionPolygons();
+            Cross.Drawing.Color[] colors = LionPathHelper.GetLionColors();
+
+            //iterate all polygons and draw them
+            double[] coordinates = null;
+            drawer.Translate(x, y);
+            for (int i = 0; i < polygons.Length; i++)
+            {
+                coordinates = polygons[i];
+                Fill fill = new Fill(colors[i]);
+                drawer.DrawPolygon(fill, coordinates);
+            }
         }
 
         #region Draw Line

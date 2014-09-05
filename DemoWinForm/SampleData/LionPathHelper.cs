@@ -1,7 +1,7 @@
 using System;
 using Cross.Drawing;
 
-namespace Cross.Helpers
+namespace Demo.Helpers
 {
     /// <summary>
     /// Get path for lion
@@ -221,6 +221,7 @@ namespace Cross.Helpers
             return Helper.cachedLionColors;
         }
 
+#if Win
         public static System.Drawing.PointF[][] GetLionGdiPolygons()
         {
             if (!Helper.isBuildCache)
@@ -230,6 +231,7 @@ namespace Cross.Helpers
             return Helper.cachedGdiLionPolygon;
         }
 
+
         public static System.Drawing.Brush[] GetLionGdiColors()
         {
             if (!Helper.isBuildCache)
@@ -238,19 +240,25 @@ namespace Cross.Helpers
             }
             return Helper.cachedGdiColors;
         }
+#endif
+
         char[] hexaNumber = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
 
         double[][] cachedLionPolygons = new double[0][];
         Color[] cachedLionColors = new Color[0];
         System.Drawing.PointF[][] cachedGdiLionPolygon = new System.Drawing.PointF[0][];
-        System.Drawing.Brush[] cachedGdiColors = new System.Drawing.Brush[0];
 
+#if Win
+        System.Drawing.Brush[] cachedGdiColors = new System.Drawing.Brush[0];
+#endif
 
         double[][] tempCachedLionPolygons = new double[0][];
         Color[] tempCachedLionColors = new Color[0];
         System.Drawing.PointF[][] tempCachedGdiLionPolygon = new System.Drawing.PointF[0][];
-        System.Drawing.Brush[] tempCachedGdiColors = new System.Drawing.Brush[0];
 
+#if Win
+        System.Drawing.Brush[] tempCachedGdiColors = new System.Drawing.Brush[0];
+#endif
 
         /// <summary>
         /// build cache
@@ -266,7 +274,9 @@ namespace Cross.Helpers
             cachedLionColors = new Color[capacity];
 
             cachedGdiLionPolygon = new System.Drawing.PointF[capacity][];
+#if Win
             cachedGdiColors = new System.Drawing.Brush[capacity];
+#endif
             #endregion
 
             int ptr = 0;
@@ -387,11 +397,13 @@ namespace Cross.Helpers
             cachedGdiLionPolygon = tempCachedGdiLionPolygon;
             #endregion
 
+#if Win
             #region lion color 2
             tempCachedGdiColors = new System.Drawing.Brush[polygonCount];
             Array.Copy(cachedGdiColors, tempCachedGdiColors, polygonCount);
             cachedGdiColors = tempCachedGdiColors;
             #endregion
+#endif
             #endregion
 
             isBuildCache = true;
@@ -402,7 +414,9 @@ namespace Cross.Helpers
         {
             //(c >> 16) & 0xFF, (c >> 8) & 0xFF, c & 0xFF, 128
             // parse and set to array
+#if Win
             cachedGdiColors[polygonIndex] = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(255, (colorData >> 16) & 0xFF, (colorData >> 8) & 0xFF, colorData & 0xFF));
+#endif
             cachedLionColors[polygonIndex] = new Color((colorData >> 16) & 0xFF, (colorData >> 8) & 0xFF, colorData & 0xFF, 255);
         }
 
@@ -477,11 +491,13 @@ namespace Cross.Helpers
             cachedGdiLionPolygon = tempCachedGdiLionPolygon;
             #endregion
 
+#if Win
             #region lion color 2
             tempCachedGdiColors = new System.Drawing.Brush[newCacheSize];
             Array.Copy(cachedGdiColors, tempCachedGdiColors, oldCapacity);
             cachedGdiColors = tempCachedGdiColors;
             #endregion
+#endif
             #endregion
             return newCacheSize;
         }
