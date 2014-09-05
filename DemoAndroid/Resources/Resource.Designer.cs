@@ -26,6 +26,8 @@ namespace DemoAndroid
 		
 		public static void UpdateIdValues()
 		{
+			global::HelpersAndroid.Resource.String.ApplicationName = global::DemoAndroid.Resource.String.ApplicationName;
+			global::HelpersAndroid.Resource.String.Hello = global::DemoAndroid.Resource.String.Hello;
 		}
 		
 		public partial class Attribute
