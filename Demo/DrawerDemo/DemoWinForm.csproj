@@ -71,40 +71,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Demos\Buffer\fmPixelBufferDemo.cs">
+    <Compile Include="Demos\fmPixelBufferDemo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Demos\Buffer\fmPixelBufferDemo.Designer.cs">
+    <Compile Include="Demos\fmPixelBufferDemo.Designer.cs">
       <DependentUpon>fmPixelBufferDemo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Demos\Gamma\fmGammaCorrection.cs">
+    <Compile Include="Demos\fmGammaCorrection.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Demos\Gamma\fmGammaCorrection.Designer.cs">
+    <Compile Include="Demos\fmGammaCorrection.Designer.cs">
       <DependentUpon>fmGammaCorrection.cs</DependentUpon>
     </Compile>
-    <Compile Include="Demos\Mask\fmOpacityMask.cs">
+    <Compile Include="Demos\fmOpacityMask.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Demos\Mask\fmOpacityMask.Designer.cs">
+    <Compile Include="Demos\fmOpacityMask.Designer.cs">
       <DependentUpon>fmOpacityMask.cs</DependentUpon>
     </Compile>
-    <Compile Include="Demos\Primitive\fmPrimitiveRendering.cs">
+    <Compile Include="Demos\fmPrimitiveRendering.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Demos\Primitive\fmPrimitiveRendering.Designer.cs">
+    <Compile Include="Demos\fmPrimitiveRendering.Designer.cs">
       <DependentUpon>fmPrimitiveRendering.cs</DependentUpon>
     </Compile>
-    <Compile Include="Demos\Transform\fmTransformDemo.cs">
+    <Compile Include="Demos\fmTransformDemo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Demos\Transform\fmTransformDemo.Designer.cs">
+    <Compile Include="Demos\fmTransformDemo.Designer.cs">
       <DependentUpon>fmTransformDemo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Demos\Fill\fmFill.cs">
+    <Compile Include="Demos\fmFill.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Demos\Fill\fmFill.Designer.cs">
+    <Compile Include="Demos\fmFill.Designer.cs">
       <DependentUpon>fmFill.cs</DependentUpon>
     </Compile>
     <Compile Include="fmMain.cs">
@@ -115,27 +115,27 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Demos\Buffer\fmPixelBufferDemo.resx">
+    <EmbeddedResource Include="Demos\fmPixelBufferDemo.resx">
       <DependentUpon>fmPixelBufferDemo.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Demos\Gamma\fmGammaCorrection.resx">
+    <EmbeddedResource Include="Demos\fmGammaCorrection.resx">
       <DependentUpon>fmGammaCorrection.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Demos\Mask\fmOpacityMask.resx">
+    <EmbeddedResource Include="Demos\fmOpacityMask.resx">
       <DependentUpon>fmOpacityMask.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Demos\Primitive\fmPrimitiveRendering.resx">
+    <EmbeddedResource Include="Demos\fmPrimitiveRendering.resx">
       <DependentUpon>fmPrimitiveRendering.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Demos\Transform\fmTransformDemo.resx">
+    <EmbeddedResource Include="Demos\fmTransformDemo.resx">
       <DependentUpon>fmTransformDemo.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Demos\Fill\fmFill.resx">
+    <EmbeddedResource Include="Demos\fmFill.resx">
       <DependentUpon>fmFill.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>

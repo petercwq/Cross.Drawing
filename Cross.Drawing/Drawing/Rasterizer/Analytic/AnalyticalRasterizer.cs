@@ -1,6 +1,4 @@
-#region Using directives
 using System;
-#endregion
 
 namespace Cross.Drawing.Rasterizers.Analytical
 {

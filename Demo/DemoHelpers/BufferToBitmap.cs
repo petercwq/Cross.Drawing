@@ -1,9 +1,7 @@
-#region Using directives
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using Cross.Drawing;
-#endregion
 
 namespace DemoHelpers
 {

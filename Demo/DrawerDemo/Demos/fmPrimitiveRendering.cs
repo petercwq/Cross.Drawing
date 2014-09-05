@@ -1,6 +1,6 @@
 using System;
-using DemoHelpers;
 using Cross.Drawing;
+using DemoHelpers;
 
 namespace DemoWinForm
 {

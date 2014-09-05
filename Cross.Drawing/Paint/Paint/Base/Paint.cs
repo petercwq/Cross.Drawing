@@ -1,6 +1,5 @@
-#region Using directives
 
-#endregion
+
 
 namespace Cross.Drawing
 {

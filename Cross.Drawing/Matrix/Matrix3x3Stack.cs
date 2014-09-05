@@ -1,6 +1,4 @@
-#region Using directives
 using System.Collections;
-#endregion
 
 namespace Cross.Drawing
 {

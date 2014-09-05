@@ -1,7 +1,5 @@
-#region Using directives
 using System;
 using Cross.Drawing.Rasterizers.Analytical;
-#endregion
 
 namespace Cross.Drawing
 {

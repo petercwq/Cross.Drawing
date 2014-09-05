@@ -1,6 +1,4 @@
-#region Using directives
 using Cross.Drawing.ColorSpaces;
-#endregion
 
 namespace Cross.Drawing
 {

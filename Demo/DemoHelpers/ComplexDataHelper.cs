@@ -1,6 +1,4 @@
-#region Using directives
 using System.IO;
-#endregion
 
 namespace DemoHelpers
 {

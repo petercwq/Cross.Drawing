@@ -1,6 +1,4 @@
 ﻿using System;
-using Cross.Drawing;
-
 namespace Cross
 {
     public class Log
