@@ -30,12 +30,7 @@ namespace Cross
             throw new NotImplementedException();
         }
 
-        internal static void Error(NotMatchPaintTypeException error)
-        {
-            throw new NotImplementedException();
-        }
-
-        internal static void Error(FillingException error)
+        internal static void Error(Exception error)
         {
             throw new NotImplementedException();
         }

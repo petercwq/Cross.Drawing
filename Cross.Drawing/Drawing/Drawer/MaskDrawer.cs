@@ -45,7 +45,7 @@ namespace Cross.Drawing
         /// </summary>
         void Prepare()
         {
-            if (mBuffer == null) Cross.NullArgumentException.Publish("Buffer");
+            if (mBuffer == null) Cross.Drawing.NullArgumentException.Publish(typeof(MaskBuffer), "Buffer");
 
             if (mMaskRasterizer == null) mMaskRasterizer = new MaskRasterizer();
             //throw new Exception("How to use the mask rasterizer correctly ?");
@@ -129,7 +129,7 @@ namespace Cross.Drawing
                 matrixStack = ds.MatrixStack;
                 transformRequired = currentTransform != null;
             }
-            else Cross.IncompatibleTypeException.Publish(state, typeof(DrawerState));
+            else Cross.Drawing.IncompatibleTypeException.Publish(state, typeof(DrawerState));
         }
         #endregion
 
@@ -178,7 +178,7 @@ namespace Cross.Drawing
             get { return mGammaCorrected; }
             set
             {
-                Cross.UnsupportedException.Publish("Gamma correction", "MaskDrawer");
+                Cross.Drawing.UnsupportedException.Publish("Gamma correction", "MaskDrawer");
             }
         }
         #endregion

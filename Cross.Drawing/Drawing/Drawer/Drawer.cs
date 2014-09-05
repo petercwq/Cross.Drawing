@@ -65,7 +65,7 @@ namespace Cross.Drawing
         /// </summary>
         void Prepare()
         {
-            if (mBuffer == null) Cross.NullArgumentException.Publish("Buffer");
+            if (mBuffer == null) Cross.Drawing.NullArgumentException.Publish(typeof(PixelBuffer), "Buffer");
 
             #region Initialize rasterizers
 
@@ -128,7 +128,7 @@ namespace Cross.Drawing
             else if (paint is LinearGradient) return mLinearGradientRasterizer;
             else if (paint is RadialGradient) return mRadialGradientRasterizer;
 
-            else Cross.UnsupportedException.Publish(paint.GetType());
+            else Cross.Drawing.UnsupportedException.Publish(paint.GetType());
 
             return null;
         }
@@ -195,7 +195,7 @@ namespace Cross.Drawing
                 matrixStack = ds.MatrixStack;
                 transformRequired = currentTransform != null;
             }
-            else Cross.IncompatibleTypeException.Publish(state, typeof(DrawerState));
+            else Cross.Drawing.IncompatibleTypeException.Publish(state, typeof(DrawerState));
         }
         #endregion
 

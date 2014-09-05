@@ -1,12 +1,24 @@
 ﻿using System;
 
-namespace Cross
+namespace Cross.Drawing
 {
-    public class IncompatibleTypeException : Cross.ExceptionBase
+    public class IncompatibleTypeException : DrawingExceptionBase
     {
-        internal static void Publish(object state, Type type)
+        static string GetMessage(object obj, Type type)
         {
-            throw new NotImplementedException();
+            return string.Format("Instance {0} is not compatible with type {1}", obj, type);
+        }
+
+        [System.Diagnostics.DebuggerHidden]
+        public static void Publish(object obj, Type type)
+        {
+            var error = new IncompatibleTypeException(obj, type);
+            BasePublish(error);
+        }
+
+        public IncompatibleTypeException(object obj, Type type)
+            : base(GetMessage(obj, type))
+        {
         }
     }
 }

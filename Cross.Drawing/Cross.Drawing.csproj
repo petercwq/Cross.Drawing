@@ -73,7 +73,6 @@
     <Compile Include="Drawing\Rasterizer\Base\WindingRule.cs" />
     <Compile Include="Drawing\Rasterizer\Mask Rasterizer\MaskRasterizer.cs" />
     <Compile Include="Exception\DrawingException.cs" />
-    <Compile Include="Exception\ExceptionBase.cs" />
     <Compile Include="Exception\FillingException.cs" />
     <Compile Include="Exception\IncompatibleTypeException.cs" />
     <Compile Include="Exception\NotMatchPaintTypeException.cs" />

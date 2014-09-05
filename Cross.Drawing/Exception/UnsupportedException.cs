@@ -1,17 +1,41 @@
 ﻿using System;
 
-namespace Cross
+namespace Cross.Drawing
 {
-    public class UnsupportedException
+    public class UnsupportedException : DrawingExceptionBase
     {
-        internal static void Publish(string p1, string p2)
+        static string GetMessage(Type type)
         {
-            throw new NotImplementedException();
+            return string.Format("{0} is not supported", type);
         }
 
-        internal static void Publish(Type type)
+        static string GetMessage(string message, string region)
         {
-            throw new NotImplementedException();
+            return string.Format("{0} is not supported in {1}", message, region);
+        }
+
+        [System.Diagnostics.DebuggerHidden]
+        public static void Publish(Type type)
+        {
+            var error = new UnsupportedException(type);
+            BasePublish(error);
+        }
+
+        [System.Diagnostics.DebuggerHidden]
+        public static void Publish(string message, string region)
+        {
+            var error = new UnsupportedException(message, region);
+            BasePublish(error);
+        }
+
+        public UnsupportedException(Type type)
+            : base(GetMessage(type))
+        {
+        }
+
+        public UnsupportedException(string message, string region)
+            : base(GetMessage(message, region))
+        {
         }
     }
 }

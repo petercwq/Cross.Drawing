@@ -1,27 +1,26 @@
-#region Using directives
 using System;
-#endregion
 
 namespace Cross.Drawing
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public class DrawingExceptionBase : Cross.ExceptionBase
+    public class DrawingExceptionBase : Exception
     {
-        #region OPTIONAL (if not inherited from Cross.Application.ExceptionBase)
-        /*
         /// <summary>
         /// When true, static exception publishers will write exception to logs
         /// </summary>
         public static bool LogError;
-        
+
         /// <summary>
         /// When true, static exception publishers will not throw exception
         /// </summary>
         public static bool SilentError;
-        */
-        #endregion
+
+        protected static void BasePublish(DrawingExceptionBase error)
+        {
+            //write error to log            
+            if (LogError) Cross.Log.Error(error);
+            //throw error
+            if (!SilentError) throw error;
+        }
 
         #region Constructors
         /// <summary>
@@ -45,6 +44,7 @@ namespace Cross.Drawing
         /// <param name="message">The message for this exception</param>
         /// <param name="innerError">Inner stack exception</param>
         public DrawingExceptionBase(string message, Exception innerError) : base(message, innerError) { }
+
         #endregion
     }
 }
