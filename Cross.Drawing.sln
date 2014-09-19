@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoUniversal.Windows", "De
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoUniversal.WindowsPhone", "DemoUniversal\DemoUniversal.WindowsPhone\DemoUniversal.WindowsPhone.csproj", "{EB5258E6-F4DB-459D-8EEF-1C455892CDF0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoWPF", "DemoWPF\DemoWPF.csproj", "{E19EACE9-5EFB-4FC0-8864-BBD938EF5B09}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		DemoUniversal\DemoUniversal.Shared\DemoUniversal.Shared.projitems*{4fec6461-411e-4281-9433-9fd31aec2938}*SharedItemsImports = 13
@@ -137,6 +139,16 @@ Global
 		{EB5258E6-F4DB-459D-8EEF-1C455892CDF0}.Release|x86.ActiveCfg = Release|x86
 		{EB5258E6-F4DB-459D-8EEF-1C455892CDF0}.Release|x86.Build.0 = Release|x86
 		{EB5258E6-F4DB-459D-8EEF-1C455892CDF0}.Release|x86.Deploy.0 = Release|x86
+		{E19EACE9-5EFB-4FC0-8864-BBD938EF5B09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E19EACE9-5EFB-4FC0-8864-BBD938EF5B09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E19EACE9-5EFB-4FC0-8864-BBD938EF5B09}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{E19EACE9-5EFB-4FC0-8864-BBD938EF5B09}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E19EACE9-5EFB-4FC0-8864-BBD938EF5B09}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E19EACE9-5EFB-4FC0-8864-BBD938EF5B09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E19EACE9-5EFB-4FC0-8864-BBD938EF5B09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E19EACE9-5EFB-4FC0-8864-BBD938EF5B09}.Release|ARM.ActiveCfg = Release|Any CPU
+		{E19EACE9-5EFB-4FC0-8864-BBD938EF5B09}.Release|x64.ActiveCfg = Release|Any CPU
+		{E19EACE9-5EFB-4FC0-8864-BBD938EF5B09}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -150,5 +162,6 @@ Global
 		{4FEC6461-411E-4281-9433-9FD31AEC2938} = {4CF54EE9-6E65-4DFE-8490-65C742CAF620}
 		{9B3F0A42-9020-4973-BE3A-2951B9C5F645} = {4CF54EE9-6E65-4DFE-8490-65C742CAF620}
 		{EB5258E6-F4DB-459D-8EEF-1C455892CDF0} = {4CF54EE9-6E65-4DFE-8490-65C742CAF620}
+		{E19EACE9-5EFB-4FC0-8864-BBD938EF5B09} = {D4E7FA78-FB1C-4621-9FEC-FBEEA81955CE}
 	EndGlobalSection
 EndGlobal
