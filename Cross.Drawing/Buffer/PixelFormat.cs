@@ -1,6 +1,3 @@
-
-
-
 namespace Cross.Drawing
 {
     /// <summary>
@@ -33,101 +30,10 @@ namespace Cross.Drawing
         /// </summary>
         public int BytesPerPixel;
 
-        #region Supports Alpha
         /// <summary>
         /// Checks whether this format support alpha channel
         /// </summary>
-        public bool SupportsAlpha
-        { get { return AlphaOffset >= 0; } }
-        #endregion
-
-        #region Rgb
-        static PixelFormats mRgb = new PixelFormats(0, 1, 1, -1, 3);
-        /// <summary>
-        /// Gets 24-bit RGB format
-        /// </summary>
-        public static PixelFormats Rgb
-        { get { return mRgb; } }
-        #endregion
-
-        #region Bgr
-        static PixelFormats mBgr = new PixelFormats(2, 1, 0, -1, 3);
-        /// <summary>
-        /// Gets 24-bit BGR format
-        /// </summary>
-        public static PixelFormats Bgr
-        { get { return mBgr; } }
-        #endregion
-
-        #region Rgba
-        static PixelFormats mRgba = new PixelFormats(0, 1, 2, 3, 4);
-        /// <summary>
-        /// Gets 32-bit RGBA format
-        /// </summary>
-        public static PixelFormats Rgba
-        { get { return mRgba; } }
-        #endregion
-
-        #region Bgra
-        static PixelFormats mBgra = new PixelFormats(2, 1, 0, 3, 4);
-        /// <summary>
-        /// Gets 32-bit BGRA format
-        /// </summary>
-        public static PixelFormats Bgra
-        { get { return mBgra; } }
-        #endregion
-
-        #region Argb
-        static PixelFormats mArgb = new PixelFormats(1, 2, 3, 0, 4);
-        /// <summary>
-        /// Gets 32-bit ARGB format
-        /// </summary>
-        public static PixelFormats Argb
-        { get { return mArgb; } }
-        #endregion
-
-        #region Abgr
-        static PixelFormats mAbgr = new PixelFormats(3, 2, 1, 0, 4);
-        /// <summary>
-        /// Gets 32-bit ABGR format
-        /// </summary>
-        public static PixelFormats Abgr
-        { get { return mAbgr; } }
-        #endregion
-
-        #region Constructors
-        /// <summary>
-        /// Create a new instance
-        /// </summary>
-        public PixelFormats() { }
-
-        /// <summary>
-        /// Create a new instance
-        /// </summary>
-        /// <param name="red">red component offset</param>
-        /// <param name="green">green component offset</param>
-        /// <param name="blue">blue component offset</param>
-        public PixelFormats(int red, int green, int blue)
-        {
-            RedOffset = red;
-            GreenOffset = green;
-            BlueOffset = blue;
-        }
-
-        /// <summary>
-        /// Create a new instance
-        /// </summary>
-        /// <param name="red">red component offset</param>
-        /// <param name="green">green component offset</param>
-        /// <param name="blue">blue component offset</param>
-        /// <param name="alpha">alpha component offset</param>
-        public PixelFormats(int red, int green, int blue, int alpha)
-        {
-            RedOffset = red;
-            GreenOffset = green;
-            BlueOffset = blue;
-            AlphaOffset = alpha;
-        }
+        public bool SupportsAlpha { get { return AlphaOffset >= 0; } }
 
         /// <summary>
         /// Create a new instance
@@ -137,7 +43,7 @@ namespace Cross.Drawing
         /// <param name="blue">blue component offset</param>
         /// <param name="alpha">alpha component offset</param>
         /// <param name="bytes">number of bytes per pixel</param>
-        public PixelFormats(int red, int green, int blue, int alpha, int bytes)
+        public PixelFormats(int red, int green, int blue, int alpha = -1, int bytes = 3)
         {
             RedOffset = red;
             GreenOffset = green;
@@ -145,7 +51,6 @@ namespace Cross.Drawing
             AlphaOffset = alpha;
             BytesPerPixel = bytes;
         }
-        #endregion
 
         #region Equals
         /// <summary>
@@ -163,9 +68,7 @@ namespace Cross.Drawing
 
             return result;
         }
-        #endregion
 
-        #region Get Hash Code
         /// <summary>
         /// Calculate the hashcode of this instance
         /// </summary>
@@ -173,6 +76,47 @@ namespace Cross.Drawing
         {
             return AlphaOffset ^ RedOffset ^ GreenOffset ^ BlueOffset;
         }
+        #endregion
+
+        #region Static built-in Formats
+
+        private static readonly PixelFormats mRgb = new PixelFormats(0, 1, 1, -1, 3);
+        private static readonly PixelFormats mBgr = new PixelFormats(2, 1, 0, -1, 3);
+        private static readonly PixelFormats mRgba = new PixelFormats(0, 1, 2, 3, 4);
+        private static readonly PixelFormats mBgra = new PixelFormats(2, 1, 0, 3, 4);
+        private static readonly PixelFormats mArgb = new PixelFormats(1, 2, 3, 0, 4);
+        private static readonly PixelFormats mAbgr = new PixelFormats(3, 2, 1, 0, 4);
+
+        /// <summary>
+        /// Gets 24-bit RGB format
+        /// </summary>
+        public static PixelFormats Rgb { get { return mRgb; } }
+
+        /// <summary>
+        /// Gets 24-bit BGR format
+        /// </summary>
+        public static PixelFormats Bgr { get { return mBgr; } }
+
+        /// <summary>
+        /// Gets 32-bit RGBA format
+        /// </summary>
+        public static PixelFormats Rgba { get { return mRgba; } }
+
+        /// <summary>
+        /// Gets 32-bit BGRA format
+        /// </summary>
+        public static PixelFormats Bgra { get { return mBgra; } }
+
+        /// <summary>
+        /// Gets 32-bit ARGB format
+        /// </summary>
+        public static PixelFormats Argb { get { return mArgb; } }
+
+        /// <summary>
+        /// Gets 32-bit ABGR format
+        /// </summary>
+        public static PixelFormats Abgr { get { return mAbgr; } }
+
         #endregion
     }
 }

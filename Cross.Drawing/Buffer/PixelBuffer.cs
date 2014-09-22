@@ -32,6 +32,7 @@ namespace Cross.Drawing
         /// Starting index offset
         /// </summary>
         public int StartOffset = 0;
+
         #endregion
 
         #region Absolute Stride
