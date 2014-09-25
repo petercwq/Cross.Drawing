@@ -20,7 +20,7 @@ namespace Cross.Drawing
         /// <summary>
         /// Gets/Sets the buffer to draw to
         /// </summary>
-        PixelBuffer Buffer
+        PixelsBuffer Buffer
         { get; set; }
 
         ///// <summary>

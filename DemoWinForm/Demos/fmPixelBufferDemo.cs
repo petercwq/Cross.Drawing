@@ -29,7 +29,7 @@ namespace DemoWinForm
         private void btnDrawPixels_Click(object sender, EventArgs e)
         {
             //create buffer
-            PixelBuffer buffer = new PixelBuffer(width, height);
+            PixelsBuffer buffer = new PixelsBuffer(width, height);
 
             //render to buffer
             DrawLine(buffer, Colors.Red);
@@ -54,7 +54,7 @@ namespace DemoWinForm
             int stride = -height;
 
             //create buffer
-            PixelBuffer buffer = new PixelBuffer(width, height, stride);
+            PixelsBuffer buffer = new PixelsBuffer(width, height, stride);
 
             //render to buffer
             DrawLine(buffer, Colors.Blue);
@@ -75,7 +75,7 @@ namespace DemoWinForm
         private void btnBufferInBuffer_Click(object sender, EventArgs e)
         {
             //create main buffer
-            PixelBuffer buffer = new PixelBuffer(width, height);
+            PixelsBuffer buffer = new PixelsBuffer(width, height);
 
             //create a sub view (100 pixels margin)
             int margin = 100;
@@ -95,7 +95,7 @@ namespace DemoWinForm
             #region Approach 2
             //a much easier way to create sub-view
 
-            PixelBuffer view = buffer.CreateView(margin, margin, width - margin * 2, height - margin * 2, true);
+            PixelsBuffer view = buffer.CreateView(margin, margin, width - margin * 2, height - margin * 2, true);
             #endregion
 
             //render to main buffer
@@ -121,14 +121,13 @@ namespace DemoWinForm
         /// <summary>
         /// Draw a diagonal line with the specified color from (0,0) to (width, height)
         /// </summary>
-        void DrawLine(PixelBuffer buffer, Color color)
+        void DrawLine(PixelsBuffer buffer, Color color)
         {
             int idx = 0; //pixel index
 
             for (int i = 0; i < buffer.Height; i++)
             {
-                idx = buffer.GetPixelIndex(i, i);
-
+                idx = buffer.StartOffset + i * buffer.Stride + i; // buffer.GetPixelIndex(i, i);
                 buffer.Data[idx] = color.Data;
             }
         }
@@ -138,7 +137,7 @@ namespace DemoWinForm
         /// <summary>
         /// Draw a frame around the buffer from (0,0) to (width, height)
         /// </summary>
-        void DrawFrame(PixelBuffer buffer, Color color)
+        void DrawFrame(PixelsBuffer buffer, Color color)
         {
             int idx = 0; //pixel index
 
@@ -146,11 +145,11 @@ namespace DemoWinForm
             for (int y = 0; y < buffer.Height; y++)
             {
                 //left
-                idx = buffer.GetPixelIndex(0, y);
+                idx = buffer.StartOffset + buffer.Stride * y;// buffer.GetPixelIndex(0, y);
                 buffer.Data[idx] = color.Data;
 
                 //right
-                idx = buffer.GetPixelIndex(buffer.Width - 1, y);
+                idx = buffer.StartOffset + buffer.Stride * y + buffer.Width - 1;// buffer.GetPixelIndex(buffer.Width - 1, y);
                 buffer.Data[idx] = color.Data;
             }
 
@@ -158,11 +157,11 @@ namespace DemoWinForm
             for (int x = 0; x < buffer.Width; x++)
             {
                 //top
-                idx = buffer.GetPixelIndex(x, 0);
+                idx = buffer.StartOffset + x;// buffer.GetPixelIndex(x, 0);
                 buffer.Data[idx] = color.Data;
 
                 //bottom
-                idx = buffer.GetPixelIndex(x, buffer.Height - 1);
+                idx = buffer.StartOffset + (buffer.Height - 1) * buffer.Stride + x;// buffer.GetPixelIndex(x, buffer.Height - 1);
                 buffer.Data[idx] = color.Data;
             }
         }
@@ -176,7 +175,7 @@ namespace DemoWinForm
         private void btnDrawStar_Click(object sender, EventArgs e)
         {
             //create buffer
-            PixelBuffer buffer = new PixelBuffer(width, height);
+            PixelsBuffer buffer = new PixelsBuffer(width, height);
 
             //render
             DrawStar(buffer, Colors.Red, Colors.White);
@@ -200,7 +199,7 @@ namespace DemoWinForm
             int stride = -height;
 
             //create buffer
-            PixelBuffer buffer = new PixelBuffer(width, height, stride);
+            PixelsBuffer buffer = new PixelsBuffer(width, height, stride);
 
             //render
             DrawStar(buffer, Colors.Blue, Colors.White);
@@ -220,11 +219,11 @@ namespace DemoWinForm
         private void btnBufferInBufferDraw_Click(object sender, EventArgs e)
         {
             //create & render to main buffer
-            PixelBuffer buffer = new PixelBuffer(width, height);
+            PixelsBuffer buffer = new PixelsBuffer(width, height);
             DrawStar(buffer, Colors.Red, Colors.White);
 
             //create a sub view (50, 50, 100, 100) - inversed
-            PixelBuffer view = buffer.CreateView(50, 250, 100, 100, true);
+            PixelsBuffer view = buffer.CreateView(50, 250, 100, 100, true);
             DrawStar(view, Colors.Blue, Colors.YellowGreen);
 
             //create a sub view (50, 50, 100, 100)
@@ -246,7 +245,7 @@ namespace DemoWinForm
         /// <summary>
         /// Render a star shape to buffer
         /// </summary>
-        void DrawStar(PixelBuffer buffer, Color color, Color background)
+        void DrawStar(PixelsBuffer buffer, Color color, Color background)
         {
             IDrawer drawer = new Drawer(buffer);
             drawer.Clear(background);
@@ -269,7 +268,7 @@ namespace DemoWinForm
         /// <summary>
         /// Helper method to display result from a pixel buffer
         /// </summary>
-        void DisplayBuffer(PixelBuffer buffer)
+        void DisplayBuffer(PixelsBuffer buffer)
         {
             if (bmp != null) bmp.Dispose();
             bmp = Cross.Helpers.BufferToBitmap.GetBitmap(buffer, System.Drawing.Imaging.PixelFormat.Format32bppArgb);

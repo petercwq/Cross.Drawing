@@ -9,7 +9,7 @@ namespace DemoWinForm
         int w = 200;
         int h = 200;
         int cx, cy = 0;
-        PixelBuffer buffer = null;
+        PixelsBuffer buffer = null;
         IDrawer drawer = null;
 
         #region Initialize
@@ -20,7 +20,7 @@ namespace DemoWinForm
 
         private void fmTransformDemo_Load(object sender, EventArgs e)
         {
-            buffer = new PixelBuffer(w, h);
+            buffer = new PixelsBuffer(w, h);
         }
         #endregion
 
@@ -260,7 +260,7 @@ namespace DemoWinForm
         /// <summary>
         /// Helper method to display result from a pixel buffer to Original view
         /// </summary>
-        void DisplayOriginal(PixelBuffer buffer)
+        void DisplayOriginal(PixelsBuffer buffer)
         {
             if (bmpOrg != null) bmpOrg.Dispose();
             bmpOrg = Cross.Helpers.BufferToBitmap.GetBitmap(buffer, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
@@ -270,7 +270,7 @@ namespace DemoWinForm
         /// <summary>
         /// Helper method to display result from a pixel buffer to After 1 view
         /// </summary>
-        void DisplayAfter1(PixelBuffer buffer)
+        void DisplayAfter1(PixelsBuffer buffer)
         {
             if (bmpAfter1 != null) bmpAfter1.Dispose();
             if (buffer != null)
@@ -284,7 +284,7 @@ namespace DemoWinForm
         /// <summary>
         /// Helper method to display result from a pixel buffer to After 2 view
         /// </summary>
-        void DisplayAfter2(PixelBuffer buffer)
+        void DisplayAfter2(PixelsBuffer buffer)
         {
             if (bmpAfter2 != null) bmpAfter2.Dispose();
             if (buffer != null)
@@ -298,7 +298,7 @@ namespace DemoWinForm
         /// <summary>
         /// Helper method to display result from a pixel buffer to After 3 view
         /// </summary>
-        void DisplayAfter3(PixelBuffer buffer)
+        void DisplayAfter3(PixelsBuffer buffer)
         {
             if (bmpAfter3 != null) bmpAfter3.Dispose();
             if (buffer != null)

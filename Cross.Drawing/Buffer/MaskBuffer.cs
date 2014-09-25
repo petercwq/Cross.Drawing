@@ -14,12 +14,12 @@ namespace Cross.Drawing
         public byte[] Data = null;
 
         /// <summary>
-        /// x-axis offset (relative to the underlying <see cref="PixelBuffer"/>
+        /// x-axis offset (relative to the underlying <see cref="PixelsBuffer"/>
         /// </summary>
         public int Left = 0;
 
         /// <summary>
-        /// y-axis offset (relative to the underlying <see cref="PixelBuffer"/>
+        /// y-axis offset (relative to the underlying <see cref="PixelsBuffer"/>
         /// </summary>
         public int Top = 0;
 

@@ -33,7 +33,7 @@ namespace Cross.Drawing.Rasterizers.Analytical
         /// <summary>
         /// Gets/Sets Null buffer for Mask rasterizer
         /// </summary>
-        public PixelBuffer Buffer
+        public PixelsBuffer Buffer
         {
             get { return null; }
             set { }

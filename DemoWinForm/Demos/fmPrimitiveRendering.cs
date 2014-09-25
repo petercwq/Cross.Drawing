@@ -25,7 +25,7 @@ namespace DemoWinForm
         /// <summary>
         /// Helper method to display result from a pixel buffer
         /// </summary>
-        void DisplayBuffer(PixelBuffer buffer)
+        void DisplayBuffer(PixelsBuffer buffer)
         {
             if (bmp != null) bmp.Dispose();
             bmp = Cross.Helpers.BufferToBitmap.GetBitmap(buffer, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
@@ -37,7 +37,7 @@ namespace DemoWinForm
         private void btnDrawRectangle_Click(object sender, EventArgs e)
         {
             //create a new drawing context
-            PixelBuffer buffer = new PixelBuffer(400, 400);
+            PixelsBuffer buffer = new PixelsBuffer(400, 400);
             IDrawer drawer = new Drawer(buffer);
             drawer.Clear(Colors.White);
 
@@ -56,7 +56,7 @@ namespace DemoWinForm
         private void btnDrawRoundRect_Click(object sender, EventArgs e)
         {
             //create a new drawing context
-            PixelBuffer buffer = new PixelBuffer(400, 400);
+            PixelsBuffer buffer = new PixelsBuffer(400, 400);
             IDrawer drawer = new Drawer(buffer);
             drawer.Clear(Colors.White);
 
@@ -75,7 +75,7 @@ namespace DemoWinForm
         private void btnDrawEllipse_Click(object sender, EventArgs e)
         {
             //create a new drawing context
-            PixelBuffer buffer = new PixelBuffer(400, 400);
+            PixelsBuffer buffer = new PixelsBuffer(400, 400);
             IDrawer drawer = new Drawer(buffer);
             drawer.Clear(Colors.White);
 
@@ -94,7 +94,7 @@ namespace DemoWinForm
         private void btnDrawPolygon_Click(object sender, EventArgs e)
         {
             //create a new drawing context
-            PixelBuffer buffer = new PixelBuffer(400, 400);
+            PixelsBuffer buffer = new PixelsBuffer(400, 400);
             IDrawer drawer = new Drawer(buffer);
             drawer.Clear(Colors.White);
 
@@ -124,7 +124,7 @@ namespace DemoWinForm
         private void btnDrawPath_Click(object sender, EventArgs e)
         {
             //create a new drawing context
-            PixelBuffer buffer = new PixelBuffer(400, 400);
+            PixelsBuffer buffer = new PixelsBuffer(400, 400);
             IDrawer drawer = new Drawer(buffer);
             drawer.Clear(Colors.White);
 
@@ -153,7 +153,7 @@ namespace DemoWinForm
             if (lstTests.SelectedIndex < 0) lstTests.SelectedIndex = 0;
 
             //create a new drawing context
-            PixelBuffer buffer = new PixelBuffer(600, 600);
+            PixelsBuffer buffer = new PixelsBuffer(600, 600);
             IDrawer drawer = new Drawer(buffer);
             drawer.Clear(Colors.White);
 
@@ -218,7 +218,7 @@ namespace DemoWinForm
         void DrawLion()
         {
             //create a new drawing context
-            PixelBuffer buffer = new PixelBuffer(400, 400);
+            PixelsBuffer buffer = new PixelsBuffer(400, 400);
             IDrawer drawer = new Drawer(buffer);
             drawer.Clear(Colors.White);
 

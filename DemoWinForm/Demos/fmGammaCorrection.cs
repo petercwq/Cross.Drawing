@@ -13,7 +13,7 @@ namespace DemoWinForm
         double gammaFactorBlue = 1.2;
 
         IDrawer drawer = null;
-        PixelBuffer buffer = null;
+        PixelsBuffer buffer = null;
 
         #region Initialize
         public fmGammaCorrection()
@@ -23,7 +23,7 @@ namespace DemoWinForm
 
         private void fmGammaCorrection_Load(object sender, EventArgs e)
         {
-            buffer = new PixelBuffer(400, 400);
+            buffer = new PixelsBuffer(400, 400);
             drawer = new Drawer(buffer);
             DrawLion();
         }
@@ -80,7 +80,7 @@ namespace DemoWinForm
         /// <summary>
         /// Helper method to display result from a pixel buffer
         /// </summary>
-        void DisplayBuffer(PixelBuffer buffer)
+        void DisplayBuffer(PixelsBuffer buffer)
         {
             if (bmp != null) bmp.Dispose();
             bmp = Cross.Helpers.BufferToBitmap.GetBitmap(buffer, System.Drawing.Imaging.PixelFormat.Format32bppArgb);

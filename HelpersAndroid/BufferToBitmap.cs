@@ -14,14 +14,14 @@ namespace Cross.Helpers
         /// <summary>
         /// Obtains a rendering buffer from a gdi+ System.Drawing.Bitmap
         /// </summary>
-        public static PixelBuffer GetBuffer(Bitmap source)
+        public static PixelsBuffer GetBuffer(Bitmap source)
         {
-            PixelBuffer result = new PixelBuffer(source.Width, source.Height, source.Width);
+            PixelsBuffer result = new PixelsBuffer(source.Width, source.Height, source.Width);
             DrawBitmapToBuffer(source, result);
             return result;
         }
 
-        public static void DrawBitmapToBuffer(Bitmap source, PixelBuffer buffer)
+        public static void DrawBitmapToBuffer(Bitmap source, PixelsBuffer buffer)
         {
             //make sure we have a ABGR Bitmap, same as PixelFormat.Format32bppArgb
             var bmp = ConvertConfig(source, Bitmap.Config.Argb8888);
@@ -64,7 +64,7 @@ namespace Cross.Helpers
         /// <summary>
         /// Obtain a Bitmap from <see cref="RenderingBuffer"/>
         /// </summary>
-        public static Bitmap GetBitmap(PixelBuffer source, Bitmap.Config config = null)
+        public static Bitmap GetBitmap(PixelsBuffer source, Bitmap.Config config = null)
         {
             var bmp = Bitmap.CreateBitmap(Array.ConvertAll<uint, int>(source.Data, new Converter<uint, int>(x => (int)x)), source.StartOffset, source.Stride, source.Width, source.Height, Bitmap.Config.Argb8888);
 

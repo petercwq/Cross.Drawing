@@ -47,11 +47,11 @@ namespace Cross.Drawing.Rasterizers.Analytical
         #endregion
 
         #region Buffer
-        private PixelBuffer mBuffer;
+        private PixelsBuffer mBuffer;
         /// <summary>
         /// Gets/Sets pixel buffer
         /// </summary>
-        public PixelBuffer Buffer
+        public PixelsBuffer Buffer
         {
             get { return mBuffer; }
             set
@@ -760,7 +760,7 @@ namespace Cross.Drawing.Rasterizers.Analytical
         /// Preparing buffer and internal data for using
         /// </summary>
         /// <param name="buffer">buffer</param>
-        protected virtual void PrepareBuffer(PixelBuffer buffer)
+        protected virtual void PrepareBuffer(PixelsBuffer buffer)
         {
             //automatically create a new boundary to match this buffer
             if (mBuffer == null)

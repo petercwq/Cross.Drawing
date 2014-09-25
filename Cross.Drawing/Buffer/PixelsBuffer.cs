@@ -1,11 +1,12 @@
 using System;
+using System.Runtime.CompilerServices;
 
 namespace Cross.Drawing
 {
     /// <summary>
     /// Holds a memory buffer for pixel rendering purposes. Each pixel is encoded in a 4-bytes uint with the same format of <see cref="Color"/> (A, R, G, B)
     /// </summary>
-    public class PixelBuffer
+    public class PixelsBuffer
     {
         #region Fields
         /// <summary>
@@ -35,39 +36,7 @@ namespace Cross.Drawing
 
         #endregion
 
-        #region Absolute Stride
-        //bool recalculateAbsStride = true;
-        //private int mAbsoluteStride;
-        ///// <summary>
-        ///// Gets the absolute size of stride
-        ///// </summary>
-        //public int AbsoluteStride
-        //{
-        //    get
-        //    {
-        //        if (recalculateAbsStride)
-        //        {
-        //            if (Stride < 0) mAbsoluteStride = -Stride;
-        //            else mAbsoluteStride = Stride;
-        //            recalculateAbsStride = false;
-        //        }
-        //        return mAbsoluteStride;
-        //    }
-        //}
-        #endregion
-
         #region Create View
-        /// <summary>
-        /// Create a new buffer that attaches to this buffer as a sub-view.
-        /// </summary>
-        /// <param name="left">Horizontal (column) offset</param>
-        /// <param name="top">Vertical (row) offset</param>
-        /// <param name="width">New view's horizontal width</param>
-        /// <param name="height">New view's vertical height</param>
-        public PixelBuffer CreateView(int left, int top, int width, int height)
-        {
-            return CreateView(left, top, width, height, false);
-        }
 
         /// <summary>
         /// Create a new buffer that attaches to this buffer as a sub-view.
@@ -77,16 +46,13 @@ namespace Cross.Drawing
         /// <param name="width">New view's horizontal width</param>
         /// <param name="height">New view's vertical height</param>
         /// <param name="inversed">When true, the y-axis is reversed</param>
-        public PixelBuffer CreateView(int left, int top, int width, int height, bool inversed)
+        public PixelsBuffer CreateView(int left, int top, int width, int height, bool inversed = false)
         {
-            PixelBuffer result = new PixelBuffer();
-
+            PixelsBuffer result = new PixelsBuffer();
             int stride = this.Stride;
             if (inversed) stride = -stride;
-            int offset = this.GetPixelIndex(left, top);
-
+            int offset = StartOffset + top * stride + left;// this.GetPixelIndex(left, top);
             result.Attach(this.Data, width, height, stride, offset);
-
             return result;
         }
         #endregion
@@ -122,7 +88,7 @@ namespace Cross.Drawing
         /// <param name="height">Vertical size of buffer (in pixels)</param>
         /// <param name="stride">The number of bytes a row contains</param>
         /// <param name="startOffset">Index of the starting pixel</param>
-        public void Attach(PixelBuffer buffer, int width, int height, int stride, int startOffset)
+        public void Attach(PixelsBuffer buffer, int width, int height, int stride, int startOffset)
         {
             Attach(buffer.Data, width, height, stride, startOffset);
         }
@@ -180,8 +146,9 @@ namespace Cross.Drawing
         #region Get Pixel Index
         /// <summary>
         /// Calculate the index of a pixel
-        /// <para>NOTE: for performance optimzation, replace this method with inline code: rowIndex = StartOffset + row*Stride + column</para>
+        /// <para>NOTE: for performance optimization, replace this method with inline code: rowIndex = StartOffset + row*Stride + column</para>
         /// </summary>
+        [Obsolete]
         public int GetPixelIndex(int column, int row)
         {
             return StartOffset + row * Stride + column;
@@ -193,7 +160,7 @@ namespace Cross.Drawing
         /// Copy the content of this buffer to target buffer.
         /// <para>The target's width, height, stride must be the same as this one</para>
         /// </summary>
-        public void CopyTo(PixelBuffer target)
+        public void CopyTo(PixelsBuffer target)
         {
             if (target.Data.Length == Data.Length) Array.Copy(Data, target.Data, Data.Length);
             else throw new Exception("Target must have exact width, height and stride as this");
@@ -204,9 +171,9 @@ namespace Cross.Drawing
         /// <summary>
         /// Create a new instance and copy the content of this buffer to the new one
         /// </summary>
-        public PixelBuffer Clone()
+        public PixelsBuffer Clone()
         {
-            PixelBuffer result = new PixelBuffer(Width, Height, Stride);
+            PixelsBuffer result = new PixelsBuffer(Width, Height, Stride);
             Array.Copy(Data, result.Data, Data.Length);
             return result;
         }
@@ -573,13 +540,13 @@ namespace Cross.Drawing
         /// <summary>
         /// Default constructor
         /// </summary>
-        public PixelBuffer()
+        public PixelsBuffer()
         { }
 
         /// <summary>
         /// Create a new instance with exact width, height, stride as source. Then copy the data of source to new instance
         /// </summary>
-        public PixelBuffer(PixelBuffer source)
+        public PixelsBuffer(PixelsBuffer source)
         {
             Width = source.Width;
             Height = source.Height;
@@ -593,7 +560,7 @@ namespace Cross.Drawing
         /// </summary>
         /// <param name="width">Horizontal size of buffer (in pixels)</param>
         /// <param name="height">Vertical size of buffer (in pixels)</param>
-        public PixelBuffer(int width, int height)
+        public PixelsBuffer(int width, int height)
         {
             Width = width;
             Height = height;
@@ -607,7 +574,7 @@ namespace Cross.Drawing
         /// <param name="width">Horizontal size of buffer (in pixels)</param>
         /// <param name="height">Vertical size of buffer (in pixels)</param>
         /// <param name="stride">The number of pixels a row contains</param>
-        public PixelBuffer(int width, int height, int stride)
+        public PixelsBuffer(int width, int height, int stride)
         {
             Width = width;
             Height = height;
@@ -630,7 +597,7 @@ namespace Cross.Drawing
         /// <param name="height">Vertical size of buffer (in pixels)</param>
         /// <param name="stride">The number of pixels a row contains</param>
         //public PixelBuffer(int[] data, int width, int height, int stride)
-        public PixelBuffer(uint[] data, int width, int height, int stride)
+        public PixelsBuffer(uint[] data, int width, int height, int stride)
         {
             Data = data;
             Width = width;

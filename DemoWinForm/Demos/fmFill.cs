@@ -15,7 +15,7 @@ namespace DemoWinForm
         /// height of viewing region
         /// </summary>
         int h = 500;
-        PixelBuffer buffer = null;
+        PixelsBuffer buffer = null;
         IDrawer drawer = null;
         double[] coordinates = null;
         FillType fillType = FillType.Uniform;
@@ -35,7 +35,7 @@ namespace DemoWinForm
         {
             if (!DesignMode)
             {
-                buffer = new PixelBuffer(w, h);
+                buffer = new PixelsBuffer(w, h);
                 drawer = new Drawer(buffer);
                 Draw();
             }
@@ -365,7 +365,7 @@ namespace DemoWinForm
         /// <summary>
         /// Helper method to display result from a pixel buffer
         /// </summary>
-        void DisplayBuffer(PixelBuffer buffer)
+        void DisplayBuffer(PixelsBuffer buffer)
         {
             if (bmp != null) bmp.Dispose();
             bmp = Cross.Helpers.BufferToBitmap.GetBitmap(buffer, System.Drawing.Imaging.PixelFormat.Format32bppArgb);

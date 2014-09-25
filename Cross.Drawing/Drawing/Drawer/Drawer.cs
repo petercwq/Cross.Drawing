@@ -41,11 +41,11 @@ namespace Cross.Drawing
         #endregion
 
         #region Buffer
-        private PixelBuffer mBuffer;
+        private PixelsBuffer mBuffer;
         /// <summary>
         /// Gets/Sets the buffer where results will be rendered to
         /// </summary>
-        public PixelBuffer Buffer
+        public PixelsBuffer Buffer
         {
             get { return mBuffer; }
             set
@@ -63,7 +63,7 @@ namespace Cross.Drawing
         /// </summary>
         void Prepare()
         {
-            if (mBuffer == null) Cross.Drawing.NullArgumentException.Publish(typeof(PixelBuffer), "Buffer");
+            if (mBuffer == null) Cross.Drawing.NullArgumentException.Publish(typeof(PixelsBuffer), "Buffer");
 
             #region Initialize rasterizers
 
@@ -798,7 +798,7 @@ namespace Cross.Drawing
         /// <summary>
         /// Create a new instance for the provided buffer
         /// </summary>
-        public Drawer(PixelBuffer buffer)
+        public Drawer(PixelsBuffer buffer)
         {
             Buffer = buffer;
         }
