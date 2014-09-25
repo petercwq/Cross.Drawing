@@ -35,7 +35,7 @@ namespace DemoAndroid
         private void Draw(ImageView imageView, int times)
         {
             var start = DateTime.Now;
-            PixelBuffer buffer = new PixelBuffer(600, 600);
+            PixelsBuffer buffer = new PixelsBuffer(600, 600);
             IDrawer drawer = new Drawer(buffer);
             drawer.Clear(Colors.Transparent);
             //create fill for drawing
@@ -64,7 +64,7 @@ namespace DemoAndroid
 
                 var margin = i / 10 * step;
 
-                PixelBuffer view = buffer.CreateView(margin, margin, buffer.Width - margin * 2, buffer.Height - margin * 2, true);
+                PixelsBuffer view = buffer.CreateView(margin, margin, buffer.Width - margin * 2, buffer.Height - margin * 2, true);
                 DrawFrame(view, Colors.OrangeRed);
                 DrawLine(view, Colors.Olive);
 
@@ -126,7 +126,7 @@ namespace DemoAndroid
             return result;
         }
 
-        void DrawLion(PixelBuffer buffer, int x, int y)
+        void DrawLion(PixelsBuffer buffer, int x, int y)
         {
             //create a new drawing context
             //PixelBuffer buffer = new PixelBuffer(400, 400);
@@ -151,7 +151,7 @@ namespace DemoAndroid
         /// <summary>
         /// Draw a diagonal line with the specified color from (0,0) to (width, height)
         /// </summary>
-        void DrawLine(PixelBuffer buffer, Cross.Drawing.Color color)
+        void DrawLine(PixelsBuffer buffer, Cross.Drawing.Color color)
         {
             int idx = 0; //pixel index
 
@@ -168,7 +168,7 @@ namespace DemoAndroid
         /// <summary>
         /// Draw a frame around the buffer from (0,0) to (width, height)
         /// </summary>
-        void DrawFrame(PixelBuffer buffer, Cross.Drawing.Color color)
+        void DrawFrame(PixelsBuffer buffer, Cross.Drawing.Color color)
         {
             int idx = 0; //pixel index
 
