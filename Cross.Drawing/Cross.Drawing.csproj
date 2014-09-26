@@ -37,6 +37,7 @@
     <Compile Include="Buffer\MaskBuffer.cs" />
     <Compile Include="Buffer\PixelsBuffer.cs" />
     <Compile Include="Buffer\PixelFormat.cs" />
+    <Compile Include="Buffer\Converter.cs" />
     <Compile Include="Color\Base\Color.cs" />
     <Compile Include="Color\Base\Colors.cs" />
     <Compile Include="Color\Color spaces\CieLab.cs" />

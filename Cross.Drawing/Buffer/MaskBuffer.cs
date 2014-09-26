@@ -3,7 +3,8 @@ using System;
 namespace Cross.Drawing
 {
     /// <summary>
-    /// Provides a memory buffer for masking (opacity, clipping, etc.). Each pixel's opacity is represented by a single byte (0-255)
+    /// Provides a memory buffer for masking (opacity, clipping, etc.). 
+    /// Each pixel's opacity is represented by a single byte (0-255)
     /// </summary>
     public class MaskBuffer
     {

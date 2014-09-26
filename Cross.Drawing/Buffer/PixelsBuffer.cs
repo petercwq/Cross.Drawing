@@ -1,5 +1,4 @@
 using System;
-using System.Runtime.CompilerServices;
 
 namespace Cross.Drawing
 {
@@ -36,8 +35,6 @@ namespace Cross.Drawing
 
         #endregion
 
-        #region Create View
-
         /// <summary>
         /// Create a new buffer that attaches to this buffer as a sub-view.
         /// </summary>
@@ -55,9 +52,9 @@ namespace Cross.Drawing
             result.Attach(this.Data, width, height, stride, offset);
             return result;
         }
-        #endregion
 
         #region Attach
+
         /// <summary>
         /// Setup this buffer by using an existing memory buffer
         /// </summary>
@@ -132,18 +129,17 @@ namespace Cross.Drawing
         }
         #endregion
 
-        #region Get Row Index
+        #region Get Index
         /// <summary>
         /// Calculate the index of a specific row
         /// <para>NOTE: for performance optimzation, replace this method with inline code: rowIndex = StartOffset + row*Stride</para>
         /// </summary>
+        [Obsolete]
         public int GetRowIndex(int row)
         {
             return StartOffset + row * Stride;
         }
-        #endregion
 
-        #region Get Pixel Index
         /// <summary>
         /// Calculate the index of a pixel
         /// <para>NOTE: for performance optimization, replace this method with inline code: rowIndex = StartOffset + row*Stride + column</para>
@@ -155,15 +151,17 @@ namespace Cross.Drawing
         }
         #endregion
 
-        #region Copy To
+        #region Copy
         /// <summary>
         /// Copy the content of this buffer to target buffer.
         /// <para>The target's width, height, stride must be the same as this one</para>
         /// </summary>
         public void CopyTo(PixelsBuffer target)
         {
-            if (target.Data.Length == Data.Length) Array.Copy(Data, target.Data, Data.Length);
-            else throw new Exception("Target must have exact width, height and stride as this");
+            if (target.Data.Length == Data.Length)
+                Array.Copy(Data, target.Data, Data.Length);
+            else
+                throw new Exception("Target must have exact width, height and stride as this");
         }
         #endregion
 
@@ -181,7 +179,7 @@ namespace Cross.Drawing
 
         #region From / To byte array
 
-        #region From
+        #region From Bytes
         /// <summary>
         /// Copy from a byte array to this buffer
         /// </summary>
@@ -204,7 +202,7 @@ namespace Cross.Drawing
         }
         #endregion
 
-        #region To
+        #region To Bytes
         /// <summary>
         /// Convert this buffer to byte array. Assuming 32-bit pixel format
         /// </summary>
@@ -228,7 +226,6 @@ namespace Cross.Drawing
                     pixelOffset += 4;
                 }
             }
-
             return buffer;
         }
         #endregion
@@ -240,7 +237,7 @@ namespace Cross.Drawing
         public void FromBgr(byte[] buffer, int width, int height, int stride)
         {
             //allocate new memory if current buffer is not exactly matched the new one
-            if ((width != Width) && (height != Height))
+            if ((width != Width) || (height != Height))
             {
                 Width = width;
                 Height = height;
@@ -331,7 +328,7 @@ namespace Cross.Drawing
         public void FromBgra(byte[] buffer, int width, int height, int stride)
         {
             //allocate new memory if current buffer is not exactly matched the new one
-            if ((width != Width) && (height != Height))
+            if ((width != Width) || (height != Height))
             {
                 Width = width;
                 Height = height;
@@ -445,29 +442,6 @@ namespace Cross.Drawing
             }
         }
 
-        //public void ToBgra2(byte[] buffer, int stride)
-        //{
-        //    int pixelOffset = 0;
-        //    int dataOffset = 0;
-        //    uint c = 0;
-        //    int y, x;
-        //    for (y = 0; y < Height; y++)
-        //    {
-        //        pixelOffset = y * stride;
-
-        //        for (x = 0; x < Width; x++)
-        //        {
-        //            c = Data[dataOffset];
-        //            buffer[pixelOffset + 3] = (byte)((c & 0x000000FF)); // blue
-        //            buffer[pixelOffset + 2] = (byte)((c & 0x0000FF00) >> 8); // green
-        //            buffer[pixelOffset + 1] = (byte)((c & 0x00FF0000) >> 16); // red
-        //            buffer[pixelOffset + 0] = (byte)((c & 0xFF000000) >> 24); // alpha
-
-        //            dataOffset++;
-        //            pixelOffset += 4;
-        //        }
-        //    }
-        //}
         #endregion
 
         #endregion
@@ -608,67 +582,6 @@ namespace Cross.Drawing
                 StartOffset = -(height - 1) * stride;
             }
         }
-        #endregion
-
-        #region OPTIMIZATION INVESTIGATION
-        /* NOTE BY HAINM
-         * ===========================
-         * When have time, check out these tricks
-         */
-
-        #region Reverse byte order
-        /// <summary>
-        /// Reverse byte order of an int. (Useful for converting ARGB to/from BGRA
-        /// </summary>
-        private static int Reverse(int i)
-        {
-            int a = (int)(i & 0xFF00FF00);
-            int b = i & 0x00FF00FF;
-            i = (a >> 8) | (b << 8);
-            a = i & 0x0000FFFF;
-            b = (int)(i & 0xFFFF0000);
-            i = (a << 16) | (b >> 16);
-
-            return i;
-        }
-
-        /// <summary>
-        /// Shorter version of reverse int.
-        /// </summary>
-        private static int Reverse2(int i)
-        {
-            i = ((int)(i & 0xFF00FF00) >> 8) | ((i & 0x00FF00FF) << 8);
-            i = ((i & 0x0000FFFF) << 16) | ((int)(i & 0xFFFF0000) >> 16);
-
-            return i;
-        }
-
-        /// <summary>
-        /// Example of reverse for Uint.
-        /// </summary>
-        private static uint ReverseU(uint i)
-        {
-            uint a = i & 0xFF00FF00;
-            uint b = i & 0x00FF00FF;
-            i = (a >> 8) | (b << 8);
-            a = i & 0x0000FFFF;
-            b = i & 0xFFFF0000;
-            i = (a << 16) | (b >> 16);
-
-            return i;
-        }
-        #endregion
-
-        #region Convert int[] to byte[]
-        private static byte[] ToByteArray(int[] p)
-        {
-            int len = p.Length << 2;
-            byte[] result = new byte[len];
-            Buffer.BlockCopy(p, 0, result, 0, len);
-            return result;
-        }
-        #endregion
-
         #endregion
     }
 }
