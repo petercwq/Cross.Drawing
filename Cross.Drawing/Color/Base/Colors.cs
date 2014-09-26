@@ -1,6 +1,3 @@
-
-
-
 namespace Cross.Drawing
 {
     /// <summary>

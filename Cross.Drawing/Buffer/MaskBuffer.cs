@@ -9,6 +9,7 @@ namespace Cross.Drawing
     public class MaskBuffer
     {
         #region Fields
+
         /// <summary>
         /// The memory buffer. Each pixel's opacity is represented by a single byte (0-255)
         /// </summary>
@@ -43,24 +44,26 @@ namespace Cross.Drawing
         /// Starting index offset
         /// </summary>
         public int StartOffset = 0;
+
         #endregion
 
-        #region Get Row Index
+        #region Get Index
+
         /// <summary>
         /// Calculate the index of a specific row
         /// <para>NOTE: for performance optimzation, replace this method with inline code: rowIndex = StartOffset + row*Stride</para>
         /// </summary>
+        [Obsolete]
         public int GetRowIndex(int row)
         {
             return StartOffset + row * Stride;
         }
-        #endregion
 
-        #region Get Pixel Index
         /// <summary>
         /// Calculate the index of a pixel
         /// <para>NOTE: for performance optimzation, replace this method with inline code: rowIndex = StartOffset + row*Stride + column</para>
         /// </summary>
+        [Obsolete]
         public int GetPixelIndex(int column, int row)
         {
             return StartOffset + row * Stride + column;

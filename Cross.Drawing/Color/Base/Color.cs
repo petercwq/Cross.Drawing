@@ -17,19 +17,16 @@ namespace Cross.Drawing
         /// A component
         /// </summary>
         internal uint A;
-        //public uint A;
         /// <summary>
         /// R and B component
         /// </summary>
         internal uint RB;
-        //public uint RB;
         /// <summary>
         /// A and G component
         /// </summary>
         internal uint AG;
-        //public uint AG;
 
-        #region Alpha
+        #region RGBA properities
         /// <summary>
         /// Gets/Sets Alpha component.
         /// <para>Must be in range [0..255]</para>
@@ -48,9 +45,7 @@ namespace Cross.Drawing
                 Precalculate();
             }
         }
-        #endregion
 
-        #region Red
         /// <summary>
         /// Gets/Sets Red component.
         /// <para>Must be in range [0..255]</para>
@@ -69,9 +64,7 @@ namespace Cross.Drawing
                 Precalculate();
             }
         }
-        #endregion
 
-        #region Green
         /// <summary>
         /// Gets/Sets Green component.
         /// <para>Must be in range [0..255]</para>
@@ -90,9 +83,7 @@ namespace Cross.Drawing
                 Precalculate();
             }
         }
-        #endregion
 
-        #region Blue
         /// <summary>
         /// Gets/Sets Blue component.
         /// <para>Must be in range [0..255]</para>
@@ -111,9 +102,7 @@ namespace Cross.Drawing
                 Precalculate();
             }
         }
-        #endregion
 
-        #region Precalculate Components
         /// <summary>
         /// Precalculate internal components acccording to data for faster retrieval by pixel renderers
         /// </summary>
