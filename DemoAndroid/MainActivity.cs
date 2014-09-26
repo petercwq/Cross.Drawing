@@ -157,8 +157,7 @@ namespace DemoAndroid
 
             for (int i = 0; i < buffer.Height; i++)
             {
-                idx = buffer.GetPixelIndex(i, i);
-
+                idx = buffer.StartOffset + i * buffer.Stride + i; // buffer.GetPixelIndex(i, i);
                 buffer.Data[idx] = color.Data;
             }
         }
@@ -176,11 +175,11 @@ namespace DemoAndroid
             for (int y = 0; y < buffer.Height; y++)
             {
                 //left
-                idx = buffer.GetPixelIndex(0, y);
+                idx = buffer.StartOffset + buffer.Stride * y;// buffer.GetPixelIndex(0, y);
                 buffer.Data[idx] = color.Data;
 
                 //right
-                idx = buffer.GetPixelIndex(buffer.Width - 1, y);
+                idx = buffer.StartOffset + buffer.Stride * y + buffer.Width - 1;// buffer.GetPixelIndex(buffer.Width - 1, y);
                 buffer.Data[idx] = color.Data;
             }
 
@@ -188,11 +187,11 @@ namespace DemoAndroid
             for (int x = 0; x < buffer.Width; x++)
             {
                 //top
-                idx = buffer.GetPixelIndex(x, 0);
+                idx = buffer.StartOffset + x;// buffer.GetPixelIndex(x, 0);
                 buffer.Data[idx] = color.Data;
 
                 //bottom
-                idx = buffer.GetPixelIndex(x, buffer.Height - 1);
+                idx = buffer.StartOffset + (buffer.Height - 1) * buffer.Stride + x;// buffer.GetPixelIndex(x, buffer.Height - 1);
                 buffer.Data[idx] = color.Data;
             }
         }
