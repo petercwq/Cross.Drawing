@@ -63,7 +63,8 @@ namespace Cross.Drawing
         /// </summary>
         void Prepare()
         {
-            if (mBuffer == null) Cross.Drawing.NullArgumentException.Publish(typeof(PixelsBuffer), "Buffer");
+            if (mBuffer == null) 
+            NullArgumentException.Publish(typeof(PixelsBuffer), "Buffer");
 
             #region Initialize rasterizers
 
@@ -126,7 +127,7 @@ namespace Cross.Drawing
             else if (paint is LinearGradient) return mLinearGradientRasterizer;
             else if (paint is RadialGradient) return mRadialGradientRasterizer;
 
-            else Cross.Drawing.UnsupportedException.Publish(paint.GetType());
+            else UnsupportedException.Publish(paint.GetType());
 
             return null;
         }
@@ -216,13 +217,6 @@ namespace Cross.Drawing
             clipY2 = y2;
             isEmptyClip = ((x1 == x2) && (y1 == y2));
         }
-
-        //TO BE REVISED
-        /// <summary>
-        /// Set clipping region to a boundary
-        /// </summary>
-        /// <param name="boundary">The boundary to clip to</param>
-        //public void SetClip(IBoundary boundary){}
 
         #region Opacity Mask
         private MaskBuffer mOpacityMask;

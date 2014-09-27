@@ -1,6 +1,4 @@
 
-
-
 namespace Cross.Drawing
 {
     /// <summary>
@@ -17,7 +15,7 @@ namespace Cross.Drawing
         /// </summary>
         NewFigureAndCloseLast,
         /// <summary>
-        /// Move to new coordinate, this will create new polygon in 
+        /// Move to new coordinate, this will create new polygon in
         /// final result
         /// </summary>
         MoveTo,
@@ -49,3 +47,4 @@ namespace Cross.Drawing
 
     }
 }
+

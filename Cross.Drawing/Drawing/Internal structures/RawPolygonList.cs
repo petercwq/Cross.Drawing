@@ -8,7 +8,7 @@ namespace Cross.Drawing
     /// Each array is one polygon.
     /// </summary>
     /// <remarks>
-    /// NOTE: must call at least one MoveTo before call lineto
+    /// NOTE: must call at least one MoveTo before call line-to
     /// When finish must call Finish to clean up
     /// </remarks>
     internal class RawPolygonList

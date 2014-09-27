@@ -11,7 +11,7 @@ namespace Cross.Drawing
     /// </remarks>
     public interface IDrawer
     {
-        #region State management
+        #region State save and load
         /// <summary>
         /// Save the current state of this drawer.
         /// Typical implementation store transformation matrix, clipping, and other information to this state object
@@ -46,16 +46,14 @@ namespace Cross.Drawing
         /// Gets/Sets the opacity mask used for clipping based on opacity masking.
         /// <para>Default is null (no opacity mask operation is required)</para>
         /// </summary>
-        MaskBuffer Mask
-        { get; set; }
+        MaskBuffer Mask { get; set; }
         #endregion
 
         #region Gamma Correction
         /// <summary>
         /// Gets/Sets whether gamma correction is in use
         /// </summary>
-        bool GammaCorrected
-        { get; set; }
+        bool GammaCorrected { get; set; }
 
         #region Set Gamma
         /// <summary>
@@ -159,7 +157,6 @@ namespace Cross.Drawing
 
         #region Drawing operations
 
-        #region Clear
         /// <summary>
         /// Empty buffer
         /// </summary>
@@ -169,9 +166,6 @@ namespace Cross.Drawing
         /// Fill the buffer with a specified color
         /// </summary>
         void Clear(Color color);
-        #endregion
-
-        #region Draw Rectangle
 
         /// <summary>
         /// Render a rectangle from top-left point (x, y) with the specified width and height
@@ -184,18 +178,6 @@ namespace Cross.Drawing
         /// <param name="height">horizontal size</param>
         /// <remarks>The stroke and the fill can both be a null reference (Nothing in Visual Basic). If the stroke is null, no stroke is performed. If the fill is null, no fill is performed.</remarks>
         void DrawRectangle(Fill fill, double x, double y, double width, double height);
-
-        ///// <summary>
-        ///// Render a rectangle with the specified <see cref="Rect"/>
-        ///// </summary>
-        ///// <param name="stroke">The stroke style to draw border</param>
-        ///// <param name="fill">The fill style to render inner region</param>
-        ///// <param name="rect">The rectangular region</param>
-        ///// <remarks>The stroke and the fill can both be a null reference (Nothing in Visual Basic). If the stroke is null, no stroke is performed. If the fill is null, no fill is performed.</remarks>
-        //void DrawRectangle(Fill fill, Rect rect);
-        #endregion
-
-        #region Draw Rounded Rectangle
 
         /// <summary>
         /// Render a rounded rectangle from top-left point (x, y) with the specified width and height
@@ -211,19 +193,6 @@ namespace Cross.Drawing
         /// <remarks>The stroke and the fill can both be a null reference (Nothing in Visual Basic). If the stroke is null, no stroke is performed. If the fill is null, no fill is performed.</remarks>
         void DrawRoundedRectangle(Fill fill, double x, double y, double width, double height, double radiusX, double radiusY);
 
-        ///// <summary>
-        ///// Render a rounded rectangle with the specified <see cref="Rect"/>
-        ///// </summary>
-        ///// <param name="stroke">The stroke style to draw border</param>
-        ///// <param name="fill">The fill style to render inner region</param>
-        ///// <param name="rect">The rectangular region</param>
-        ///// <param name="radiusX">The radius in the x dimension of the rounded corners. This value will be clamped to the range of 0 to width/2</param>
-        ///// <param name="radiusY">The radius in the y dimension of the rounded corners. This value will be clamped to the range of 0 to width/2</param>
-        ///// <remarks>The stroke and the fill can both be a null reference (Nothing in Visual Basic). If the stroke is null, no stroke is performed. If the fill is null, no fill is performed.</remarks>
-        //void DrawRoundedRectangle(Fill fill, Rect rect, double radiusX, double radiusY);
-        #endregion
-
-        #region Draw Ellipse
         /// <summary>
         /// Render an ellipse
         /// </summary>
@@ -236,19 +205,6 @@ namespace Cross.Drawing
         /// <remarks>The stroke and the fill can both be a null reference (Nothing in Visual Basic). If the stroke is null, no stroke is performed. If the fill is null, no fill is performed.</remarks>
         void DrawEllipse(Fill fill, double centerX, double centerY, double radiusX, double radiusY);
 
-        ///// <summary>
-        ///// Render an ellipse
-        ///// </summary>
-        ///// <param name="stroke">The stroke style to draw border</param>
-        ///// <param name="fill">The fill style to render inner region</param>
-        ///// <param name="center">The location of the center point</param>
-        ///// <param name="radiusX">horizontal radius of the ellipse</param>
-        ///// <param name="radiusY">vertical radius of the ellipse</param>
-        ///// <remarks>The stroke and the fill can both be a null reference (Nothing in Visual Basic). If the stroke is null, no stroke is performed. If the fill is null, no fill is performed.</remarks>
-        //void DrawEllipse(Fill fill, Point center, double radiusX, double radiusY);
-        #endregion
-
-        #region Draw Polygon
         /// <summary>
         /// Render a polygon.
         /// </summary>
@@ -257,9 +213,7 @@ namespace Cross.Drawing
         /// <param name="coordinates">Coordinate data. Must be in format [x1, y1, x2, y2, ...]</param>
         /// <remarks>The stroke and the fill can both be a null reference (Nothing in Visual Basic). If the stroke is null, no stroke is performed. If the fill is null, no fill is performed.</remarks>
         void DrawPolygon(Fill fill, double[] coordinates);
-        #endregion
 
-        #region Draw Path
         /// <summary>
         /// Render a path
         /// </summary>
@@ -268,7 +222,6 @@ namespace Cross.Drawing
         /// <param name="path">The path geometry</param>
         /// <remarks>The stroke and the fill can both be a null reference (Nothing in Visual Basic). If the stroke is null, no stroke is performed. If the fill is null, no fill is performed.</remarks>
         void DrawPath(Fill fill, DrawingPath path);
-        #endregion
 
         #endregion
     }

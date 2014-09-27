@@ -55,7 +55,7 @@
     <Compile Include="Drawing\Drawer\MaskDrawer.cs" />
     <Compile Include="Drawing\Internal structures\AlphaCache.cs" />
     <Compile Include="Drawing\Internal structures\RawPolygonList.cs" />
-    <Compile Include="Drawing\Path\Path.cs" />
+    <Compile Include="Drawing\Path\DrawingPath.cs" />
     <Compile Include="Drawing\Path\PathCommands.cs" />
     <Compile Include="Drawing\Path\PathGenerator.cs" />
     <Compile Include="Drawing\Rasterizer\Analytic\AnalyticalRasterizer.cs" />

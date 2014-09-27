@@ -1,10 +1,8 @@
 
-
-
 namespace Cross.Drawing
 {
     /// <summary>
-    /// Mememto object to store state of <see cref="Drawer"/>
+    /// Memento object to store state of <see cref="Drawer"/>
     /// </summary>
     public class DrawerState
     {
@@ -17,12 +15,11 @@ namespace Cross.Drawing
         /// </summary>
         public Matrix3x3 CurrentTransform = null;
 
-        #region Constructors
         /// <summary>
         /// Default constructor
         /// </summary>
         public DrawerState()
         { }
-        #endregion
     }
 }
+

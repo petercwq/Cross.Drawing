@@ -1,6 +1,5 @@
 using System;
 
-
 namespace Cross.Drawing
 {
     /// <summary>
@@ -388,7 +387,7 @@ namespace Cross.Drawing
         /// <param name="x2">X-axis coordinate of ending point</param>
         /// <param name="y2">Y-axis coordinate of ending point</param>
         public void AddCurve(double x1, double y1, double cp1X, double cp1Y,
-            double cp2X, double cp2Y, double x2, double y2)
+        double cp2X, double cp2Y, double x2, double y2)
         {
 
             // reserve 2 command,and 8 coordinate
@@ -416,10 +415,10 @@ namespace Cross.Drawing
         #region Smooth Curve To
         /// <summary>
         /// Append a bezier curve to from current position. The coordinate of the first controlling point is
-        /// calculated automatically.        
+        /// calculated automatically.
         /// </summary>
         /// <remarks>The first control point is assumed to be the reflection of second control point
-        /// of previous curve ( or control point quadratic curve). When previous is not a curve, 
+        /// of previous curve ( or control point quadratic curve). When previous is not a curve,
         /// the control point is the last coordinate
         /// </remarks>
         /// <param name="x">X-axis coordinate of ending point</param>
@@ -451,10 +450,10 @@ namespace Cross.Drawing
         #region Smooth Curve By
         /// <summary>
         /// Append a bezier curve to from current position. The coordinate of the first controlling point is
-        /// calculated automatically.        
+        /// calculated automatically.
         /// </summary>
         /// <remarks>The first control point is assumed to be the reflection of second control point
-        /// of previous curve ( or control point quadratic curve). When previous is not a curve, 
+        /// of previous curve ( or control point quadratic curve). When previous is not a curve,
         /// the control point is the last coordinate
         /// </remarks>
         /// <param name="offsetX">x-axis offset to calculate the ending point</param>
@@ -1054,184 +1053,183 @@ namespace Cross.Drawing
         #region Add Arc - Coordinate-based approach
         #region TO BE REMOVED - Hai Jan 29 2007
         /*
-        /// <summary>
-        /// Append an arc from (x1, y1) to (x2, y2)
-        /// </summary>
-        /// <param name="radius">radius</param>
-        /// <param name="x1">source x</param>
-        /// <param name="y1">source y</param>
-        /// <param name="x2">dest x</param>
-        /// <param name="y2">dest y</param>
-        /// <remarks>
-        /// Arc need following information
-        ///     Radius X: radius x
-        ///     Radius Y: radius y
-        ///     Angle   : angle of ellipse base on x-axis ( default 0)
-        ///     IsLagreArc  : Is draw large arc (default false, mean 0.0 in coordinate array)
-        ///     IsSweepLeftSide: is sweep LeftSide ellipse ( default false,mean 0.0 in cooridnate array)
-        /// </remarks>
-        public void AddArc(double x1,double y1,double radius, double x2, double y2)
-        {
-            // reserve 1 command,and 7 coordinate
-            ReserveSpace(2, 9);
+/// <summary>
+/// Append an arc from (x1, y1) to (x2, y2)
+/// </summary>
+/// <param name="radius">radius</param>
+/// <param name="x1">source x</param>
+/// <param name="y1">source y</param>
+/// <param name="x2">dest x</param>
+/// <param name="y2">dest y</param>
+/// <remarks>
+/// Arc need following information
+///     Radius X: radius x
+///     Radius Y: radius y
+///     Angle   : angle of ellipse base on x-axis ( default 0)
+///     IsLagreArc  : Is draw large arc (default false, mean 0.0 in coordinate array)
+///     IsSweepLeftSide: is sweep LeftSide ellipse ( default false,mean 0.0 in cooridnate array)
+/// </remarks>
+public void AddArc(double x1,double y1,double radius, double x2, double y2)
+{
+// reserve 1 command,and 7 coordinate
+ReserveSpace(2, 9);
 
-            #region move to first
-            Commands[CommandCount++] = DrawingPathCommand.MoveTo;
-            // saving source coordinate
-            Coordinates[CoordinateCount++] = x1;
-            Coordinates[CoordinateCount++] = y1;
-            #endregion
+#region move to first
+Commands[CommandCount++] = DrawingPathCommand.MoveTo;
+// saving source coordinate
+Coordinates[CoordinateCount++] = x1;
+Coordinates[CoordinateCount++] = y1;
+#endregion
 
-            Commands[CommandCount++] = DrawingPathCommand.ArcTo;
+Commands[CommandCount++] = DrawingPathCommand.ArcTo;
 
-            // saving radius first
-            Coordinates[CoordinateCount++] = radius;
-            Coordinates[CoordinateCount++] = radius;
-            // angle
-            Coordinates[CoordinateCount++] = 0;
-            // is large arc or not
-            Coordinates[CoordinateCount++] = IsNotLargeArc;
-            // is sweep LeftSide or not
-            Coordinates[CoordinateCount++] = IsNotSweepLeftSide;
-            // dest point
-            Coordinates[CoordinateCount++] = x2;
-            Coordinates[CoordinateCount++] = y2;
-        }
+// saving radius first
+Coordinates[CoordinateCount++] = radius;
+Coordinates[CoordinateCount++] = radius;
+// angle
+Coordinates[CoordinateCount++] = 0;
+// is large arc or not
+Coordinates[CoordinateCount++] = IsNotLargeArc;
+// is sweep LeftSide or not
+Coordinates[CoordinateCount++] = IsNotSweepLeftSide;
+// dest point
+Coordinates[CoordinateCount++] = x2;
+Coordinates[CoordinateCount++] = y2;
+}
 
-        /// <summary>
-        /// Append an arc from (x1, y1) to (x2, y2)
-        /// </summary>
-        /// <param name="radiusX">radius x</param>
-        /// <param name="radiusY">radius y</param>
-        /// <param name="angle">angle to x-axis</param>
-        /// <param name="x">X-axis coordinate of ending point</param>
-        /// <param name="y">Y-axis coordinate of ending point</param>
-        /// <remarks>
-        /// Arc need following information
-        ///     Radius X: radius x
-        ///     Radius Y: radius y
-        ///     Angle   : angle of ellipse base on x-axis ( default 0)
-        ///     IsLagreArc  : Is draw large arc (default false, mean 0.0 in coordinate array)
-        ///     IsSweepLeftSide: is sweep LeftSide ellipse ( default false,mean 0.0 in cooridnate array)
-        /// </remarks>
-        public void AddArc(double x1,double y1,double radiusX, double radiusY, double x2, double y2)
-        {
-            // reserve 1 command,and 7 coordinate
-            ReserveSpace(2, 9);
+/// <summary>
+/// Append an arc from (x1, y1) to (x2, y2)
+/// </summary>
+/// <param name="radiusX">radius x</param>
+/// <param name="radiusY">radius y</param>
+/// <param name="angle">angle to x-axis</param>
+/// <param name="x">X-axis coordinate of ending point</param>
+/// <param name="y">Y-axis coordinate of ending point</param>
+/// <remarks>
+/// Arc need following information
+///     Radius X: radius x
+///     Radius Y: radius y
+///     Angle   : angle of ellipse base on x-axis ( default 0)
+///     IsLagreArc  : Is draw large arc (default false, mean 0.0 in coordinate array)
+///     IsSweepLeftSide: is sweep LeftSide ellipse ( default false,mean 0.0 in cooridnate array)
+/// </remarks>
+public void AddArc(double x1,double y1,double radiusX, double radiusY, double x2, double y2)
+{
+// reserve 1 command,and 7 coordinate
+ReserveSpace(2, 9);
 
-            #region move to first
-            Commands[CommandCount++] = DrawingPathCommand.MoveTo;
-            // saving source coordinate
-            Coordinates[CoordinateCount++] = x1;
-            Coordinates[CoordinateCount++] = y1;
-            #endregion
+#region move to first
+Commands[CommandCount++] = DrawingPathCommand.MoveTo;
+// saving source coordinate
+Coordinates[CoordinateCount++] = x1;
+Coordinates[CoordinateCount++] = y1;
+#endregion
 
-            Commands[CommandCount++] = DrawingPathCommand.ArcTo;
+Commands[CommandCount++] = DrawingPathCommand.ArcTo;
 
-            // saving radius first
-            Coordinates[CoordinateCount++] = radiusX;
-            Coordinates[CoordinateCount++] = radiusY;
-            // angle
-            Coordinates[CoordinateCount++] = 0;
-            // is large arc or not
-            Coordinates[CoordinateCount++] = IsNotLargeArc;
-            // is sweep LeftSide or not
-            Coordinates[CoordinateCount++] = IsNotSweepLeftSide;
-            // dest point
-            Coordinates[CoordinateCount++] = x2;
-            Coordinates[CoordinateCount++] = y2;
-        }
+// saving radius first
+Coordinates[CoordinateCount++] = radiusX;
+Coordinates[CoordinateCount++] = radiusY;
+// angle
+Coordinates[CoordinateCount++] = 0;
+// is large arc or not
+Coordinates[CoordinateCount++] = IsNotLargeArc;
+// is sweep LeftSide or not
+Coordinates[CoordinateCount++] = IsNotSweepLeftSide;
+// dest point
+Coordinates[CoordinateCount++] = x2;
+Coordinates[CoordinateCount++] = y2;
+}
 
-        /// <summary>
-        /// Append an arc from (x1, y1) to (x2, y2)
-        /// </summary>
-        /// <param name="radiusX">radius x</param>
-        /// <param name="radiusY">radius y</param>
-        /// <param name="angle">angle to x-axis</param>
-        /// <param name="x">X-axis coordinate of ending point</param>
-        /// <param name="y">Y-axis coordinate of ending point</param>
-        /// <remarks>
-        /// Arc need following information
-        ///     Radius X: radius x
-        ///     Radius Y: radius y
-        ///     Angle   : angle of ellipse base on x-axis ( default 0)
-        ///     IsLagreArc  : Is draw large arc (default false, mean 0.0 in coordinate array)
-        ///     IsSweepLeftSide: is sweep LeftSide ellipse ( default false,mean 0.0 in cooridnate array)
-        /// </remarks>
-        public void AddArc(double x1,double y1,double radiusX, double radiusY, double angle, double x2, double y2)
-        {
-            // reserve 1 command,and 7 coordinate
-            ReserveSpace(2, 9);
+/// <summary>
+/// Append an arc from (x1, y1) to (x2, y2)
+/// </summary>
+/// <param name="radiusX">radius x</param>
+/// <param name="radiusY">radius y</param>
+/// <param name="angle">angle to x-axis</param>
+/// <param name="x">X-axis coordinate of ending point</param>
+/// <param name="y">Y-axis coordinate of ending point</param>
+/// <remarks>
+/// Arc need following information
+///     Radius X: radius x
+///     Radius Y: radius y
+///     Angle   : angle of ellipse base on x-axis ( default 0)
+///     IsLagreArc  : Is draw large arc (default false, mean 0.0 in coordinate array)
+///     IsSweepLeftSide: is sweep LeftSide ellipse ( default false,mean 0.0 in cooridnate array)
+/// </remarks>
+public void AddArc(double x1,double y1,double radiusX, double radiusY, double angle, double x2, double y2)
+{
+// reserve 1 command,and 7 coordinate
+ReserveSpace(2, 9);
 
-            #region move to first
-            Commands[CommandCount++] = DrawingPathCommand.MoveTo;
-            // saving source coordinate
-            Coordinates[CoordinateCount++] = x1;
-            Coordinates[CoordinateCount++] = y1;
-            #endregion
+#region move to first
+Commands[CommandCount++] = DrawingPathCommand.MoveTo;
+// saving source coordinate
+Coordinates[CoordinateCount++] = x1;
+Coordinates[CoordinateCount++] = y1;
+#endregion
 
+Commands[CommandCount++] = DrawingPathCommand.ArcTo;
 
-            Commands[CommandCount++] = DrawingPathCommand.ArcTo;
+// saving radius first
+Coordinates[CoordinateCount++] = radiusX;
+Coordinates[CoordinateCount++] = radiusY;
+// angle
+Coordinates[CoordinateCount++] = angle;
+// is large arc or not
+Coordinates[CoordinateCount++] = IsNotLargeArc;
+// is sweep LeftSide or not
+Coordinates[CoordinateCount++] = IsNotSweepLeftSide;
+// dest point
+Coordinates[CoordinateCount++] = x2;
+Coordinates[CoordinateCount++] = y2;
+}
 
-            // saving radius first
-            Coordinates[CoordinateCount++] = radiusX;
-            Coordinates[CoordinateCount++] = radiusY;
-            // angle
-            Coordinates[CoordinateCount++] = angle;
-            // is large arc or not
-            Coordinates[CoordinateCount++] = IsNotLargeArc;
-            // is sweep LeftSide or not
-            Coordinates[CoordinateCount++] = IsNotSweepLeftSide;
-            // dest point
-            Coordinates[CoordinateCount++] = x2;
-            Coordinates[CoordinateCount++] = y2;
-        }
+/// <summary>
+/// Append an arc from (x1, y1) to (x2, y2)
+/// </summary>
+/// <param name="radiusX">radius x</param>
+/// <param name="radiusY">radius y</param>
+/// <param name="angle">angle to x-axis</param>
+/// <param name="isLargeArc">is using large arc or small arc</param>
+/// <param name="x">X-axis coordinate of ending point</param>
+/// <param name="y">Y-axis coordinate of ending point</param>
+/// <remarks>
+/// Arc need following information
+///     Radius X: radius x
+///     Radius Y: radius y
+///     Angle   : angle of ellipse base on x-axis ( default 0)
+///     IsLagreArc  : Is draw large arc (default false, mean 0.0 in coordinate array)
+///     IsSweepLeftSide: is sweep LeftSide ellipse ( default false,mean 0.0 in cooridnate array)
+/// </remarks>
+public void AddArc(double x1,double y1,double radiusX, double radiusY, double angle, bool isLargeArc, double x2, double y2)
+{
+// reserve 1 command,and 7 coordinate
+ReserveSpace(2, 9);
 
-        /// <summary>
-        /// Append an arc from (x1, y1) to (x2, y2)
-        /// </summary>
-        /// <param name="radiusX">radius x</param>
-        /// <param name="radiusY">radius y</param>
-        /// <param name="angle">angle to x-axis</param>
-        /// <param name="isLargeArc">is using large arc or small arc</param>
-        /// <param name="x">X-axis coordinate of ending point</param>
-        /// <param name="y">Y-axis coordinate of ending point</param>
-        /// <remarks>
-        /// Arc need following information
-        ///     Radius X: radius x
-        ///     Radius Y: radius y
-        ///     Angle   : angle of ellipse base on x-axis ( default 0)
-        ///     IsLagreArc  : Is draw large arc (default false, mean 0.0 in coordinate array)
-        ///     IsSweepLeftSide: is sweep LeftSide ellipse ( default false,mean 0.0 in cooridnate array)
-        /// </remarks>
-        public void AddArc(double x1,double y1,double radiusX, double radiusY, double angle, bool isLargeArc, double x2, double y2)
-        {
-            // reserve 1 command,and 7 coordinate
-            ReserveSpace(2, 9);
+#region move to first
+Commands[CommandCount++] = DrawingPathCommand.MoveTo;
+// saving source coordinate
+Coordinates[CoordinateCount++] = x1;
+Coordinates[CoordinateCount++] = y1;
+#endregion
 
-            #region move to first
-            Commands[CommandCount++] = DrawingPathCommand.MoveTo;
-            // saving source coordinate
-            Coordinates[CoordinateCount++] = x1;
-            Coordinates[CoordinateCount++] = y1;
-            #endregion
+Commands[CommandCount++] = DrawingPathCommand.ArcTo;
 
-            Commands[CommandCount++] = DrawingPathCommand.ArcTo;
-
-            // saving radius first
-            Coordinates[CoordinateCount++] = radiusX;
-            Coordinates[CoordinateCount++] = radiusY;
-            // angle
-            Coordinates[CoordinateCount++] = angle;
-            // is large arc or not
-            Coordinates[CoordinateCount++] = isLargeArc ? IsLargeArc : IsNotLargeArc;
-            // is sweep LeftSide or not
-            Coordinates[CoordinateCount++] = IsNotSweepLeftSide;
-            // dest point
-            Coordinates[CoordinateCount++] = x2;
-            Coordinates[CoordinateCount++] = y2;
-        }
-        */
+// saving radius first
+Coordinates[CoordinateCount++] = radiusX;
+Coordinates[CoordinateCount++] = radiusY;
+// angle
+Coordinates[CoordinateCount++] = angle;
+// is large arc or not
+Coordinates[CoordinateCount++] = isLargeArc ? IsLargeArc : IsNotLargeArc;
+// is sweep LeftSide or not
+Coordinates[CoordinateCount++] = IsNotSweepLeftSide;
+// dest point
+Coordinates[CoordinateCount++] = x2;
+Coordinates[CoordinateCount++] = y2;
+}
+*/
         #endregion
 
         /// <summary>
@@ -1323,10 +1321,9 @@ namespace Cross.Drawing
                 isLargeArc = true;
             }
             bool isSweepLeft = true;
-            // 
+            //
             if (startAngle < endAngle)
                 isSweepLeft = false;
-
 
             //append data
 
@@ -1396,11 +1393,11 @@ namespace Cross.Drawing
             for (int cooridnateIndex = 0; cooridnateIndex < path.CoordinateCount; cooridnateIndex += 2)
             {
                 Coordinates[CoordinateCount++] =
-                    pathCoodinates[cooridnateIndex] * sx
-                    + pathCoodinates[cooridnateIndex + 1] * shx + tx;
+                pathCoodinates[cooridnateIndex] * sx
+                + pathCoodinates[cooridnateIndex + 1] * shx + tx;
                 Coordinates[CoordinateCount++] =
-                    pathCoodinates[cooridnateIndex] * shy
-                    + pathCoodinates[cooridnateIndex + 1] * sy + ty;
+                pathCoodinates[cooridnateIndex] * shy
+                + pathCoodinates[cooridnateIndex + 1] * sy + ty;
             }
 
         }
@@ -1422,7 +1419,7 @@ namespace Cross.Drawing
                 fromCheck++;
             }
             if (!((Coordinates[currentFirstCoordinateIndex] == Coordinates[CoordinateCount - 2])
-                && (Coordinates[currentFirstCoordinateIndex + 1] == Coordinates[CoordinateCount - 1])))
+            && (Coordinates[currentFirstCoordinateIndex + 1] == Coordinates[CoordinateCount - 1])))
             {
                 // add line to command to current figure
                 LineTo(Coordinates[currentFirstCoordinateIndex], Coordinates[currentFirstCoordinateIndex + 1]);
