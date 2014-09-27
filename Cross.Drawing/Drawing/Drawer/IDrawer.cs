@@ -1,10 +1,8 @@
 
-
-
 namespace Cross.Drawing
 {
     /// <summary>
-    /// A drawer is responsible for rendering 2D graphics primitives. 
+    /// A drawer is responsible for rendering 2D graphics primitives.
     /// This interface maybe used by both immediate drawer and retained drawer.
     /// </summary>
     /// <remarks>
@@ -21,8 +19,8 @@ namespace Cross.Drawing
         object Save();
 
         /// <summary>
-        /// Restore the state of this drawer 
-        /// </summary>        
+        /// Restore the state of this drawer
+        /// </summary>
         void Load(object state);
         #endregion
 
@@ -117,7 +115,7 @@ namespace Cross.Drawing
         /// </summary>
         /// <param name="angle">The angle (in degree) to rotate by</param>
         /// <param name="centerX">X-coordinate of rotation origin</param>
-        /// <param name="centerY">Y-coordinate of rotation origin</param>        
+        /// <param name="centerY">Y-coordinate of rotation origin</param>
         void Rotate(double angle, double centerX, double centerY);
         #endregion
 
@@ -131,7 +129,7 @@ namespace Cross.Drawing
 
         /// <summary>
         /// Push scale transformation to matrix.
-        /// </summary>        
+        /// </summary>
         /// <param name="scaleX">The horizontal factor to scale by</param>
         /// <param name="scaleY">The vertical factor to scale by</param>
         /// <param name="centerX">X-coordinate of scaling origin</param>
@@ -275,3 +273,4 @@ namespace Cross.Drawing
         #endregion
     }
 }
+
