@@ -7,9 +7,6 @@ namespace Cross.Drawing.ColorSpaces
     /// </summary>
     public class ColorConverter
     {
-        #region Hexa
-
-        #region From Hexa
         /// <summary>
         /// Converts a hex string to color
         /// </summary>
@@ -75,9 +72,7 @@ namespace Cross.Drawing.ColorSpaces
                     }
             }
         }
-        #endregion
 
-        #region To Hexa
         /// <summary>
         /// Converts a color to hex string
         /// </summary>
@@ -85,16 +80,11 @@ namespace Cross.Drawing.ColorSpaces
         {
             return string.Format("#{0:x2}{1:x2}{2:x2}", value.Red, value.Green, value.Blue).ToUpper();
         }
-        #endregion
 
-        #endregion
-
-        #region Constructors
         /// <summary>
         /// Default constructor
         /// </summary>
         public ColorConverter()
         { }
-        #endregion
     }
 }

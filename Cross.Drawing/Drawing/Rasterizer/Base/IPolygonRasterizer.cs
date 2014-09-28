@@ -1,6 +1,4 @@
 
-
-
 namespace Cross.Drawing
 {
     /// <summary>
@@ -16,20 +14,16 @@ namespace Cross.Drawing
     /// </remarks>
     public interface IPolygonRasterizer
     {
-        #region Properties
         /// <summary>
         /// Gets/Sets the buffer to draw to
         /// </summary>
-        PixelsBuffer Buffer
-        { get; set; }
+        PixelsBuffer Buffer { get; set; }
 
         ///// <summary>
         ///// Gets/Sets the mode of winding
         ///// </summary>
-        //WindingRule WindingRule
-        //{ get;set;}
+        //WindingRule WindingRule { get;set;}
 
-        #region Set Clip
         /// <summary>
         /// Set clipping region to be a rectangular region
         /// </summary>
@@ -39,30 +33,24 @@ namespace Cross.Drawing
         /// <param name="y2">Y-axis coordinate of second point</param>
         /// <remarks>The coordinates are logical (based on the current coordinate system), not absolute (based on pixels)</remarks>
         void SetClip(double x1, double y1, double x2, double y2);
-        #endregion
 
         /// <summary>
         /// Gets/Sets the paint material used for filling
         /// </summary>
-        PaintMaterial Paint
-        { get; set; }
+        PaintMaterial Paint { get; set; }
 
         /// <summary>
         /// Gets/Sets gamma correction function.
         /// <para>Default is null (no gamma correction)</para>
         /// </summary>
-        IGammaCorrector Gamma
-        { get; set; }
+        IGammaCorrector Gamma { get; set; }
 
         /// <summary>
         /// Gets/Sets the opacity mask used for clipping based on opacity masking.
         /// <para>Default is null (no opacity mask operation is required)</para>
         /// </summary>
-        MaskBuffer OpacityMask
-        { get; set; }
-        #endregion
+        MaskBuffer OpacityMask { get; set; }
 
-        #region Direct approach
         /// <summary>
         /// Rasterize and fill the polygon directly in one pass. This approach is slightly faster than the normal renderation process (Begin, Addxxx, Finish)
         /// </summary>
@@ -98,11 +86,8 @@ namespace Cross.Drawing
         /// <param name="pointCount">Number of points contained within data</param>
         /// <param name="startOffset">Index of the first point in data </param>
         void DrawPolygon(Color color, double[] data, int pointCount, int startOffset);
-        #endregion
 
-        #region Normal approach
 
-        #region Begin
         /// <summary>
         /// Begin rasterize polygons into same buffer
         /// </summary>
@@ -116,9 +101,7 @@ namespace Cross.Drawing
         /// <param name="right">right of clip box</param>
         /// <param name="bottom">bottom of clip box</param>
         void Begin(double left, double top, double right, double bottom);
-        #endregion
 
-        #region move to , line to
         /// <summary>
         /// Move to (x,y) , start for a new polygon
         /// </summary>
@@ -132,9 +115,7 @@ namespace Cross.Drawing
         /// <param name="x">x coordinate</param>
         /// <param name="y">y coordinate</param>
         void LineTo(double x, double y);
-        #endregion
 
-        #region add polygon
         /// <summary>
         /// Rasterize a polygon
         /// </summary>
@@ -150,21 +131,17 @@ namespace Cross.Drawing
         /// <param name="pointCount">Number of points contained within data</param>
         /// <param name="startOffset">Index of the first point in data </param>
         void AddPolygon(double[] data, int pointCount, int startOffset, double offsetX, double offsetY);
-        #endregion
 
-        #region finish rasterize and filling
         /// <summary>
         /// Filling into buffer by using current rasterized result
         /// </summary>
         void Finish();
-        #endregion
 
-        #region finish rasterize and filling
         /// <summary>
         /// Filling into buffer by using current rasterized result
         /// </summary>
         void FinishWithoutFilling();
-        #endregion
-        #endregion
     }
 }
+
+

@@ -43,9 +43,11 @@ namespace Cross.Drawing
         /// </summary>
         void Prepare()
         {
-            if (mBuffer == null) Cross.Drawing.NullArgumentException.Publish(typeof(MaskBuffer), "Buffer");
+            if (mBuffer == null)
+                NullArgumentException.Publish(typeof(MaskBuffer), "Buffer");
 
-            if (mMaskRasterizer == null) mMaskRasterizer = new MaskRasterizer();
+            if (mMaskRasterizer == null)
+                mMaskRasterizer = new MaskRasterizer();
             //throw new Exception("How to use the mask rasterizer correctly ?");
             mMaskRasterizer.ResultMask = mBuffer;
 
@@ -60,7 +62,6 @@ namespace Cross.Drawing
         IPolygonRasterizer GetRasterizer(Paint paint)
         {
             //throw new Exception("Please uncomment the following region and... debug it");
-
 
             return mMaskRasterizer;
         }
@@ -116,7 +117,7 @@ namespace Cross.Drawing
         }
 
         /// <summary>
-        /// Restore the state of this drawer 
+        /// Restore the state of this drawer
         /// </summary>
         public void Load(object state)
         {
@@ -127,7 +128,8 @@ namespace Cross.Drawing
                 matrixStack = ds.MatrixStack;
                 transformRequired = currentTransform != null;
             }
-            else Cross.Drawing.IncompatibleTypeException.Publish(state, typeof(DrawerState));
+            else
+                IncompatibleTypeException.Publish(state, typeof(DrawerState));
         }
         #endregion
 
@@ -290,7 +292,7 @@ namespace Cross.Drawing
         /// </summary>
         /// <param name="angle">The angle (in degree) to rotate by</param>
         /// <param name="centerX">X-coordinate of rotation origin</param>
-        /// <param name="centerY">Y-coordinate of rotation origin</param>        
+        /// <param name="centerY">Y-coordinate of rotation origin</param>
         public void Rotate(double angle, double centerX, double centerY)
         {
             if (currentTransform == null) currentTransform = new Matrix3x3();
@@ -314,7 +316,7 @@ namespace Cross.Drawing
 
         /// <summary>
         /// Push scale transformation to matrix.
-        /// </summary>        
+        /// </summary>
         /// <param name="scaleX">The horizontal factor to scale by</param>
         /// <param name="scaleY">The vertical factor to scale by</param>
         /// <param name="centerX">X-coordinate of scaling origin</param>
@@ -393,13 +395,13 @@ namespace Cross.Drawing
         {
             //calculate coordinates of a rectangle
             double[] coordinates = new double[]
-            {
+                {
                 x, y,
                 x + width, y,
                 x + width, y+height,
                 x, y+height,
                 x, y
-            };
+                };
 
             DrawPolygon(fill, coordinates);
         }
@@ -451,11 +453,12 @@ namespace Cross.Drawing
         {
             double[] data = null;
 
-
-            if (preparationRequired) Prepare();
+            if (preparationRequired)
+                Prepare();
 
             //transform input coordinates
-            if (transformRequired) data = TransformCoordinates(coordinates);
+            if (transformRequired)
+                data = TransformCoordinates(coordinates);
             else data = coordinates;
 
             //render the inner region
@@ -558,3 +561,4 @@ namespace Cross.Drawing
         #endregion
     }
 }
+

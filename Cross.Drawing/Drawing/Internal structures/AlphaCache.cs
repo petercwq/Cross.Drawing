@@ -1,6 +1,4 @@
 
-
-
 namespace Cross.Drawing
 {
     /// <summary>
@@ -8,7 +6,6 @@ namespace Cross.Drawing
     /// </summary>
     internal class AlphaCache
     {
-        #region Cache
         private uint[] mCache;
         /// <summary>
         /// Gets alpha cache
@@ -17,9 +14,7 @@ namespace Cross.Drawing
         {
             get { return Instance.mCache; }
         }
-        #endregion
 
-        #region Instance
         /// <summary>
         /// Static variable for thread locking
         /// </summary>
@@ -52,9 +47,7 @@ namespace Cross.Drawing
                 return mInstance;
             }
         }
-        #endregion
 
-        #region Constructor
         /// <summary>
         /// Default constructor
         /// </summary>
@@ -76,6 +69,6 @@ namespace Cross.Drawing
                 }
             }
         }
-        #endregion
     }
 }
+

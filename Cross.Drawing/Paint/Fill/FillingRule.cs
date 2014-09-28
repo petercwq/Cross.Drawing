@@ -1,6 +1,4 @@
 
-
-
 namespace Cross.Drawing
 {
     /// <summary>
@@ -22,3 +20,4 @@ namespace Cross.Drawing
         EvenOdd
     }
 }
+

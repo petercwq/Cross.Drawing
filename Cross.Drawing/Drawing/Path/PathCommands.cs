@@ -1,6 +1,4 @@
 
-
-
 namespace Cross.Drawing
 {
     /// <summary>
@@ -9,7 +7,7 @@ namespace Cross.Drawing
     internal enum DrawingPathCommand
     {
         /// <summary>
-        /// Special move to, when call direct ly move to in path object
+        /// Special move to, when call direct xy move to in path object
         /// </summary>
         NewFigure,
         /// <summary>
@@ -17,8 +15,7 @@ namespace Cross.Drawing
         /// </summary>
         NewFigureAndCloseLast,
         /// <summary>
-        /// Move to new coordinate, this will create new polygon in 
-        /// final result
+        /// Move to new coordinate, this will create new polygon in final result
         /// </summary>
         MoveTo,
         /// <summary>
@@ -41,7 +38,6 @@ namespace Cross.Drawing
         /// about two middle control points: x1,y1; x2,y2
         /// </summary>
         CurveTo,
-
         /// <summary>
         /// Add quadratic,a type of bezier including 1 control point only
         /// </summary>
@@ -49,3 +45,4 @@ namespace Cross.Drawing
 
     }
 }
+

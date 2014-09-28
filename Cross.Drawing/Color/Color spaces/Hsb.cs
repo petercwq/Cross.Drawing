@@ -1,6 +1,4 @@
 
-
-
 namespace Cross.Drawing.ColorSpaces
 {
     /// <summary>
@@ -8,9 +6,7 @@ namespace Cross.Drawing.ColorSpaces
     /// </summary>
     public class Hsb
     {
-        #region Properties
 
-        #region Alpha
         private byte mAlpha = 255;
         /// <summary>
         /// Gets/Sets the alpha property
@@ -22,9 +18,7 @@ namespace Cross.Drawing.ColorSpaces
             get { return mAlpha; }
             set { mAlpha = value; }
         }
-        #endregion
 
-        #region Hue
         private double mHue = 0;
         /// <summary>
         /// Gets/Sets Hue component.
@@ -40,9 +34,7 @@ namespace Cross.Drawing.ColorSpaces
                 else mHue = value;
             }
         }
-        #endregion
 
-        #region Saturation
         private double mSaturation = 1.0;
         /// <summary>
         /// Gets/Sets Saturation component
@@ -59,9 +51,7 @@ namespace Cross.Drawing.ColorSpaces
                 else mSaturation = value;
             }
         }
-        #endregion
 
-        #region Brightness
         private double mBrightness = 1.0;
         /// <summary>
         /// Gets/Sets Brightness component
@@ -78,11 +68,6 @@ namespace Cross.Drawing.ColorSpaces
                 else mBrightness = value;
             }
         }
-        #endregion
-
-        #endregion
-
-        #region Operators
 
         public static bool operator ==(Hsb a, Hsb b)
         {
@@ -93,9 +78,6 @@ namespace Cross.Drawing.ColorSpaces
         {
             return (a.mHue != b.mHue || a.mSaturation != b.mSaturation || a.mBrightness != b.mBrightness || a.mAlpha != b.mAlpha);
         }
-        #endregion
-
-        #region Equality
 
         /// <summary>
         /// Check quality of the object against this instance
@@ -113,9 +95,7 @@ namespace Cross.Drawing.ColorSpaces
         {
             return mHue.GetHashCode() ^ mSaturation.GetHashCode() ^ mBrightness.GetHashCode() ^ mAlpha.GetHashCode();
         }
-        #endregion
 
-        #region To String
         /// <summary>
         /// Converts to display text
         /// </summary>
@@ -123,9 +103,7 @@ namespace Cross.Drawing.ColorSpaces
         {
             return string.Format("H: {0} S: {1} B: {2} Alpha: {3}", mHue, mSaturation, mBrightness, mAlpha);
         }
-        #endregion
 
-        #region Constructors
         /// <summary>
         /// Default constructor
         /// </summary>
@@ -152,6 +130,6 @@ namespace Cross.Drawing.ColorSpaces
             else if (brightness < 0) mBrightness = 0;
             else mBrightness = brightness;
         }
-        #endregion
     }
 }
+

@@ -1,6 +1,4 @@
 
-
-
 namespace Cross.Drawing
 {
     /// <summary>
@@ -13,7 +11,6 @@ namespace Cross.Drawing
         /// </summary>
         public Color Color = Colors.Transparent;
 
-        #region Stop
         /// <summary>
         /// HuyHM change to internal field
         /// This internal use for better performance
@@ -35,9 +32,7 @@ namespace Cross.Drawing
                 }
             }
         }
-        #endregion
 
-        #region To String
         /// <summary>
         /// Converts to display text
         /// </summary>
@@ -45,9 +40,7 @@ namespace Cross.Drawing
         {
             return string.Format("Stop: {0} - Color: {1}", mStop, Color);
         }
-        #endregion
 
-        #region Constructors
         /// <summary>
         /// Default constructor
         /// </summary>
@@ -66,6 +59,7 @@ namespace Cross.Drawing
             else if (stop > 1) mStop = 1;
             else this.mStop = stop;
         }
-        #endregion
     }
 }
+
+

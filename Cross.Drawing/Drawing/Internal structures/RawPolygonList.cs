@@ -1,6 +1,5 @@
 using System;
 
-
 namespace Cross.Drawing
 {
     /// <summary>
@@ -8,8 +7,7 @@ namespace Cross.Drawing
     /// Each array is one polygon.
     /// </summary>
     /// <remarks>
-    /// NOTE: must call at least one MoveTo before call lineto
-    /// When finish must call Finish to clean up
+    /// NOTE: must call at least one MoveTo before call line-to When finish must call Finish to clean up
     /// </remarks>
     internal class RawPolygonList
     {
@@ -106,7 +104,7 @@ namespace Cross.Drawing
             if (CurrentPolygonCount > 0)
             {
                 if (!((CurrentPolygonRawData[CurrentPolygonCount - 2] == x)
-                    && (CurrentPolygonRawData[CurrentPolygonCount - 1] == y)))
+                && (CurrentPolygonRawData[CurrentPolygonCount - 1] == y)))
                 {
                     CurrentPolygonRawData[CurrentPolygonCount++] = x;
                     CurrentPolygonRawData[CurrentPolygonCount++] = y;
@@ -119,7 +117,6 @@ namespace Cross.Drawing
             }
         }
 
-
         /// <summary>
         /// Move to new position and open new polygon
         /// </summary>
@@ -127,7 +124,7 @@ namespace Cross.Drawing
         /// <param name="y">y</param>
         public void MoveTo(double x, double y)
         {
-            // check if current polygon 
+            // check if current polygon
             if (CurrentPolygonCount == 2)
             {
                 // when current polygon include one moveto only.
@@ -140,7 +137,7 @@ namespace Cross.Drawing
                 // create new polygon
                 if (PolygonCount == 0)
                 {
-                    // new 
+                    // new
                     PolygonCount++;
                     RawDatas = new double[PolygonCount][];
                     CurrentPolygonCapacity = DefaultPolygonCapacity;
@@ -197,7 +194,7 @@ namespace Cross.Drawing
             // create new polygon
             if (PolygonCount == 0)
             {
-                // new 
+                // new
                 PolygonCount++;
                 RawDatas = new double[PolygonCount][];
                 RawDatas[0] = data;
@@ -298,3 +295,4 @@ namespace Cross.Drawing
         #endregion
     }
 }
+

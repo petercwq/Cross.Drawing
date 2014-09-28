@@ -1,6 +1,4 @@
 
-
-
 namespace Cross.Drawing
 {
     /// <summary>
@@ -14,7 +12,6 @@ namespace Cross.Drawing
         /// </summary>
         public Color Color = Colors.Black;
 
-        #region Constructors
         /// <summary>
         /// Default constructor
         /// </summary>
@@ -28,6 +25,7 @@ namespace Cross.Drawing
         {
             this.Color = color;
         }
-        #endregion
     }
 }
+
+

@@ -1,6 +1,4 @@
 
-
-
 namespace Cross.Drawing.ColorSpaces
 {
     /// <summary>
@@ -153,3 +151,4 @@ namespace Cross.Drawing.ColorSpaces
         #endregion
     }
 }
+

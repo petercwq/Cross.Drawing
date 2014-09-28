@@ -1,12 +1,10 @@
 
-
-
 namespace Cross.Drawing.ColorSpaces
 {
     /// <summary>
     /// A single color in CYMK color space.
     /// <para>CMYK (short for cyan, magenta, yellow, and key (black), and often referred to as process color or four color) is a subtractive color model, used in color printing, also used to describe the printing process itself.</para>
-    /// <para>The CMYK model works by partially or entirely masking certain colors on the typically white background (that is, absorbing particular wavelengths of light). Such a model is called subtractive because inks “subtract” brightness from white.</para>
+    /// <para>The CMYK model works by partially or entirely masking certain colors on the typically white background (that is, absorbing particular wavelengths of light). Such a model is called subtractive because inks "subtract" brightness from white.</para>
     /// </summary>
     public class Cymk
     {
@@ -218,3 +216,4 @@ namespace Cross.Drawing.ColorSpaces
         #endregion
     }
 }
+

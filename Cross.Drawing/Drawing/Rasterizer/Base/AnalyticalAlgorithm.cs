@@ -1,6 +1,4 @@
 
-
-
 namespace Cross.Drawing.Rasterizers.Analytical
 {
     /// <summary>
@@ -31,7 +29,7 @@ namespace Cross.Drawing.Rasterizers.Analytical
         /////  12(C) |  8 (8) | 9 (9)
         ///// -------+--------+--------
         /////       xMin    xMax
-        ///// 
+        /////
         ///// NOTE THAT , Y IS RESERVED IN THIS CASE
 
         /// <summary>
@@ -59,7 +57,7 @@ namespace Cross.Drawing.Rasterizers.Analytical
         public const int YMaxClippingFlag = 2;
 
         /// <summary>
-        /// Clipping modified to width and heigt
+        /// Clipping modified to width and height
         /// </summary>
         public const double ClippingEpsilon = 1.0 / 256.0;
         #endregion
@@ -112,7 +110,7 @@ namespace Cross.Drawing.Rasterizers.Analytical
         #endregion
 
         #region buffer width, height
-        /// <summary> 
+        /// <summary>
         /// Width of buffer data
         /// </summary>
         public int DestBufferWidth = 0;
@@ -416,7 +414,7 @@ namespace Cross.Drawing.Rasterizers.Analytical
                                 #region calculate and set coverage + area
                                 CurrentCell.Coverage += slopeByX * (yTo - yFrom);
                                 CurrentCell.Area += slopeByX * (yTo - yFrom) *
-                                    (((xFrom & PixelMask) + ((xTo - 1) & PixelMask)) + 1);
+                                (((xFrom & PixelMask) + ((xTo - 1) & PixelMask)) + 1);
                                 #endregion
                                 // continue to next row
                                 break;
@@ -429,9 +427,9 @@ namespace Cross.Drawing.Rasterizers.Analytical
 
                             #region calculate and set coverage + area
                             CurrentCell.Coverage +=
-                                slopeByX * (yTo - yFrom);
+                            slopeByX * (yTo - yFrom);
                             CurrentCell.Area +=
-                                slopeByX * (yTo - yFrom) * ((((xFrom) & PixelMask) + ((xTo - 1) & PixelMask)) + 1);
+                            slopeByX * (yTo - yFrom) * ((((xFrom) & PixelMask) + ((xTo - 1) & PixelMask)) + 1);
                             #endregion
 
                             xFrom = xTo;
@@ -596,17 +594,16 @@ namespace Cross.Drawing.Rasterizers.Analytical
         protected virtual void DrawLine(double x1, double y1, double x2, double y2)
         {
             DrawScaledLine(
-                (int)(x1 * PixelScale + 0.5),
-                (int)(y1 * PixelScale + 0.5),
-                (int)(x2 * PixelScale + 0.5),
-                (int)(y2 * PixelScale + 0.5));
+            (int)(x1 * PixelScale + 0.5),
+            (int)(y1 * PixelScale + 0.5),
+            (int)(x2 * PixelScale + 0.5),
+            (int)(y2 * PixelScale + 0.5));
 
             //Cross.Log.Debug("Draw line ({0:0.##},{1:0.##}) to ({2:0.##},{3:0.##})", x1, y1, x2, y2);
         }
         #endregion
 
         #region Set clip box
-
 
         /// <summary>
         /// Check if clip box out side bound
@@ -680,7 +677,6 @@ namespace Cross.Drawing.Rasterizers.Analytical
 
         #region Draw clipped line
 
-
         /// <summary>
         /// draw and clip lines from (currentXPosition,currentYPosition) to (xTo,yTo)
         /// coordinate in this case is not scaled coordinate.
@@ -698,22 +694,22 @@ namespace Cross.Drawing.Rasterizers.Analytical
 
             #region check flag for end point of line
             int endPointClipping =
-                ((xTo > ClippingBoxXMax) ? XMaxClippingFlag :
-                (xTo < ClippingBoxXMin) ? XMinClippingFlag : 0)
+            ((xTo > ClippingBoxXMax) ? XMaxClippingFlag :
+            (xTo < ClippingBoxXMin) ? XMinClippingFlag : 0)
 
-                |
+            |
 
-                ((yTo > ClippingBoxYMax) ? YMaxClippingFlag :
-                (yTo < ClippingBoxYMin) ? YMinClippingFlag : 0)
-                ;
+            ((yTo > ClippingBoxYMax) ? YMaxClippingFlag :
+            (yTo < ClippingBoxYMin) ? YMinClippingFlag : 0)
+            ;
             #endregion
 
             #region base on position of start and end, draw needed rendering lines
             /*
-             * This flag include flag 
-             *      _ start point at 4 last bits
-             *      _ end point at 4 first bits
-             */
+* This flag include flag
+*      _ start point at 4 last bits
+*      _ end point at 4 first bits
+*/
             double lastDrawingX, lastDrawingY;
             double dx = xTo - CurrentXPosition;
             double dy = yTo - CurrentYPosition;
@@ -747,8 +743,8 @@ namespace Cross.Drawing.Rasterizers.Analytical
                 #region end point in region 2
                 case 0x02:
                     /* xTo > xmin, xto<xmax
-                     * yto > yMax
-                     */
+                    * yto > yMax
+                    */
                     // find the cut to top of box
                     lastDrawingX = xTo + dx * (ClippingBoxYMax - yTo) / dy;
                     //lastDrawingY = boxYMax;
@@ -760,9 +756,9 @@ namespace Cross.Drawing.Rasterizers.Analytical
                 #region end point in region 3
                 case 0x03:
                     /*yto > yMax
-                     * xto >xmax
-                     * top-right
-                     */
+                    * xto >xmax
+                    * top-right
+                    */
                     // clip right first
                     lastDrawingY = yTo + dy * (ClippingBoxXMax - xTo) / dx;
                     if (lastDrawingY > ClippingBoxYMax)
@@ -787,8 +783,8 @@ namespace Cross.Drawing.Rasterizers.Analytical
                 #region end point in region 0x04
                 case 0x04:
                     /* yTo >yMin,yTo<yMax
-                     * xTo <xMin
-                     */
+                    * xTo <xMin
+                    */
                     // clip end point on left
                     // drawing X is bix min X
                     // drawing Y calculated
@@ -802,8 +798,8 @@ namespace Cross.Drawing.Rasterizers.Analytical
                 #region end point in region 0x06
                 case 0x06:
                     /*yTo > yMax
-                     * xTo < xMin
-                     */
+                    * xTo < xMin
+                    */
                     // clip left first
                     lastDrawingY = yTo + dy * (ClippingBoxXMin - xTo) / dx;
                     if (lastDrawingY > ClippingBoxYMax)
@@ -827,8 +823,8 @@ namespace Cross.Drawing.Rasterizers.Analytical
                 #region end point in region 0x08
                 case 0x08:
                     /* xTo>xMin , xTo<xMax
-                     * yTo < yMin
-                     */
+                    * yTo < yMin
+                    */
                     // recalculate the drawing x at ymin
                     lastDrawingX = xTo + dx * (ClippingBoxYMin - yTo) / dy;
                     DrawLine(CurrentXPosition, CurrentYPosition, lastDrawingX, ClippingBoxYMin);
@@ -838,8 +834,8 @@ namespace Cross.Drawing.Rasterizers.Analytical
                 #region end point in region 0x09
                 case 0x09:
                     /* x > xMax
-                     * y < yMin
-                     */
+                    * y < yMin
+                    */
                     // clip right first
                     lastDrawingY = yTo + dy * (ClippingBoxXMax - xTo) / dx;
                     // check if last drawing Y is less than yMIN
@@ -862,8 +858,8 @@ namespace Cross.Drawing.Rasterizers.Analytical
                 #region end point in region 0x0C
                 case 0x0C:
                     /*x < xMin
-                     * y< yMin
-                     */
+                    * y< yMin
+                    */
                     // clip left first
                     lastDrawingY = yTo + dy * (ClippingBoxXMin - xTo) / dx;
                     // check if last drawing Y is less than yMIN
@@ -887,15 +883,15 @@ namespace Cross.Drawing.Rasterizers.Analytical
 
                 #region when first point is in region 1
                 /*
-                 * xFrom > XMax
-                 * yFrom > yMin, yFrom >yMax
-                 * In this case, we need process 9 cases
-                 */
+* xFrom > XMax
+* yFrom > yMin, yFrom >yMax
+* In this case, we need process 9 cases
+*/
                 #region when end point in viewport region
                 case 0x10:
                     /*
-                     * draw from region 1 to view port ( visible area)
-                     */
+                    * draw from region 1 to view port ( visible area)
+                    */
                     // draw the line along the right size of line
                     lastDrawingY = CurrentYPosition + dy * (ClippingBoxXMax - CurrentXPosition) / dx;
                     DrawLine(ClippingBoxXMax, CurrentYPosition, ClippingBoxXMax, lastDrawingY);
@@ -914,10 +910,10 @@ namespace Cross.Drawing.Rasterizers.Analytical
                 #region when end point in region 0x02
                 case 0x12:
                     /*
-                     * xTo > xMin,<xMax
-                     * yTo > yMax
-                     * Divide in two case
-                     */
+                    * xTo > xMin,<xMax
+                    * yTo > yMax
+                    * Divide in two case
+                    */
                     // first must clipping top of line
                     lastDrawingX = CurrentXPosition + dx * (ClippingBoxYMax - CurrentYPosition) / dy;
                     if (lastDrawingX > ClippingBoxXMax)
@@ -940,8 +936,8 @@ namespace Cross.Drawing.Rasterizers.Analytical
                 #region when end point in region 0x03
                 case 0x13:
                     /*xTo  > xMAX
-                     * yTo > yMAX
-                     */
+                    * yTo > yMAX
+                    */
                     // need draw 1 line only along the right side of box
                     DrawLine(ClippingBoxXMax, CurrentYPosition, ClippingBoxXMax, ClippingBoxYMax);
                     break;
@@ -950,7 +946,7 @@ namespace Cross.Drawing.Rasterizers.Analytical
                 #region when end point in region 0x04
                 case 0x14:
                     // drawing 3 lines
-                    // first line from start point to right bound of box, 
+                    // first line from start point to right bound of box,
                     // but this line vertical along the right side of box
                     lastDrawingY = CurrentYPosition + dy * (ClippingBoxXMax - CurrentXPosition) / dx;
                     DrawLine(ClippingBoxXMax, CurrentYPosition, ClippingBoxXMax, lastDrawingY);
@@ -1028,7 +1024,7 @@ namespace Cross.Drawing.Rasterizers.Analytical
                 #region when end point in region 0x0C
                 case 0x1C:
                     /*This similar to case 0x16
-                     */
+                    */
                     // first left clipping it
                     // finding y position that cut the left side
                     lastDrawingY = CurrentYPosition + dy * (ClippingBoxXMin - CurrentXPosition) / dx;
@@ -1062,9 +1058,9 @@ namespace Cross.Drawing.Rasterizers.Analytical
 
                 #region when first point in region 2
                 /*
-                     * in this region, y >YMax
-                     * when endpoint in region 2,3,6, don't need to draw it
-                     */
+* in this region, y >YMax
+* when endpoint in region 2,3,6, don't need to draw it
+*/
                 #region when end point in region 0x00
                 case 0x20:
                     // in this case , draw a line from top to the cut position
@@ -1190,8 +1186,8 @@ namespace Cross.Drawing.Rasterizers.Analytical
 
                 #region when first point in region 3
                 /*In this case, we not need to draw anymore
-                     * when end point in region 2,3,6
-                     */
+* when end point in region 2,3,6
+*/
                 #region WHen end point in view port
                 case 0x30:
                     //right clipping
@@ -1218,7 +1214,7 @@ namespace Cross.Drawing.Rasterizers.Analytical
                 #region when point in region 0x01
                 case 0x31:
                     // draw line along the right side of box
-                    // from top - right of box to yto 
+                    // from top - right of box to yto
                     DrawLine(ClippingBoxXMax, ClippingBoxYMax, ClippingBoxXMax, yTo);
                     break;
                 #endregion
@@ -1231,7 +1227,7 @@ namespace Cross.Drawing.Rasterizers.Analytical
                     if (lastDrawingY > ClippingBoxYMax)
                     {
                         #region similar to draw from 2 to 4
-                        // clip top, and draw 
+                        // clip top, and draw
                         lastDrawingX = xTo + dx * (ClippingBoxYMax - yTo) / dy;
                         if (lastDrawingX < ClippingBoxXMin)
                         {
@@ -1380,8 +1376,8 @@ namespace Cross.Drawing.Rasterizers.Analytical
 
                 #region when first point in region 4
                 /*This is similar to region 1
-                     * So that need 9 case
-                     */
+* So that need 9 case
+*/
 
                 #region when end point in region 0
                 case 0x40:
@@ -1521,7 +1517,7 @@ namespace Cross.Drawing.Rasterizers.Analytical
 
                 #region when first point in region 6
                 /*not need draw when end point in 2,3,6
-                     */
+*/
                 #region when end point in view port
                 case 0x60:
                     // clip left
@@ -1670,7 +1666,7 @@ namespace Cross.Drawing.Rasterizers.Analytical
 
                 #region when first point in region 8
                 /* Do not need to draw when end point in region 8,9,C
-                 */
+*/
                 #region when end point in view port
                 case 0x80:
                     // draw from the bottom
@@ -1699,7 +1695,7 @@ namespace Cross.Drawing.Rasterizers.Analytical
 
                 #region when end point in region 2
                 case 0x82:
-                    // clip bottom 
+                    // clip bottom
                     lastDrawingX = xTo + dx * (ClippingBoxYMin - yTo) / dy;
                     // clip top, but saving x to lastDrawingY
                     lastDrawingY = xTo + dx * (ClippingBoxYMax - yTo) / dy;
@@ -1709,7 +1705,7 @@ namespace Cross.Drawing.Rasterizers.Analytical
 
                 #region when end point in region 3
                 case 0x83:
-                    // clip bottom 
+                    // clip bottom
                     lastDrawingX = xTo + dx * (ClippingBoxYMin - yTo) / dy;
                     if (lastDrawingX > ClippingBoxXMax)
                     {
@@ -1788,7 +1784,7 @@ namespace Cross.Drawing.Rasterizers.Analytical
 
                 #region when first point in region 9
                 /*Do not need draw when end point region 8,9,C
-                 */
+*/
                 #region when end point in view port
                 case 0x90:
                     // clip bottom
@@ -1932,7 +1928,7 @@ namespace Cross.Drawing.Rasterizers.Analytical
 
                 #region when first point in region C
                 /*This case do not need to draw when end point in 8,9,C
-                 */
+*/
                 #region when end point in view port
                 case 0xC0:
                     // clip bottom
@@ -2100,11 +2096,11 @@ namespace Cross.Drawing.Rasterizers.Analytical
             CurrentYPosition = y;
             // calculate current position flag
             CurrentPositionFlag =
-               ((CurrentXPosition > ClippingBoxXMax) ? XMaxClippingFlag :
-               (CurrentXPosition < ClippingBoxXMin) ? XMinClippingFlag : 0)
-               |
-               ((CurrentYPosition > ClippingBoxYMax) ? YMaxClippingFlag :
-               (CurrentYPosition < ClippingBoxYMin) ? YMinClippingFlag : 0);
+            ((CurrentXPosition > ClippingBoxXMax) ? XMaxClippingFlag :
+            (CurrentXPosition < ClippingBoxXMin) ? XMinClippingFlag : 0)
+            |
+            ((CurrentYPosition > ClippingBoxYMax) ? YMaxClippingFlag :
+            (CurrentYPosition < ClippingBoxYMin) ? YMinClippingFlag : 0);
         }
         #endregion
 
@@ -2119,22 +2115,22 @@ namespace Cross.Drawing.Rasterizers.Analytical
         /// <param name="offsetY">offset y</param>
         public void AppendRowData(RowData[] rows, double offsetX, double offsetY)
         {
-            // first this will cast to integer value, 
+            // first this will cast to integer value,
             // need more implementation to make sure that these value will change the coverage
             // when out side clipping box
             if ((offsetY < ClippingBoxYMax)
-                && (offsetX < ClippingBoxXMax))
+            && (offsetX < ClippingBoxXMax))
             {
                 int roundedOffsetY = (int)offsetY;
                 int roundedOffsetX = (int)offsetX;
                 #region start and end row
                 double startY =
-                     roundedOffsetY < ClippingBoxYMin ?
-                     ClippingBoxYMin : roundedOffsetY; // max of two values
+                roundedOffsetY < ClippingBoxYMin ?
+                ClippingBoxYMin : roundedOffsetY; // max of two values
                 int startRowIndex = (int)startY - (int)roundedOffsetY;
 
                 double endY = roundedOffsetY + rows.Length > ClippingBoxYMax ?
-                    ClippingBoxYMax : roundedOffsetY + rows.Length;
+                ClippingBoxYMax : roundedOffsetY + rows.Length;
                 int endRowIndex = (int)endY - roundedOffsetY;
                 #endregion
 
@@ -2146,7 +2142,6 @@ namespace Cross.Drawing.Rasterizers.Analytical
 
                 RowData currentRow = null;
                 CellData cellData = null;
-
 
                 int calculatedX = 0;
                 int currentDestIndex = (int)startY;
@@ -2194,7 +2189,7 @@ namespace Cross.Drawing.Rasterizers.Analytical
         /// Append rows into current row data. This method should be call as second approach.
         /// ( mean using Begin and Finish function)
         /// But before using this method must call Prepare row
-        /// 
+        ///
         /// This optimize for append text from left to right,
         /// so that row data ALWAYS append to end of current row data
         /// </summary>
@@ -2203,22 +2198,22 @@ namespace Cross.Drawing.Rasterizers.Analytical
         /// <param name="offsetY">offset y</param>
         public void AppendRowDataAfter(RowData[] rows, double offsetX, double offsetY)
         {
-            // first this will cast to integer value, 
+            // first this will cast to integer value,
             // need more implementation to make sure that these value will change the coverage
             // when out side clipping box
             if ((offsetY < ClippingBoxYMax)
-                && (offsetX < ClippingBoxXMax))
+            && (offsetX < ClippingBoxXMax))
             {
                 int roundedOffsetY = (int)offsetY;
                 int roundedOffsetX = (int)offsetX;
                 #region start and end row
                 double startY =
-                     roundedOffsetY < ClippingBoxYMin ?
-                     ClippingBoxYMin : roundedOffsetY; // max of two values
+                roundedOffsetY < ClippingBoxYMin ?
+                ClippingBoxYMin : roundedOffsetY; // max of two values
                 int startRowIndex = (int)startY - (int)roundedOffsetY;
 
                 double endY = roundedOffsetY + rows.Length > ClippingBoxYMax ?
-                    ClippingBoxYMax : roundedOffsetY + rows.Length;
+                ClippingBoxYMax : roundedOffsetY + rows.Length;
                 int endRowIndex = (int)endY - roundedOffsetY;
                 #endregion
 
@@ -2230,7 +2225,6 @@ namespace Cross.Drawing.Rasterizers.Analytical
 
                 RowData currentRow = null;
                 CellData cellData = null;
-
 
                 int calculatedX = 0;
                 int currentDestIndex = (int)startY;
@@ -2286,3 +2280,4 @@ namespace Cross.Drawing.Rasterizers.Analytical
         #endregion
     }
 }
+

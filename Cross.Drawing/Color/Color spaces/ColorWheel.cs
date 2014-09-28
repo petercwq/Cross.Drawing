@@ -1,6 +1,3 @@
-
-
-
 namespace Cross.Drawing
 {
     /// <summary>
@@ -81,3 +78,4 @@ namespace Cross.Drawing
         { get { return new Color(153, 204, 51); } }
     }
 }
+

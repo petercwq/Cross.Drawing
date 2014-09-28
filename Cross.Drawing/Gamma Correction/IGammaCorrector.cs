@@ -1,10 +1,8 @@
 
-
-
 namespace Cross.Drawing
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public interface IGammaCorrector
     {
@@ -27,3 +25,4 @@ namespace Cross.Drawing
         byte[] GetLookupTableBlue();
     }
 }
+
