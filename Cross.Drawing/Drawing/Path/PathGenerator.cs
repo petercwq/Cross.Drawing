@@ -1,6 +1,5 @@
 using System;
 
-
 namespace Cross.Drawing
 {
     /// <summary>
@@ -49,8 +48,7 @@ namespace Cross.Drawing
         /// Generate polygon from path
         /// </summary>
         /// <param name="path">path</param>
-        /// <param name="averageScale">average scale of transform, this
-        /// to decrease number of point generate for curve ...</param>
+        /// <param name="averageScale">average scale of transform, this to decrease number of point generate for curve ...</param>
         /// <returns></returns>
         public double[][] Generate(DrawingPath path, double averageScale)
         {
@@ -93,16 +91,16 @@ namespace Cross.Drawing
                     case DrawingPathCommand.ArcTo:
                         #region arc to
                         BuildArc(polygonList,
-                            coordinates[coordinateIndex - 2], // start x
-                            coordinates[coordinateIndex - 1], // start y
-                            coordinates[coordinateIndex++], // radius x
-                            coordinates[coordinateIndex++], // radius y
-                            coordinates[coordinateIndex++], // angle
-                            coordinates[coordinateIndex++] == DrawingPath.IsLargeArc,      // is large arc
-                            coordinates[coordinateIndex++] == DrawingPath.IsSweepLeftSide, // is sweep left side
-                            coordinates[coordinateIndex++], // dest x
-                            coordinates[coordinateIndex++], // dest y
-                            averageScale);
+                        coordinates[coordinateIndex - 2], // start x
+                        coordinates[coordinateIndex - 1], // start y
+                        coordinates[coordinateIndex++], // radius x
+                        coordinates[coordinateIndex++], // radius y
+                        coordinates[coordinateIndex++], // angle
+                        coordinates[coordinateIndex++] == DrawingPath.IsLargeArc,      // is large arc
+                        coordinates[coordinateIndex++] == DrawingPath.IsSweepLeftSide, // is sweep left side
+                        coordinates[coordinateIndex++], // dest x
+                        coordinates[coordinateIndex++], // dest y
+                        averageScale);
                         #endregion
 
                         break;
@@ -110,28 +108,28 @@ namespace Cross.Drawing
                     case DrawingPathCommand.CurveTo:
                         #region curve to
                         BuildCurve(polygonList,
-                            coordinates[coordinateIndex - 2],   // start x
-                            coordinates[coordinateIndex - 1],   // start y
-                            coordinates[coordinateIndex++],     // control point 1 x
-                            coordinates[coordinateIndex++],     // control point 1 y
-                            coordinates[coordinateIndex++],     // control point 2 x
-                            coordinates[coordinateIndex++],     // control point 2 y
-                            coordinates[coordinateIndex++],     // end x
-                            coordinates[coordinateIndex++],     // end y
-                            averageScale);
+                        coordinates[coordinateIndex - 2],   // start x
+                        coordinates[coordinateIndex - 1],   // start y
+                        coordinates[coordinateIndex++],     // control point 1 x
+                        coordinates[coordinateIndex++],     // control point 1 y
+                        coordinates[coordinateIndex++],     // control point 2 x
+                        coordinates[coordinateIndex++],     // control point 2 y
+                        coordinates[coordinateIndex++],     // end x
+                        coordinates[coordinateIndex++],     // end y
+                        averageScale);
                         #endregion
                         break;
 
                     case DrawingPathCommand.QuadraticTo:
                         #region quadratic bezier
                         BuildQuadratic(polygonList,
-                            coordinates[coordinateIndex - 2],   // start x
-                            coordinates[coordinateIndex - 1],   // start y
-                            coordinates[coordinateIndex++],     // control point x
-                            coordinates[coordinateIndex++],     // control point y
-                            coordinates[coordinateIndex++],     // end x
-                            coordinates[coordinateIndex++],     // end y
-                            averageScale);
+                        coordinates[coordinateIndex - 2],   // start x
+                        coordinates[coordinateIndex - 1],   // start y
+                        coordinates[coordinateIndex++],     // control point x
+                        coordinates[coordinateIndex++],     // control point y
+                        coordinates[coordinateIndex++],     // end x
+                        coordinates[coordinateIndex++],     // end y
+                        averageScale);
                         #endregion
                         break;
                 }
@@ -158,15 +156,15 @@ namespace Cross.Drawing
         /// <param name="y2">y2</param>
         /// <param name="scale"></param>
         private void BuildCurve(RawPolygonList polygonList,
-            double x1, double y1, double c1x, double c1y,
-            double c2x, double c2y, double x2, double y2,
-            double scale)
+        double x1, double y1, double c1x, double c1y,
+        double c2x, double c2y, double x2, double y2,
+        double scale)
         {
 
             #region calculate number of step
             double lengthOfCurve = Math.Sqrt((c1x - x1) * (c1x - x1) + (c1y - y1) * (c1y - y1))
-                                 + Math.Sqrt((c2x - c1x) * (c2x - c1x) + (c2y - c1y) * (c2y - c1y))
-                                 + Math.Sqrt((x2 - c2x) * (x2 - c2x) + (y2 - c2y) * (y2 - c2y));
+            + Math.Sqrt((c2x - c1x) * (c2x - c1x) + (c2y - c1y) * (c2y - c1y))
+            + Math.Sqrt((x2 - c2x) * (x2 - c2x) + (y2 - c2y) * (y2 - c2y));
 
             double mSteps = lengthOfCurve * DistanceToNumberOfStepScale * scale;
             #endregion
@@ -185,17 +183,17 @@ namespace Cross.Drawing
                 restOfMu = 1 - mu;
                 //add point [i] to polygon
                 polygonList.LineTo
-                    (
-                        x1 * restOfMu * restOfMu * restOfMu +
-                        3 * c1x * mu * restOfMu * restOfMu +
-                        3 * c2x * mu * mu * restOfMu
-                        + x2 * mu * mu * mu,
+                (
+                x1 * restOfMu * restOfMu * restOfMu +
+                3 * c1x * mu * restOfMu * restOfMu +
+                3 * c2x * mu * mu * restOfMu
+                + x2 * mu * mu * mu,
 
-                        y1 * restOfMu * restOfMu * restOfMu +
-                        3 * c1y * mu * restOfMu * restOfMu +
-                        3 * c2y * mu * mu * restOfMu
-                        + y2 * mu * mu * mu
-                    );
+                y1 * restOfMu * restOfMu * restOfMu +
+                3 * c1y * mu * restOfMu * restOfMu +
+                3 * c2y * mu * mu * restOfMu
+                + y2 * mu * mu * mu
+                );
                 #endregion
                 i++;
             }
@@ -220,12 +218,12 @@ namespace Cross.Drawing
         /// <param name="xEnd">end x</param>
         /// <param name="yEnd">end y</param>
         /// <param name="scale">scale</param>
-        /// 
+        ///
         private void BuildArc(RawPolygonList polygonList,
-            double xStart, double yStart,
-            double radiusX, double radiusY,
-            double angle, bool isLargeArc, bool isSweepLeftSide,
-            double xEnd, double yEnd, double scale)
+        double xStart, double yStart,
+        double radiusX, double radiusY,
+        double angle, bool isLargeArc, bool isSweepLeftSide,
+        double xEnd, double yEnd, double scale)
         {
             // when start is end
             if (xStart == xEnd && yStart == yEnd)
@@ -242,7 +240,7 @@ namespace Cross.Drawing
                 if (radiusX < 0.0) radiusX = -radiusX;
                 if (radiusY < 0.0) radiusY = -radiusX;
 
-                // Calculate the middle point between 
+                // Calculate the middle point between
                 // the current and the final points
                 //------------------------
                 double dx2 = (xStart - xEnd) / 2.0;
@@ -329,24 +327,20 @@ namespace Cross.Drawing
                     }
                 #endregion
 
-
                 // We can now build and transform the resulting arc
-                //------------------------           
+                //------------------------
                 BuildBezierArc(polygonList,
-                    centerX, centerY,
-                    radiusX, radiusY,
-                    angle, startAngle, sweepAngle,
-                    scale);
+                centerX, centerY,
+                radiusX, radiusY,
+                angle, startAngle, sweepAngle,
+                scale);
             }
 
         }
 
-
-
-
         #region build to bezier arc
         /// <summary>
-        /// build arc to beziers 
+        /// build arc to beziers
         /// </summary>
         /// <param name="polygonList">polygon List</param>
         /// <param name="centerX">coordinate X of center point</param>
@@ -379,11 +373,11 @@ namespace Cross.Drawing
             {
                 numberVertices = 4;
                 polygonList.LineTo(
-                    centerX + radiusX * Math.Cos(startAngle),
-                    centerY + radiusY * Math.Sin(startAngle));
+                centerX + radiusX * Math.Cos(startAngle),
+                centerY + radiusY * Math.Sin(startAngle));
                 polygonList.LineTo(
-                    centerX + radiusX * Math.Cos(startAngle + sweepAngle)
-                    , centerY + radiusY * Math.Sin(startAngle + sweepAngle));
+                centerX + radiusX * Math.Cos(startAngle + sweepAngle)
+                , centerY + radiusY * Math.Sin(startAngle + sweepAngle));
                 return;
             }
             #endregion
@@ -432,7 +426,6 @@ namespace Cross.Drawing
                     vertices[numberVertices + 5] = radiusY * (x0 * sn + y0 * cs);
                     #endregion
 
-
                     numberVertices += 6;
                     startAngle += localSweep;
                 }
@@ -475,14 +468,12 @@ namespace Cross.Drawing
                     vertices[numberVertices + 5] = radiusY * (x0 * sn + y0 * cs);
                     #endregion
 
-
                     numberVertices += 6;
                     startAngle += localSweep;
                 }
                 while (!done && numberVertices < 26);
             }
             #endregion
-
 
             #endregion
 
@@ -495,11 +486,11 @@ namespace Cross.Drawing
             while (i + 7 < numberVertices)
             {
                 BuildCurve(polygonList,
-                      vertices[i + 0] * cosAngle - vertices[i + 1] * sinAngle + tempCenterX, vertices[i + 0] * sinAngle + vertices[i + 1] * cosAngle + tempCenterY,
-                      vertices[i + 2] * cosAngle - vertices[i + 3] * sinAngle + tempCenterX, vertices[i + 2] * sinAngle + vertices[i + 3] * cosAngle + tempCenterY,
-                      vertices[i + 4] * cosAngle - vertices[i + 5] * sinAngle + tempCenterX, vertices[i + 4] * sinAngle + vertices[i + 5] * cosAngle + tempCenterY,
-                      vertices[i + 6] * cosAngle - vertices[i + 7] * sinAngle + tempCenterX, vertices[i + 6] * sinAngle + vertices[i + 7] * cosAngle + tempCenterY,
-                      scale);
+                vertices[i + 0] * cosAngle - vertices[i + 1] * sinAngle + tempCenterX, vertices[i + 0] * sinAngle + vertices[i + 1] * cosAngle + tempCenterY,
+                vertices[i + 2] * cosAngle - vertices[i + 3] * sinAngle + tempCenterX, vertices[i + 2] * sinAngle + vertices[i + 3] * cosAngle + tempCenterY,
+                vertices[i + 4] * cosAngle - vertices[i + 5] * sinAngle + tempCenterX, vertices[i + 4] * sinAngle + vertices[i + 5] * cosAngle + tempCenterY,
+                vertices[i + 6] * cosAngle - vertices[i + 7] * sinAngle + tempCenterX, vertices[i + 6] * sinAngle + vertices[i + 7] * cosAngle + tempCenterY,
+                scale);
                 i += 6;
             }
             #endregion
@@ -518,14 +509,14 @@ namespace Cross.Drawing
         /// <param name="x2">end x</param>
         /// <param name="y2">end y</param>
         private void BuildQuadratic(
-            RawPolygonList polygonList,
-            double x1, double y1,
-            double cx, double cy,
-            double x2, double y2, double scale)
+        RawPolygonList polygonList,
+        double x1, double y1,
+        double cx, double cy,
+        double x2, double y2, double scale)
         {
             #region calculate number of step
             double lengthOfCurve = Math.Sqrt((cx - x1) * (cx - x1) + (cy - y1) * (cy - y1))
-                                 + Math.Sqrt((x2 - cx) * (x2 - cx) + (y2 - cy) * (y2 - cy));
+            + Math.Sqrt((x2 - cx) * (x2 - cx) + (y2 - cy) * (y2 - cy));
             double mSteps = lengthOfCurve * DistanceToNumberOfStepScale * scale;
             int i = 0;
             double mu;
@@ -536,9 +527,9 @@ namespace Cross.Drawing
                 mu = i / mSteps;
                 //add point [i] to polygon
                 polygonList.LineTo(
-                    x1 * (1 - mu) * (1 - mu) + 2 * cx * mu * (1 - mu) + x2 * mu * mu,
-                    y1 * (1 - mu) * (1 - mu) + 2 * cy * mu * (1 - mu) + y2 * mu * mu
-                    );
+                x1 * (1 - mu) * (1 - mu) + 2 * cx * mu * (1 - mu) + x2 * mu * mu,
+                y1 * (1 - mu) * (1 - mu) + 2 * cy * mu * (1 - mu) + y2 * mu * mu
+                );
                 #endregion
                 i++;
             }
@@ -549,3 +540,4 @@ namespace Cross.Drawing
         #endregion
     }
 }
+

@@ -1,6 +1,4 @@
 
-
-
 namespace Cross.Drawing
 {
     /// <summary>
@@ -116,7 +114,7 @@ namespace Cross.Drawing
         /// </summary>
         /// <param name="angle">The angle (in degree) to rotate by</param>
         /// <param name="centerX">X-coordinate of rotation origin</param>
-        /// <param name="centerY">Y-coordinate of rotation origin</param>        
+        /// <param name="centerY">Y-coordinate of rotation origin</param>
         public void Rotate(double angle, double centerX, double centerY)
         {
             if (mTransformMatrix == null)
@@ -146,7 +144,7 @@ namespace Cross.Drawing
 
         /// <summary>
         /// Push scale transformation to matrix.
-        /// </summary>        
+        /// </summary>
         /// <param name="scaleX">The horizontal factor to scale by</param>
         /// <param name="scaleY">The vertical factor to scale by</param>
         /// <param name="centerX">X-coordinate of scaling origin</param>
@@ -228,7 +226,7 @@ namespace Cross.Drawing
         /// </summary>
         protected bool mFillingRuleAssigned;
         /// <summary>
-        /// Whether property Opacity has been assigned 
+        /// Whether property Opacity has been assigned
         /// </summary>
         protected bool mOpacityAssigned;
         /// <summary>
@@ -265,3 +263,4 @@ namespace Cross.Drawing
         #endregion
     }
 }
+

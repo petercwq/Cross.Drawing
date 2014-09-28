@@ -58,7 +58,7 @@ namespace Cross.Drawing
         int CommandCapacity = 0;
 
         /// <summary>
-        /// Coordinate for each command, to using this, must go from the begining of path
+        /// Coordinate for each command, to using this, must go from the beginning of path
         /// </summary>
         /// <remarks>
         /// Coordinate saving
@@ -1458,3 +1458,4 @@ Coordinates[CoordinateCount++] = y2;
         #endregion
     }
 }
+

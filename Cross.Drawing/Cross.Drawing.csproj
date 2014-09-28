@@ -82,7 +82,6 @@
     <Compile Include="Log.cs" />
     <Compile Include="Matrix\Matrix3x3.cs" />
     <Compile Include="Matrix\Matrix3x3Stack.cs" />
-    <Compile Include="Matrix\Stack.cs" />
     <Compile Include="Paint\Fill\Fill.cs" />
     <Compile Include="Paint\Fill\FillingRule.cs" />
     <Compile Include="Paint\Fill\Fills.cs" />

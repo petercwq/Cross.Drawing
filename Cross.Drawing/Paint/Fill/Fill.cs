@@ -1,6 +1,4 @@
 
-
-
 namespace Cross.Drawing
 {
     /// <summary>
@@ -8,9 +6,7 @@ namespace Cross.Drawing
     /// </summary>
     public class Fill : PaintMaterial
     {
-        #region Ambient Object Pattern
 
-        #region Clone
         /// <summary>
         /// Create a new instance with same properties as this instance (shadow copy)
         /// <para>Notes: the cloned object will no longer be ambient object</para>
@@ -28,9 +24,7 @@ namespace Cross.Drawing
 
             return result;
         }
-        #endregion
 
-        #region Is Ambient
         /// <summary>
         /// Check whether any property of this object is ambient
         /// </summary>
@@ -39,14 +33,12 @@ namespace Cross.Drawing
             get
             {
                 return (mPaintAssigned == false)
-                    || (mOpacityAssigned == false)
-                    || (mFillingRuleAssigned == false)
-                    || (mTransformMatrixAssigned == false);
+                || (mOpacityAssigned == false)
+                || (mFillingRuleAssigned == false)
+                || (mTransformMatrixAssigned == false);
             }
         }
-        #endregion
 
-        #region Merge
         /// <summary>
         /// Merge this object with a source object using ambient object pattern merging rule
         /// </summary>
@@ -57,9 +49,7 @@ namespace Cross.Drawing
             if (mFillingRuleAssigned == false) mFillingRule = source.mFillingRule;
             if (mTransformMatrixAssigned == false) mTransformMatrix = source.mTransformMatrix;
         }
-        #endregion
 
-        #region Reset
         /// <summary>
         /// Resets all properties to default value and make them ambient
         /// </summary>
@@ -78,11 +68,8 @@ namespace Cross.Drawing
             mTransformMatrix = null;
             mTransformMatrixAssigned = false;
         }
-        #endregion
 
-        #endregion
 
-        #region Constructors
         /// <summary>
         /// Create a new empty fill
         /// </summary>
@@ -107,6 +94,7 @@ namespace Cross.Drawing
         {
             Paint = new ColorPaint(color);
         }
-        #endregion
     }
 }
+
+
