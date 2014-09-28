@@ -8,10 +8,11 @@ namespace Cross.Drawing
     public class DrawingPath
     {
         /// <summary>
-        /// Saving defautl capacity
+        /// Saving default capacity
         /// </summary>
         const int DefaultCapacity = 10;
-        #region internal const
+
+        #region internal constants
         /// <summary>
         /// Indicate not using large arc.
         /// Instead using boolean to saving this attribute
