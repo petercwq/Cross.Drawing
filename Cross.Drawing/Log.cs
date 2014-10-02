@@ -38,7 +38,7 @@ namespace Cross
         private static void Write(string message, LogLevel level)
         {
             if (level >= Level && Writer != null)
-                Writer.WriteLine(message/* + Environment.NewLine*/);
+                Writer.WriteLine(string.Format("{0}[{1}]{2}", DateTime.Now, level, message/* + Environment.NewLine*/));
         }
 
         internal static void Warning(string p)
@@ -72,3 +72,4 @@ namespace Cross
         }
     }
 }
+

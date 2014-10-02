@@ -5,9 +5,9 @@ namespace Cross.Drawing
     /// <summary>
     /// Matrix 3x3 using for transformation and internal using only
     /// <para>Affine transformation are linear transformations in Cartesian coordinates
-    ///(strictly speaking not only in Cartesian, but for the beginning we will 
-    /// think so). They are rotation, scaling, translation and skewing.  
-    /// After any affine transformation a line segment remains a line segment 
+    ///(strictly speaking not only in Cartesian, but for the beginning we will
+    /// think so). They are rotation, scaling, translation and skewing.
+    /// After any affine transformation a line segment remains a line segment
     /// and it will never become a curve.</para>
     /// <para>There are two group of methods to use matrix:
     /// _ Normal method, just build a matrix without apply current transformation
@@ -19,13 +19,13 @@ namespace Cross.Drawing
     ///     [sx]    [shx]   [tx]
     ///     [shy]   [xy]    [ty]
     ///     [0]     [0]     [1]
-    /// When want to transform we just multiply matrix to 
+    /// When want to transform we just multiply matrix to
     /// [x] [y] [1]. as following
-    /// 
+    ///
     /// tmp = x
     /// x = tmp * sx + y * shx + tx;
     /// y = tmp * shy + y * sy + ty;
-    /// 
+    ///
     /// Notice that, when scale x, or y to 0, this matrix can not be converted.
     /// </remarks>
     public class Matrix3x3
@@ -98,10 +98,9 @@ namespace Cross.Drawing
         /// </summary>
         private bool ScaleAndTransformOnly = true;
 
-
         /// <summary>
         /// Scale x factor
-        /// 
+        ///
         /// This is correct when using for normal matrix.
         /// Not applied for inverted matrix, or matrix
         /// modified or constructed direct 6 parameters
@@ -110,7 +109,7 @@ namespace Cross.Drawing
 
         /// <summary>
         /// Scale y factor
-        /// 
+        ///
         /// This is correct when using for normal matrix.
         /// Not applied for inverted matrix, or matrix
         /// modified or constructed direct 6 parameters
@@ -400,9 +399,9 @@ namespace Cross.Drawing
             if ((scale != 1.0))
             {
                 SelfMultiply(
-                    scale, scale,
-                    0.0, 0.0,
-                    0.0, 0.0);
+                scale, scale,
+                0.0, 0.0,
+                0.0, 0.0);
 
                 isChanged = true;
                 ScaleXFactor *= scale;
@@ -425,9 +424,9 @@ namespace Cross.Drawing
             if ((xScale != 1.0) || (yScale != 1.0))
             {
                 SelfMultiply(
-                    xScale, yScale,
-                    0.0, 0.0,
-                    0.0, 0.0);
+                xScale, yScale,
+                0.0, 0.0,
+                0.0, 0.0);
 
                 #region scale
                 //Sx *= xScale; Shx *= xScale; Tx *= xScale;
@@ -476,10 +475,10 @@ namespace Cross.Drawing
                 #endregion
 
                 SelfMultiply(
-                    xScale, yScale,
-                    0.0, 0.0,
-                    centerX - (centerX * xScale),
-                    centerY - (centerY * yScale));
+                xScale, yScale,
+                0.0, 0.0,
+                centerX - (centerX * xScale),
+                centerY - (centerY * yScale));
 
                 isChanged = true;
                 ScaleXFactor *= xScale;
@@ -500,9 +499,9 @@ namespace Cross.Drawing
             if ((scale != 1.0))
             {
                 PrependSelfMultiply(
-                    scale, scale,
-                    0.0, 0.0,
-                    0.0, 0.0);
+                scale, scale,
+                0.0, 0.0,
+                0.0, 0.0);
 
                 isChanged = true;
                 ScaleXFactor *= scale;
@@ -525,9 +524,9 @@ namespace Cross.Drawing
             if ((xScale != 1.0) || (yScale != 1.0))
             {
                 PrependSelfMultiply(
-                    xScale, yScale,
-                    0.0, 0.0,
-                    0.0, 0.0);
+                xScale, yScale,
+                0.0, 0.0,
+                0.0, 0.0);
 
                 isChanged = true;
                 ScaleXFactor *= xScale;
@@ -549,10 +548,10 @@ namespace Cross.Drawing
             {
 
                 PrependSelfMultiply(
-                    xScale, yScale,
-                    0.0, 0.0,
-                    centerX - (centerX * xScale),
-                    centerY - (centerY * yScale));
+                xScale, yScale,
+                0.0, 0.0,
+                centerX - (centerX * xScale),
+                centerY - (centerY * yScale));
 
                 isChanged = true;
                 ScaleXFactor *= xScale;
@@ -575,9 +574,9 @@ namespace Cross.Drawing
             if ((xSkewAngle != 0) || (ySkewAngle != 0))
             {
                 SelfMultiply(1.0, 1.0,
-                    Math.Tan(xSkewAngle * DegreeToRadianFactor),
-                    Math.Tan(ySkewAngle * DegreeToRadianFactor),
-                    0.0, 0.0);
+                Math.Tan(xSkewAngle * DegreeToRadianFactor),
+                Math.Tan(ySkewAngle * DegreeToRadianFactor),
+                0.0, 0.0);
 
                 isChanged = true;
 
@@ -594,9 +593,9 @@ namespace Cross.Drawing
             if ((skewAngle != 0))
             {
                 SelfMultiply(1.0, 1.0,
-                    Math.Tan(skewAngle * DegreeToRadianFactor),
-                    Math.Tan(skewAngle * DegreeToRadianFactor),
-                    0.0, 0.0);
+                Math.Tan(skewAngle * DegreeToRadianFactor),
+                Math.Tan(skewAngle * DegreeToRadianFactor),
+                0.0, 0.0);
 
                 isChanged = true;
 
@@ -655,9 +654,9 @@ namespace Cross.Drawing
                 Tx -= centerX;
                 Ty -= centerY;
                 SelfMultiply(1.0, 1.0,
-                    Math.Tan(xSkewAngle * DegreeToRadianFactor),
-                    Math.Tan(ySkewAngle * DegreeToRadianFactor),
-                    0.0, 0.0);
+                Math.Tan(xSkewAngle * DegreeToRadianFactor),
+                Math.Tan(ySkewAngle * DegreeToRadianFactor),
+                0.0, 0.0);
                 Tx += centerX;
                 Ty += centerY;
                 isChanged = true;
@@ -683,9 +682,9 @@ namespace Cross.Drawing
             if ((xSkewAngle != 0) || (ySkewAngle != 0))
             {
                 PrependSelfMultiply(1.0, 1.0,
-                    Math.Tan(xSkewAngle * DegreeToRadianFactor),
-                    Math.Tan(ySkewAngle * DegreeToRadianFactor),
-                    0.0, 0.0);
+                Math.Tan(xSkewAngle * DegreeToRadianFactor),
+                Math.Tan(ySkewAngle * DegreeToRadianFactor),
+                0.0, 0.0);
 
                 isChanged = true;
 
@@ -704,9 +703,9 @@ namespace Cross.Drawing
             if ((skewAngle != 0))
             {
                 PrependSelfMultiply(1.0, 1.0,
-                    Math.Tan(skewAngle * DegreeToRadianFactor),
-                    Math.Tan(skewAngle * DegreeToRadianFactor),
-                    0.0, 0.0);
+                Math.Tan(skewAngle * DegreeToRadianFactor),
+                Math.Tan(skewAngle * DegreeToRadianFactor),
+                0.0, 0.0);
 
                 isChanged = true;
 
@@ -881,10 +880,10 @@ namespace Cross.Drawing
                 #endregion
 
                 SelfMultiply(
-                    scale, scale,
-                    0.0, 0.0,
-                    Tx - (Tx * scale),
-                    Ty - (Ty * scale));
+                scale, scale,
+                0.0, 0.0,
+                Tx - (Tx * scale),
+                Ty - (Ty * scale));
 
                 isChanged = true;
                 ScaleXFactor *= scale;
@@ -913,10 +912,10 @@ namespace Cross.Drawing
 
                 //Same as above method, just need to modify tx,ty
                 SelfMultiply(
-                   xScale, yScale,
-                   0.0, 0.0,
-                   Tx - (Tx * xScale),
-                   Ty - (Ty * yScale));
+                xScale, yScale,
+                0.0, 0.0,
+                Tx - (Tx * xScale),
+                Ty - (Ty * yScale));
 
                 isChanged = true;
                 ScaleXFactor *= xScale;
@@ -946,10 +945,10 @@ namespace Cross.Drawing
                 //Log.Debug("Current scale:"
 
                 SelfMultiply(
-                    xScale, yScale,
-                    0.0, 0.0,
-                    centerX - (centerX * xScale),
-                    centerY - (centerY * yScale));
+                xScale, yScale,
+                0.0, 0.0,
+                centerX - (centerX * xScale),
+                centerY - (centerY * yScale));
 
                 isChanged = true;
                 ScaleXFactor *= xScale;
@@ -987,9 +986,9 @@ namespace Cross.Drawing
                 Ty -= centerY;
 
                 SelfMultiply(1.0, 1.0,
-                    Math.Tan(xSkewAngle * DegreeToRadianFactor),
-                    Math.Tan(ySkewAngle * DegreeToRadianFactor),
-                    0.0, 0.0);
+                Math.Tan(xSkewAngle * DegreeToRadianFactor),
+                Math.Tan(ySkewAngle * DegreeToRadianFactor),
+                0.0, 0.0);
                 Tx += centerX;
                 Ty += centerY;
                 isChanged = true;
@@ -1023,9 +1022,9 @@ namespace Cross.Drawing
                 Ty -= centerY;
 
                 SelfMultiply(1.0, 1.0,
-                    Math.Tan(skewAngle * DegreeToRadianFactor),
-                    Math.Tan(skewAngle * DegreeToRadianFactor),
-                    0.0, 0.0);
+                Math.Tan(skewAngle * DegreeToRadianFactor),
+                Math.Tan(skewAngle * DegreeToRadianFactor),
+                0.0, 0.0);
 
                 Tx += centerX;
                 Ty += centerY;
@@ -1058,9 +1057,9 @@ namespace Cross.Drawing
                 Tx -= centerX;
                 Ty -= centerY;
                 SelfMultiply(1.0, 1.0,
-                    Math.Tan(xSkewAngle * DegreeToRadianFactor),
-                    Math.Tan(ySkewAngle * DegreeToRadianFactor),
-                    0.0, 0.0);
+                Math.Tan(xSkewAngle * DegreeToRadianFactor),
+                Math.Tan(ySkewAngle * DegreeToRadianFactor),
+                0.0, 0.0);
                 Tx += centerX;
                 Ty += centerY;
                 isChanged = true;
@@ -1125,7 +1124,6 @@ namespace Cross.Drawing
         #endregion
 
         #region validate scale
-
 
         /// <summary>
         /// Check the scale factor and validate scale factor
@@ -1201,10 +1199,10 @@ namespace Cross.Drawing
 
             //ScaleAndTranslateOnly true when in both matrix is true
             SimpleScaleAndTranslateOnly =
-                SimpleScaleAndTranslateOnly && (matrix.SimpleScaleAndTranslateOnly);
+            SimpleScaleAndTranslateOnly && (matrix.SimpleScaleAndTranslateOnly);
 
             ScaleAndTransformOnly =
-                ScaleAndTransformOnly && (matrix.ScaleAndTransformOnly);
+            ScaleAndTransformOnly && (matrix.ScaleAndTransformOnly);
 
             isChanged = true;
         }
@@ -1222,8 +1220,8 @@ namespace Cross.Drawing
         }
 
         /// <summary>
-        /// Invert matrix. Do not try to invert degenerate matrices, 
-        /// there's no check for validity. If you set scale to 0 and 
+        /// Invert matrix. Do not try to invert degenerate matrices,
+        /// there's no check for validity. If you set scale to 0 and
         /// then try to invert matrix, expect unpredictable result.
         /// </summary>
         public void Invert()
@@ -1296,12 +1294,12 @@ namespace Cross.Drawing
             {
                 Matrix3x3 matrix = obj as Matrix3x3;
                 return
-                    (Math.Abs(Sx - matrix.Sx) <= AffineEpsilon) &&
-                    (Math.Abs(Shy - matrix.Shy) <= AffineEpsilon) &&
-                    (Math.Abs(Shx - matrix.Shx) <= AffineEpsilon) &&
-                    (Math.Abs(Sy - matrix.Sy) <= AffineEpsilon) &&
-                    (Math.Abs(Tx - matrix.Tx) <= AffineEpsilon) &&
-                    (Math.Abs(Ty - matrix.Ty) <= AffineEpsilon);
+                (Math.Abs(Sx - matrix.Sx) <= AffineEpsilon) &&
+                (Math.Abs(Shy - matrix.Shy) <= AffineEpsilon) &&
+                (Math.Abs(Shx - matrix.Shx) <= AffineEpsilon) &&
+                (Math.Abs(Sy - matrix.Sy) <= AffineEpsilon) &&
+                (Math.Abs(Tx - matrix.Tx) <= AffineEpsilon) &&
+                (Math.Abs(Ty - matrix.Ty) <= AffineEpsilon);
             }
             return base.Equals(obj);
         }
@@ -1315,7 +1313,7 @@ namespace Cross.Drawing
 
         #region Product
         /// <summary>
-        /// Product maxtrix from two matrix
+        /// Product matrix from two matrix
         /// </summary>
         /// <param name="source">source matrix</param>
         /// <param name="dest">dest matrix</param>
