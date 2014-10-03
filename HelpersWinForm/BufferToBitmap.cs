@@ -48,7 +48,7 @@ namespace Cross.Helpers
         /// <summary>
         /// Obtain a gdi+ System.Drawing.Bitmap from <see cref="RenderingBuffer"/>
         /// </summary>
-        public static System.Drawing.Bitmap GetBitmap(PixelsBuffer source, PixelFormat format)
+        public static Bitmap GetBitmap(PixelsBuffer source, PixelFormat format)
         {
             System.Drawing.Bitmap bmp = null;
             int width = source.Width;

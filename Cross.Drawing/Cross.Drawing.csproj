@@ -48,6 +48,11 @@
     <Compile Include="Color\Color spaces\Hsb.cs" />
     <Compile Include="Color\Color spaces\Hsl.cs" />
     <Compile Include="Color\Color spaces\Yuv.cs" />
+    <Compile Include="Compress\Compression.cs" />
+    <Compile Include="Compress\Heap.cs" />
+    <Compile Include="Compress\HuffmanCompression.cs" />
+    <Compile Include="Compress\ICompression.cs" />
+    <Compile Include="Compress\LZWCompression.cs" />
     <Compile Include="Drawing\Drawer\Drawer.cs" />
     <Compile Include="Drawing\Drawer\DrawerState.cs" />
     <Compile Include="Drawing\Drawer\IBufferDrawer.cs" />
