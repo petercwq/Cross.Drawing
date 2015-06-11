@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{D4E7FA78-FB1C-4621-9FEC-FBEEA81955CE}"
 EndProject
@@ -26,6 +26,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoUniversal.WindowsPhone", "DemoUniversal\DemoUniversal.WindowsPhone\DemoUniversal.WindowsPhone.csproj", "{EB5258E6-F4DB-459D-8EEF-1C455892CDF0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoWPF", "DemoWPF\DemoWPF.csproj", "{E19EACE9-5EFB-4FC0-8864-BBD938EF5B09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cross.Drawing.D3", "Cross.Drawing.3D\Cross.Drawing.D3.csproj", "{063EA101-F18C-4E67-960E-1BE505779BCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo3DCuboid", "Demo3DCuboid\Demo3DCuboid.csproj", "{A86C253C-8D26-4AC8-8DB0-0DFC2D1B7B2F}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -149,6 +153,26 @@ Global
 		{E19EACE9-5EFB-4FC0-8864-BBD938EF5B09}.Release|ARM.ActiveCfg = Release|Any CPU
 		{E19EACE9-5EFB-4FC0-8864-BBD938EF5B09}.Release|x64.ActiveCfg = Release|Any CPU
 		{E19EACE9-5EFB-4FC0-8864-BBD938EF5B09}.Release|x86.ActiveCfg = Release|Any CPU
+		{063EA101-F18C-4E67-960E-1BE505779BCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{063EA101-F18C-4E67-960E-1BE505779BCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{063EA101-F18C-4E67-960E-1BE505779BCB}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{063EA101-F18C-4E67-960E-1BE505779BCB}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{063EA101-F18C-4E67-960E-1BE505779BCB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{063EA101-F18C-4E67-960E-1BE505779BCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{063EA101-F18C-4E67-960E-1BE505779BCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{063EA101-F18C-4E67-960E-1BE505779BCB}.Release|ARM.ActiveCfg = Release|Any CPU
+		{063EA101-F18C-4E67-960E-1BE505779BCB}.Release|x64.ActiveCfg = Release|Any CPU
+		{063EA101-F18C-4E67-960E-1BE505779BCB}.Release|x86.ActiveCfg = Release|Any CPU
+		{A86C253C-8D26-4AC8-8DB0-0DFC2D1B7B2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A86C253C-8D26-4AC8-8DB0-0DFC2D1B7B2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A86C253C-8D26-4AC8-8DB0-0DFC2D1B7B2F}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{A86C253C-8D26-4AC8-8DB0-0DFC2D1B7B2F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A86C253C-8D26-4AC8-8DB0-0DFC2D1B7B2F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A86C253C-8D26-4AC8-8DB0-0DFC2D1B7B2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A86C253C-8D26-4AC8-8DB0-0DFC2D1B7B2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A86C253C-8D26-4AC8-8DB0-0DFC2D1B7B2F}.Release|ARM.ActiveCfg = Release|Any CPU
+		{A86C253C-8D26-4AC8-8DB0-0DFC2D1B7B2F}.Release|x64.ActiveCfg = Release|Any CPU
+		{A86C253C-8D26-4AC8-8DB0-0DFC2D1B7B2F}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -163,5 +187,6 @@ Global
 		{9B3F0A42-9020-4973-BE3A-2951B9C5F645} = {4CF54EE9-6E65-4DFE-8490-65C742CAF620}
 		{EB5258E6-F4DB-459D-8EEF-1C455892CDF0} = {4CF54EE9-6E65-4DFE-8490-65C742CAF620}
 		{E19EACE9-5EFB-4FC0-8864-BBD938EF5B09} = {D4E7FA78-FB1C-4621-9FEC-FBEEA81955CE}
+		{A86C253C-8D26-4AC8-8DB0-0DFC2D1B7B2F} = {D4E7FA78-FB1C-4621-9FEC-FBEEA81955CE}
 	EndGlobalSection
 EndGlobal
