@@ -31,6 +31,12 @@ namespace Cross.Drawing.D3
             get { return lineColor; }
         }
 
+        public void MoveBy(Vector3d vector)
+        {
+            Point3d.Offset(pts, vector.X, vector.Y, vector.Z);
+            center.Offset(vector.X, vector.Y, vector.Z);
+        }
+
         public void RotateAt(Point3d pt, Quaternion q)
         {
             // transform origin to pt

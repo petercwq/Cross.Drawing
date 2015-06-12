@@ -6,24 +6,11 @@ namespace Cross.Drawing.D3
 {
     public class Cuboid : Shape3d
     {
-        bool drawingLine = false, fillingFace = true, drawingImage = false;
-        public bool DrawingLine
-        {
-            set { drawingLine = value; }
-            get { return drawingLine; }
-        }
+        public bool DrawingLine { get; set; }
 
-        public bool FillingFace
-        {
-            set { fillingFace = value; }
-            get { return fillingFace; }
-        }
+        public bool FillingFace { get; set; }
 
-        public bool DrawingImage
-        {
-            set { drawingImage = value; }
-            get { return drawingImage; }
-        }
+        public bool DrawingImage { get; set; }
 
         Color[] faceColor = new Color[6] { Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Blue, Color.Purple };
         public Color[] FaceColorArray
@@ -62,6 +49,10 @@ namespace Cross.Drawing.D3
 
         public Cuboid(double a, double b, double c)
         {
+            DrawingLine = false;
+            FillingFace = true;
+            DrawingImage = false;
+
             center = new Point3d(a / 2, b / 2, c / 2);
             pts[0] = new Point3d(0, 0, 0);
             pts[1] = new Point3d(a, 0, 0);
@@ -72,7 +63,6 @@ namespace Cross.Drawing.D3
             pts[6] = new Point3d(a, b, c);
             pts[7] = new Point3d(0, b, c);
         }
-
 
         public override void Draw(Graphics g, Camera cam)
         {
@@ -99,11 +89,12 @@ namespace Cross.Drawing.D3
                 }
                 if (!isout)
                 {
-                    if (drawingLine) g.DrawPolygon(new Pen(lineColor), face[i]);
+                    if (DrawingLine)
+                        g.DrawPolygon(new Pen(lineColor, 2.0f), face[i]);
                     if (Vector.IsClockwise(face[i][0], face[i][1], face[i][2])) // the face can be seen by camera
                     {
-                        if (fillingFace) g.FillPolygon(new SolidBrush(faceColor[i]), face[i]);
-                        if (drawingImage && bmp[i] != null)
+                        if (FillingFace) g.FillPolygon(new SolidBrush(faceColor[i]), face[i]);
+                        if (DrawingImage && bmp[i] != null)
                         {
                             filters[i].FourCorners = face[i];
                             g.DrawImage(filters[i].Bitmap, filters[i].ImageLocation);
