@@ -2,9 +2,11 @@ using System;
 
 namespace Cross.Drawing.D3
 {
-    public struct Vector3d
+    public class Vector3d
     {
-        public double X, Y, Z;
+        public double X { get; private set; }
+        public double Y { get; private set; }
+        public double Z { get; private set; }
 
         public Vector3d(double x, double y, double z)
         {
@@ -37,6 +39,16 @@ namespace Cross.Drawing.D3
             }
         }
 
+        public Vector3d CrossProduct(Vector3d v)
+        {
+            return CrossProduct(this, v);
+        }
+
+        public double DotProduct(Vector3d v)
+        {
+            return DotProduct(this, v);
+        }
+
         public static Vector3d operator +(Vector3d v1, Vector3d v2)
         {
             return new Vector3d(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z);
@@ -61,16 +73,6 @@ namespace Cross.Drawing.D3
         public static double DotProduct(Vector3d v1, Vector3d v2) // A . B = |A|*|B|*cos(angle)
         {
             return (v1.X * v2.X + v1.Y * v2.Y + v1.Z * v2.Z);
-        }
-
-        public Vector3d CrossProduct(Vector3d v)
-        {
-            return CrossProduct(this, v);
-        }
-
-        public double DotProduct(Vector3d v)
-        {
-            return DotProduct(this, v);
         }
 
         public static bool isForeFace(Point3d pt1, Point3d pt2, Point3d pt3) // pts on a plane

@@ -2,9 +2,12 @@ using System.Drawing;
 
 namespace Cross.Drawing.D3
 {
-    public struct Point3d
+    public class Point3d
     {
-        public double X, Y, Z; // coordinate system follows right-hand rule
+        public double X { get; internal set; }
+        public double Y { get; internal set; }
+        public double Z { get; internal set; }
+        // coordinate system follows right-hand rule
 
         public Point3d(double x, double y, double z)
         {
@@ -21,10 +24,10 @@ namespace Cross.Drawing.D3
             return new Point3d(this.X, this.Y, this.Z);
         }
 
-        public Vector3d ToVector3d()
-        {
-            return new Vector3d(X, Y, Z);
-        }
+        //public Vector3d ToVector3d()
+        //{
+        //    return new Vector3d(X, Y, Z);
+        //}
 
         public void Offset(double x, double y, double z)
         {

@@ -42,12 +42,15 @@ namespace Cross.Drawing.D3
             // transform origin to pt
             Point3d[] copy = Point3d.Copy(pts);
             Point3d.Offset(copy, -pt.X, -pt.Y, -pt.Z);
+            center.Offset(-pt.X, -pt.Y, -pt.Z);
 
             // rotate
             q.Rotate(copy);
+            // TODO:???
             q.Rotate(center);
 
             // transform to original origin
+            center.Offset(pt.X, pt.Y, pt.Z);
             Point3d.Offset(copy, pt.X, pt.Y, pt.Z);
             pts = copy;
         }

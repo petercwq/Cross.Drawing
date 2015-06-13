@@ -42,6 +42,19 @@
   <ItemGroup>
     <Compile Include="Camera.cs" />
     <Compile Include="Cuboid.cs" />
+    <Compile Include="New\DoubleUtil.cs" />
+    <Compile Include="New\M3DUtil.cs" />
+    <Compile Include="New\Matrix.cs" />
+    <Compile Include="New\Matrix3D.cs" />
+    <Compile Include="New\Point.cs" />
+    <Compile Include="New\Point3D.cs" />
+    <Compile Include="New\Quaternion.cs" />
+    <Compile Include="New\Rect.cs" />
+    <Compile Include="New\Rect3D.cs" />
+    <Compile Include="New\Size.cs" />
+    <Compile Include="New\Size3D.cs" />
+    <Compile Include="New\Vector.cs" />
+    <Compile Include="New\Vector3D.cs" />
     <Compile Include="Point3d.cs" />
     <Compile Include="Quaternion.cs" />
     <Compile Include="Shape3d.cs" />

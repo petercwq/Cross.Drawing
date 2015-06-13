@@ -2,9 +2,12 @@ using System;
 
 namespace Cross.Drawing.D3
 {
-    public struct Quaternion
+    public class Quaternion
     {
-        public double X, Y, Z, W;
+        public double X { get; private set; }
+        public double Y { get; private set; }
+        public double Z { get; private set; }
+        public double W { get; private set; }
 
         public Quaternion(double w, double x, double y, double z)
         {
@@ -59,39 +62,40 @@ namespace Cross.Drawing.D3
 
         public void Conjugate()
         {
-            X = -X; Y = -Y; Z = -Z;
+            X = -X; 
+            Y = -Y;
+            Z = -Z;
         }
 
-        public void FromAxisAngle(Vector3d axis, double angleRadian)
-        {
-            double m = axis.Magnitude;
-            if (m > 0.0001)
-            {
-                double ca = Math.Cos(angleRadian / 2);
-                double sa = Math.Sin(angleRadian / 2);
-                X = axis.X / m * sa;
-                Y = axis.Y / m * sa;
-                Z = axis.Z / m * sa;
-                W = ca;
-            }
-            else
-            {
-                W = 1; X = 0; Y = 0; Z = 0;
-            }
-        }
+        //public void FromAxisAngle(Vector3d axis, double angleRadian)
+        //{
+        //    double m = axis.Magnitude;
+        //    if (m > 0.0001)
+        //    {
+        //        double ca = Math.Cos(angleRadian / 2);
+        //        double sa = Math.Sin(angleRadian / 2);
+        //        X = axis.X / m * sa;
+        //        Y = axis.Y / m * sa;
+        //        Z = axis.Z / m * sa;
+        //        W = ca;
+        //    }
+        //    else
+        //    {
+        //        W = 1; X = 0; Y = 0; Z = 0;
+        //    }
+        //}
 
         public Quaternion Copy()
         {
             return new Quaternion(W, X, Y, Z);
         }
 
-        public void Multiply(Quaternion q)
-        {
-            this *= q;
-        }
-
-        //                  -1
-        // V'=q*V*q     ,
+        //public void Multiply(Quaternion q)
+        //{
+        //    this *= q;
+        //}
+        
+        // V'=q*V*q^-1
         public void Rotate(Point3d pt)
         {
             this.Normalise();

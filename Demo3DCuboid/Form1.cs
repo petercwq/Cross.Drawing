@@ -117,8 +117,7 @@ namespace Demo3DCuboid
         {
             cubeX += 5;
             labelCrX.Text = cubeX.ToString();
-            Quaternion q = new Quaternion();
-            q.FromAxisAngle(new Vector3d(1, 0, 0), 5 * Math.PI / 180.0);
+            Quaternion q = new Quaternion(new Vector3d(1, 0, 0), 5 * Math.PI / 180.0);
             cub.RotateAt(cub.Center, q);
             ReDraw();
         }
@@ -127,8 +126,7 @@ namespace Demo3DCuboid
         {
             cubeX -= 5;
             labelCrX.Text = cubeX.ToString();
-            Quaternion q = new Quaternion();
-            q.FromAxisAngle(new Vector3d(1, 0, 0), -5 * Math.PI / 180.0);
+            Quaternion q = new Quaternion(new Vector3d(1, 0, 0), -5 * Math.PI / 180.0);
             cub.RotateAt(cub.Center, q);
             ReDraw();
         }
@@ -137,8 +135,7 @@ namespace Demo3DCuboid
         {
             cubeY += 5;
             labelCrY.Text = cubeY.ToString();
-            Quaternion q = new Quaternion();
-            q.FromAxisAngle(new Vector3d(0, 1, 0), 5 * Math.PI / 180.0);
+            Quaternion q = new Quaternion(new Vector3d(0, 1, 0), 5 * Math.PI / 180.0);
             cub.RotateAt(cub.Center, q);
             ReDraw();
         }
@@ -147,8 +144,7 @@ namespace Demo3DCuboid
         {
             cubeY -= 5;
             labelCrY.Text = cubeY.ToString();
-            Quaternion q = new Quaternion();
-            q.FromAxisAngle(new Vector3d(0, 1, 0), -5 * Math.PI / 180.0);
+            Quaternion q = new Quaternion(new Vector3d(0, 1, 0), -5 * Math.PI / 180.0);
             cub.RotateAt(cub.Center, q);
             ReDraw();
         }
@@ -157,8 +153,7 @@ namespace Demo3DCuboid
         {
             cubeZ += 5;
             labelCrZ.Text = cubeZ.ToString();
-            Quaternion q = new Quaternion();
-            q.FromAxisAngle(new Vector3d(0, 0, 1), 5 * Math.PI / 180.0);
+            Quaternion q = new Quaternion(new Vector3d(0, 0, 1), 5 * Math.PI / 180.0);
             cub.RotateAt(cub.Center, q);
             ReDraw();
         }
@@ -167,8 +162,7 @@ namespace Demo3DCuboid
         {
             cubeZ -= 5;
             labelCrZ.Text = cubeZ.ToString();
-            Quaternion q = new Quaternion();
-            q.FromAxisAngle(new Vector3d(0, 0, 1), -5 * Math.PI / 180.0);
+            Quaternion q = new Quaternion(new Vector3d(0, 0, 1), -5 * Math.PI / 180.0);
             cub.RotateAt(cub.Center, q);
             ReDraw();
         }

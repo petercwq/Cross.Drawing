@@ -3,36 +3,28 @@ using System.Drawing;
 
 namespace Cross.Drawing.D3
 {
-    public struct Vector
+    public class Vector
     {
-        double _x, _y;
-
         public Vector(double x, double y)
         {
-            _x = x; _y = y;
+            X = x;
+            Y = y;
         }
+
         public Vector(PointF pt)
         {
-            _x = pt.X;
-            _y = pt.Y;
+            X = pt.X;
+            Y = pt.Y;
         }
         public Vector(PointF st, PointF end)
         {
-            _x = end.X - st.X;
-            _y = end.Y - st.Y;
+            X = end.X - st.X;
+            Y = end.Y - st.Y;
         }
 
-        public double X
-        {
-            get { return _x; }
-            set { _x = value; }
-        }
+        public double X { get; private set; }
 
-        public double Y
-        {
-            get { return _y; }
-            set { _y = value; }
-        }
+        public double Y { get; private set; }
 
         public double Magnitude
         {
@@ -72,13 +64,13 @@ namespace Cross.Drawing.D3
         // A * B =|A|.|B|.sin(angle AOB)
         public double CrossProduct(Vector v)
         {
-            return _x * v.Y - v.X * _y;
+            return X * v.Y - v.X * Y;
         }
 
         // A. B=|A|.|B|.cos(angle AOB)
         public double DotProduct(Vector v)
         {
-            return _x * v.X + _y * v.Y;
+            return X * v.X + Y * v.Y;
         }
 
         public static bool IsClockwise(PointF pt1, PointF pt2, PointF pt3)
@@ -108,15 +100,15 @@ namespace Cross.Drawing.D3
             double radian = Degree * Math.PI / 180.0;
             double sin = Math.Sin(radian);
             double cos = Math.Cos(radian);
-            double nx = _x * cos - _y * sin;
-            double ny = _x * sin + _y * cos;
-            _x = nx;
-            _y = ny;
+            double nx = X * cos - Y * sin;
+            double ny = X * sin + Y * cos;
+            X = nx;
+            Y = ny;
         }
 
         public PointF ToPointF()
         {
-            return new PointF((float)_x, (float)_y);
+            return new PointF((float)X, (float)Y);
         }
     }
 }
