@@ -23,12 +23,6 @@ namespace Cross.Drawing._3D.New
     /// </summary>
     public struct Matrix3D
     {
-        //------------------------------------------------------
-        //
-        //  Constructors
-        //
-        //------------------------------------------------------
-
         /// <summary>
         /// Constructor that sets matrix's initial values.
         /// </summary>
@@ -75,12 +69,6 @@ namespace Cross.Drawing._3D.New
             // in the ctor rather than the property because of CS0188.
             _isNotKnownToBeIdentity = true;
         }
-
-        //------------------------------------------------------
-        //
-        //  Identity
-        //
-        //------------------------------------------------------
 
         // Identity
         /// <summary>
@@ -132,12 +120,6 @@ namespace Cross.Drawing._3D.New
                 }
             }
         }
-
-        //------------------------------------------------------
-        //
-        //  Math Operations
-        //
-        //------------------------------------------------------
 
         // Math operations
 
@@ -1332,12 +1314,6 @@ namespace Cross.Drawing._3D.New
         // The hash code for a matrix is the xor of its element's hashes.
         // Since the identity matrix has 4 1's and 12 0's its hash is 0.
         private const int c_identityHashCode = 0;
-
-        //------------------------------------------------------
-        //
-        //  Public Methods
-        //
-        //------------------------------------------------------
 
         /// <summary>
         /// Compares two Matrix3D instances for exact equality.

@@ -7,12 +7,6 @@ namespace Cross.Drawing._3D.New
     /// </summary>
     public struct Point3D
     {
-        //------------------------------------------------------
-        //
-        //  Constructors
-        //
-        //------------------------------------------------------
-
         /// <summary>
         /// Constructor that sets point's initial values.
         /// </summary>
@@ -25,12 +19,6 @@ namespace Cross.Drawing._3D.New
             _y = y;
             _z = z;
         }
-
-        //------------------------------------------------------
-        //
-        //  Public Methods
-        //
-        //------------------------------------------------------
 
         /// <summary>
         /// Offset - update point position by adding offsetX to X, offsetY to Y, and offsetZ to Z.
@@ -167,12 +155,6 @@ namespace Cross.Drawing._3D.New
             return new Vector3D(point._x, point._y, point._z);
         }
 
-        //------------------------------------------------------
-        //
-        //  Public Methods
-        //
-        //------------------------------------------------------
-
         /// <summary>
         /// Compares two Point3D instances for exact equality.
         /// Note that double values can acquire error when operated upon, such that
@@ -275,12 +257,6 @@ namespace Cross.Drawing._3D.New
             Y.GetHashCode() ^
             Z.GetHashCode();
         }
-
-        //------------------------------------------------------
-        //
-        //  Public Properties
-        //
-        //------------------------------------------------------
 
         /// <summary>
         ///     X - double.  Default value is 0.

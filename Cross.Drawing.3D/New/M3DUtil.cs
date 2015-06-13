@@ -5,11 +5,9 @@ namespace Cross.Drawing._3D.New
 {
     internal static class M3DUtil
     {
-        // Returns the interpolated 3D point from the given positions and barycentric
-        // coordinate.
+        // Returns the interpolated 3D point from the given positions and barycentric coordinate.
         //
-        // NOTE: v0-v2 and barycentric are passed by ref for performance.  They are
-        //       not modified.
+        // NOTE: v0-v2 and barycentric are passed by ref for performance.  They are not modified.
         //
         internal static Point3D Interpolate(ref Point3D v0, ref Point3D v1, ref Point3D v2, ref Point barycentric)
         {

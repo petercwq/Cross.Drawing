@@ -32,9 +32,6 @@ namespace Cross.Drawing._3D.New
     // and translation*translation by 30% compared to a single "no-branch"
     // multiplication algorithm.  Matrix multiplication of two unknown
     // matrices is slowed by 20% compared to the no-branch algorithm.
-    //
-    // windows/wcp/DevTest/Drts/MediaApi/MediaPerf.cs includes the
-    // simple test of matrix multiplication speed used for these results.
 
     ///<summary>
     /// Matrix
@@ -141,7 +138,7 @@ namespace Cross.Drawing._3D.New
         /// <summary>
         /// Rotates this matrix about the origin
         /// </summary>
-        /// <param name='angle'>The angle to rotate specifed in degrees</param>
+        /// <param name='angle'>The angle to rotate specified in degrees</param>
         public void Rotate(double angle)
         {
             angle %= 360.0; // Doing the modulo before converting to radians reduces total error
@@ -151,7 +148,7 @@ namespace Cross.Drawing._3D.New
         /// <summary>
         /// Prepends a rotation about the origin to "this"
         /// </summary>
-        /// <param name='angle'>The angle to rotate specifed in degrees</param>
+        /// <param name='angle'>The angle to rotate specified in degrees</param>
         public void RotatePrepend(double angle)
         {
             angle %= 360.0; // Doing the modulo before converting to radians reduces total error
@@ -953,12 +950,6 @@ namespace Cross.Drawing._3D.New
         //
         internal Int32 _padding;
 #pragma warning restore 0414
-
-        //------------------------------------------------------
-        //
-        //  Public Methods
-        //
-        //------------------------------------------------------
 
         /// <summary>
         /// Compares two Matrix instances for exact equality.

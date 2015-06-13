@@ -5,9 +5,8 @@ namespace Cross.Drawing._3D.New
     /// <summary>
     /// Point - Defaults to 0,0
     /// </summary>
-    public partial struct Point
+    public struct Point
     {
-
         /// <summary>
         /// Constructor which accepts the X and Y values
         /// </summary>
@@ -149,12 +148,6 @@ namespace Cross.Drawing._3D.New
             return new Vector(point._x, point._y);
         }
 
-        //------------------------------------------------------
-        //
-        //  Public Methods
-        //
-        //------------------------------------------------------
-
         /// <summary>
         /// Compares two Point instances for exact equality.
         /// Note that double values can acquire error when operated upon, such that
@@ -254,12 +247,6 @@ namespace Cross.Drawing._3D.New
             return X.GetHashCode() ^
             Y.GetHashCode();
         }
-
-        //------------------------------------------------------
-        //
-        //  Public Properties
-        //
-        //------------------------------------------------------
 
         /// <summary>
         ///     X - double.  Default value is 0.

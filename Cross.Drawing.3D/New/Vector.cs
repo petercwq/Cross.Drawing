@@ -7,7 +7,6 @@ namespace Cross.Drawing._3D.New
     /// </summary>
     public struct Vector
     {
-
         /// <summary>
         /// Constructor which sets the vector's initial values
         /// </summary>
@@ -277,12 +276,6 @@ namespace Cross.Drawing._3D.New
             return new Point(vector._x, vector._y);
         }
 
-        //------------------------------------------------------
-        //
-        //  Public Methods
-        //
-        //------------------------------------------------------
-
         /// <summary>
         /// Compares two Vector instances for exact equality.
         /// Note that double values can acquire error when operated upon, such that
@@ -382,7 +375,6 @@ namespace Cross.Drawing._3D.New
             return X.GetHashCode() ^
             Y.GetHashCode();
         }
-
 
         /// <summary>
         ///     X - double.  Default value is 0.

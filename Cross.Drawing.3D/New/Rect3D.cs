@@ -91,12 +91,6 @@ namespace Cross.Drawing._3D.New
 
         }
 
-        //------------------------------------------------------
-        //
-        //  Public Properties
-        //
-        //------------------------------------------------------
-
         /// <summary>
         /// Empty - a static property which provides an Empty rectangle.  X, Y, and Z are
         /// positive-infinity and sizes are negative infinity.  This is the only situation
@@ -311,12 +305,6 @@ namespace Cross.Drawing._3D.New
                 _z = value;
             }
         }
-
-        //------------------------------------------------------
-        //
-        //  Public Methods
-        //
-        //------------------------------------------------------
 
         /// <summary>
         /// Returns true if the point is within the rectangle, inclusive of the edges.
@@ -630,12 +618,6 @@ namespace Cross.Drawing._3D.New
         //------------------------------------------------------
 
         private readonly static Rect3D s_empty = CreateEmptyRect3D();
-
-        //------------------------------------------------------
-        //
-        //  Public Methods
-        //
-        //------------------------------------------------------
 
         /// <summary>
         /// Compares two Rect3D instances for exact equality.

@@ -10,7 +10,6 @@ namespace Cross.Drawing._3D.New
     /// </summary>
     public struct Rect
     {
-
         /// <summary>
         /// Constructor which sets the initial values to the values of the parameters
         /// </summary>
@@ -764,12 +763,6 @@ namespace Cross.Drawing._3D.New
         }
 
         private readonly static Rect s_empty = CreateEmptyRect();
-
-        //------------------------------------------------------
-        //
-        //  Public Methods
-        //
-        //------------------------------------------------------
 
         /// <summary>
         /// Compares two Rect instances for exact equality.

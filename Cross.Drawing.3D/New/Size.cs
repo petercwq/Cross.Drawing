@@ -7,7 +7,6 @@ namespace Cross.Drawing._3D.New
     /// </summary>
     public struct Size
     {
-
         /// <summary>
         /// Constructor which sets the size's initial values.  Width and Height must be non-negative
         /// </summary>
@@ -135,12 +134,6 @@ namespace Cross.Drawing._3D.New
         }
 
         private readonly static Size s_empty = CreateEmptySize();
-
-        //------------------------------------------------------
-        //
-        //  Public Methods
-        //
-        //------------------------------------------------------
 
         /// <summary>
         /// Compares two Size instances for exact equality.

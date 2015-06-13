@@ -4,12 +4,6 @@ namespace Cross.Drawing._3D.New
 {
     public struct Vector3D
     {
-        //------------------------------------------------------
-        //
-        //  Constructors
-        //
-        //------------------------------------------------------
-
         /// <summary>
         /// Constructor that sets vector's initial values.
         /// </summary>
@@ -22,12 +16,6 @@ namespace Cross.Drawing._3D.New
             _y = y;
             _z = z;
         }
-
-        //------------------------------------------------------
-        //
-        //  Public Methods
-        //
-        //------------------------------------------------------
 
         /// <summary>
         /// Length of the vector.
@@ -443,12 +431,6 @@ namespace Cross.Drawing._3D.New
             return new Size3D(Math.Abs(vector._x), Math.Abs(vector._y), Math.Abs(vector._z));
         }
 
-        //------------------------------------------------------
-        //
-        //  Public Methods
-        //
-        //------------------------------------------------------
-
         /// <summary>
         /// Compares two Vector3D instances for exact equality.
         /// Note that double values can acquire error when operated upon, such that
@@ -551,12 +533,6 @@ namespace Cross.Drawing._3D.New
             Y.GetHashCode() ^
             Z.GetHashCode();
         }
-
-        //------------------------------------------------------
-        //
-        //  Public Properties
-        //
-        //------------------------------------------------------
 
         /// <summary>
         ///     X - double.  Default value is 0.

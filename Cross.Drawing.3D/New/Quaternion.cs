@@ -55,12 +55,6 @@ namespace Cross.Drawing._3D.New
             _isNotDistinguishedIdentity = true;
         }
 
-        //------------------------------------------------------
-        //
-        //  Public Methods
-        //
-        //------------------------------------------------------
-
         /// <summary>
         ///     Identity quaternion
         /// </summary>
@@ -552,12 +546,6 @@ namespace Cross.Drawing._3D.New
             return a;
         }
 
-        //------------------------------------------------------
-        //
-        //  Public Properties
-        //
-        //------------------------------------------------------
-
         /// <summary>
         /// X - Default value is 0.
         /// </summary>
@@ -700,12 +688,6 @@ namespace Cross.Drawing._3D.New
 
         // Default identity
         private static Quaternion s_identity = GetIdentity();
-
-        //------------------------------------------------------
-        //
-        //  Public Methods
-        //
-        //------------------------------------------------------
 
         /// <summary>
         /// Compares two Quaternion instances for exact equality.
