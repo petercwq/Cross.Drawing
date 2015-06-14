@@ -9,9 +9,34 @@ namespace Demo3D
 {
     class RubikCube
     {
-        // Front, Back, Left, Right, Up, Down
-        static readonly Color edgeColor = Colors.DarkGray;
-        static readonly Color[] FaceColors = new Color[6] { Colors.Red, Colors.Yellow, Colors.Green, Colors.Cyan, Colors.Blue, Colors.Magenta };
+        // Front, Back, Right, Left, Up, Down
+        enum Faces : byte
+        {
+            Front = 0,
+            Back = 1,
+            Right = 2,
+            Left = 3,
+            Up = 4,
+            Down = 5
+        }
+
+        enum PieceType : byte
+        {
+            Center = 1,
+            Edge = 2,
+            Corner = 3
+        }
+
+        static readonly uint[] FaceColors = new uint[6] 
+        {
+            Argbs.Blue,
+            Argbs.Green,
+            Argbs.Red,
+            Argbs.Orange,
+            Argbs.Yellow,
+            Argbs.White
+        };
+
         readonly Cuboid[, ,] cuboids;
         readonly int rank;
 

@@ -10,8 +10,8 @@ namespace Cross.Drawing.D3
         public bool FillingFace { get; set; }
         public bool DrawingImage { get; set; }
 
-        Color[] faceColor = new Color[6] { Colors.Red, Colors.Orange, Colors.Yellow, Colors.Green, Colors.Blue, Colors.Purple };
-        public Color[] FaceColors
+        uint[] faceColor = new uint[6] { Argbs.Red, Argbs.Orange, Argbs.Yellow, Argbs.Green, Argbs.Blue, Argbs.Purple };
+        public uint[] FaceColors
         {
             set
             {

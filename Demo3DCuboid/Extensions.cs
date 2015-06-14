@@ -6,10 +6,10 @@ namespace Demo3D
 {
     public static class Extensions
     {
-        public static System.Drawing.Color ToSystemColor(this Cross.Drawing.Color color)
-        {
-            return System.Drawing.Color.FromArgb(color.Alpha, color.Red, color.Green, color.Blue);
-        }
+        //public static System.Drawing.Color ToSystemColor(this Cross.Drawing.Color color)
+        //{
+        //    return System.Drawing.Color.FromArgb(color.Alpha, color.Red, color.Green, color.Blue);
+        //}
 
         public static PointF[] FromD3Points(Point[] pts)
         {
@@ -50,7 +50,7 @@ namespace Demo3D
                         g.DrawPolygon(new Pen(Color.Blue, 2.0f), FromD3Points(face[i]));
                     if (Vector.IsClockwise(face[i][0], face[i][1], face[i][2])) // the face can be seen by camera
                     {
-                        if (cube.FillingFace) g.FillPolygon(new SolidBrush(cube.FaceColors[i].ToSystemColor()), FromD3Points(face[i]));
+                        if (cube.FillingFace) g.FillPolygon(new SolidBrush(Color.FromArgb((int)(cube.FaceColors[i]))), FromD3Points(face[i]));
                         if (cube.DrawingImage && cube.FaceImages[i] != null)
                         {
                             cube.filters[i].FourCorners = FromD3Points(face[i]);
