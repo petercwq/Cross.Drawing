@@ -2,7 +2,7 @@
 using Cross.Drawing.D3;
 using Point = Cross.Drawing.D3.Point;
 
-namespace Demo3DCuboid
+namespace Demo3D
 {
     public static class Extensions
     {
@@ -23,7 +23,7 @@ namespace Demo3DCuboid
 
         public static void Draw(this Cuboid cube, Graphics g, Camera cam)
         {
-            var pts2d = cam.GetProjection(cube.Point3DArray);//.Select<Point, PointF>(x => new PointF((float)(x.X), (float)(x.Y))).ToArray();
+            var pts2d = cam.GetProjection(cube.Points);//.Select<Point, PointF>(x => new PointF((float)(x.X), (float)(x.Y))).ToArray();
 
             Point[][] face = new Point[6][];
             face[0] = new Point[] { pts2d[0], pts2d[1], pts2d[2], pts2d[3] };
@@ -47,11 +47,11 @@ namespace Demo3DCuboid
                 if (!isout)
                 {
                     if (cube.DrawingLine)
-                        g.DrawPolygon(new Pen(cube.LineColor.ToSystemColor(), 2.0f), FromD3Points(face[i]));
+                        g.DrawPolygon(new Pen(Color.Blue, 2.0f), FromD3Points(face[i]));
                     if (Vector.IsClockwise(face[i][0], face[i][1], face[i][2])) // the face can be seen by camera
                     {
-                        if (cube.FillingFace) g.FillPolygon(new SolidBrush(cube.FaceColorArray[i].ToSystemColor()), FromD3Points(face[i]));
-                        if (cube.DrawingImage && cube.FaceImageArray[i] != null)
+                        if (cube.FillingFace) g.FillPolygon(new SolidBrush(cube.FaceColors[i].ToSystemColor()), FromD3Points(face[i]));
+                        if (cube.DrawingImage && cube.FaceImages[i] != null)
                         {
                             cube.filters[i].FourCorners = FromD3Points(face[i]);
                             g.DrawImage(cube.filters[i].Bitmap, (float)cube.filters[i].ImageLocation.X, (float)cube.filters[i].ImageLocation.Y);

@@ -1,4 +1,4 @@
-﻿namespace Demo3DCuboid
+﻿namespace Demo3D
 {
     partial class Form1
     {

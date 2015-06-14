@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Cross.Drawing.D3;
 
-namespace Demo3DCuboid
+namespace Demo3D
 {
     public partial class Form1 : Form
     {
@@ -292,7 +292,7 @@ namespace Demo3DCuboid
                 bmp[i] = new Bitmap(o.FileName);
                 i++;
             }
-            cub.FaceImageArray = bmp;
+            cub.FaceImages = bmp;
             cub.DrawingLine = false;
             cub.DrawingImage = true;
             cub.FillingFace = true;

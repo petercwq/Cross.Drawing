@@ -2,9 +2,9 @@
 using System.Windows.Forms;
 using Cross.Drawing.D3;
 
-namespace Demo3DRubikCube
+namespace Demo3D
 {
-    public partial class Form1 : Form
+    public partial class Form2 : Form
     {
         //orientation
         //int cameraX = 0, cameraY = 0, cameraZ = 0, cubeX = 0, cubeY = 0, cubeZ = 0;
@@ -12,7 +12,7 @@ namespace Demo3DRubikCube
         RubikCube cub = new RubikCube(5, 100);
         Camera cam = new Camera();
 
-        public Form1()
+        public Form2()
         {
             InitializeComponent();
             this.DoubleBuffered = true;

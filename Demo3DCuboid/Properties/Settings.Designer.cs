@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Demo3DCuboid.Properties
+namespace Demo3D.Properties
 {
 
 

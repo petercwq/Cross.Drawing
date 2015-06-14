@@ -59,6 +59,7 @@
     <Compile Include="D3\Quaternion.cs" />
     <Compile Include="D3\Rect.cs" />
     <Compile Include="D3\Rect3D.cs" />
+    <Compile Include="D3\Shape3D.cs" />
     <Compile Include="D3\Size.cs" />
     <Compile Include="D3\Size3D.cs" />
     <Compile Include="D3\Vector.cs" />

@@ -3,9 +3,9 @@ using System.Drawing;
 using Cross.Drawing;
 using Cross.Drawing.D3;
 using Color = Cross.Drawing.Color;
-using Demo3DCuboid;
+using Demo3D;
 
-namespace Demo3DRubikCube
+namespace Demo3D
 {
     class RubikCube
     {
@@ -23,10 +23,9 @@ namespace Demo3DRubikCube
                 double dx = value.X - center.X;
                 double dy = value.Y - center.Y;
                 double dz = value.Z - center.Z;
-                var vector = new Vector3D(dx, dy, dz);
                 foreach (var cuboid in cuboids)
                 {
-                    cuboid.MoveBy(vector);
+                    cuboid.MoveBy(dx, dy, dz);
                 }
                 center = value;
             }
@@ -42,9 +41,8 @@ namespace Demo3DRubikCube
             ForEach((i, j, k) =>
             {
                 var cub = new Cuboid(edge, edge, edge);
-                cub.MoveBy(new Vector3D(i * edge - temp, j * edge - temp, k * edge - temp));
+                cub.MoveBy(i * edge - temp, j * edge - temp, k * edge - temp);
                 cub.DrawingLine = true;
-                cub.LineColor = edgeColor;
                 cub.FillingFace = false;
                 cuboids[i, j, k] = cub;
             });

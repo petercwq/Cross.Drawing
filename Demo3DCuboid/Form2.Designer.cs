@@ -1,6 +1,6 @@
-﻿namespace Demo3DRubikCube
+﻿namespace Demo3D
 {
-    partial class Form1
+    partial class Form2
     {
         /// <summary>
         /// Required designer variable.

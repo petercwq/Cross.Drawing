@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Demo3DCuboid
+namespace Demo3D
 {
     static class Program
     {
@@ -13,7 +13,7 @@ namespace Demo3DCuboid
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MainForm());
         }
     }
 }
