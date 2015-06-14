@@ -1,26 +1,29 @@
 ﻿using System;
 using System.Drawing;
+using Cross.Drawing;
 using Cross.Drawing.D3;
+using Color = Cross.Drawing.Color;
+using Demo3DCuboid;
 
 namespace Demo3DRubikCube
 {
     class RubikCube
     {
         // Front, Back, Left, Right, Up, Down
-        static readonly Color edgeColor = Color.DarkGray;
-        static readonly Color[] FaceColors = new Color[6] { Color.Red, Color.Yellow, Color.Green, Color.Cyan, Color.Blue, Color.Magenta };
+        static readonly Color edgeColor = Colors.DarkGray;
+        static readonly Color[] FaceColors = new Color[6] { Colors.Red, Colors.Yellow, Colors.Green, Colors.Cyan, Colors.Blue, Colors.Magenta };
         readonly Cuboid[, ,] cuboids;
         readonly int rank;
 
-        private Point3d center;
-        public Point3d Center
+        private Point3D center;
+        public Point3D Center
         {
             set
             {
                 double dx = value.X - center.X;
                 double dy = value.Y - center.Y;
                 double dz = value.Z - center.Z;
-                var vector = new Vector3d(dx, dy, dz);
+                var vector = new Vector3D(dx, dy, dz);
                 foreach (var cuboid in cuboids)
                 {
                     cuboid.MoveBy(vector);
@@ -39,17 +42,17 @@ namespace Demo3DRubikCube
             ForEach((i, j, k) =>
             {
                 var cub = new Cuboid(edge, edge, edge);
-                cub.MoveBy(new Vector3d(i * edge - temp, j * edge - temp, k * edge - temp));
+                cub.MoveBy(new Vector3D(i * edge - temp, j * edge - temp, k * edge - temp));
                 cub.DrawingLine = true;
                 cub.LineColor = edgeColor;
                 cub.FillingFace = false;
                 cuboids[i, j, k] = cub;
             });
             // default center is 0,0,0
-            center = new Point3d(0, 0, 0);
+            center = new Point3D(0, 0, 0);
         }
 
-        public void RotateAt(Point3d pt, Quaternion q)
+        public void RotateAt(Point3D pt, Quaternion q)
         {
             foreach (var cuboid in cuboids)
             {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Cross.Drawing._3D.New
+namespace Cross.Drawing.D3
 {
     /// <summary>
     /// Size - A value type which defined a size in terms of non-negative width and height

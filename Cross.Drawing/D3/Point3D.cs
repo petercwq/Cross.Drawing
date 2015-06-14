@@ -1,5 +1,5 @@
 ﻿
-namespace Cross.Drawing._3D.New
+namespace Cross.Drawing.D3
 {
     /// <summary>
     /// Point3D - 3D point representation.

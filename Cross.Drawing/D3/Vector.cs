@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Cross.Drawing._3D.New
+namespace Cross.Drawing.D3
 {
     /// <summary>
     /// Vector - A value type which defined a vector in terms of X and Y
@@ -16,6 +16,12 @@ namespace Cross.Drawing._3D.New
         {
             _x = x;
             _y = y;
+        }
+
+        public Vector(Point st, Point end)
+        {
+            _x = end.X - st.X;
+            _y = end.Y - st.Y;
         }
 
         /// <summary>
@@ -424,6 +430,39 @@ namespace Cross.Drawing._3D.New
         internal double _x;
         internal double _y;
 
+
+        public static bool IsClockwise(Point pt1, Point pt2, Point pt3)
+        {
+            Vector V21 = new Vector(pt2, pt1);
+            Vector v23 = new Vector(pt2, pt3);
+            return CrossProduct(V21, v23) < 0; // sin(angle pt1 pt2 pt3) > 0, 0<angle pt1 pt2 pt3 <180
+        }
+
+        public static bool IsCCW(Point pt1, Point pt2, Point pt3)
+        {
+            Vector V21 = new Vector(pt2, pt1);
+            Vector v23 = new Vector(pt2, pt3);
+            return CrossProduct(V21, v23) > 0;  // sin(angle pt2 pt1 pt3) < 0, 180<angle pt2 pt1 pt3 <360
+        }
+
+        public static double DistancePointLine(Point pt, Point lnA, Point lnB)
+        {
+            Vector v1 = new Vector(lnA, lnB);
+            Vector v2 = new Vector(lnA, pt);
+            v1.Normalize();
+            return Math.Abs(CrossProduct(v2, v1));
+        }
+
+        public void Rotate(int degree)
+        {
+            double radian = degree * Math.PI / 180.0;
+            double sin = Math.Sin(radian);
+            double cos = Math.Cos(radian);
+            double nx = X * cos - Y * sin;
+            double ny = X * sin + Y * cos;
+            X = nx;
+            Y = ny;
+        }
     }
 }
 

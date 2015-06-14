@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace Cross.Drawing._3D.New
+namespace Cross.Drawing.D3
 {
     /// <summary>
     /// Quaternions.

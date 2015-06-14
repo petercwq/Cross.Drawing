@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Cross.Drawing._3D.New
+namespace Cross.Drawing.D3
 {
     /// <summary>
     /// Point - Defaults to 0,0

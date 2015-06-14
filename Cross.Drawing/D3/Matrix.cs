@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace Cross.Drawing._3D.New
+namespace Cross.Drawing.D3
 {
     // IMPORTANT
     //
@@ -1292,7 +1292,7 @@ namespace Cross.Drawing._3D.New
                     return;
 #if DEBUG
                 default:
-                    Debug.Fail("Matrix multiply hit an invalid case: " + combinedType);
+                    Debug.Assert(false, "Matrix multiply hit an invalid case: " + combinedType);
                     break;
 #endif
             }

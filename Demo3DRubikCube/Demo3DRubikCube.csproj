@@ -79,9 +79,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Cross.Drawing.3D\Cross.Drawing.D3.csproj">
-      <Project>{063ea101-f18c-4e67-960e-1be505779bcb}</Project>
-      <Name>Cross.Drawing.D3</Name>
+    <ProjectReference Include="..\Cross.Drawing\Cross.Drawing.csproj">
+      <Project>{cfca646f-c6d5-4016-9f61-23a77ddf8f3c}</Project>
+      <Name>Cross.Drawing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Demo3DCuboid\Demo3DCuboid.csproj">
+      <Project>{a86c253c-8d26-4ac8-8db0-0dfc2d1b7b2f}</Project>
+      <Name>Demo3DCuboid</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

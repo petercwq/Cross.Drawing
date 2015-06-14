@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Cross.Drawing._3D.New
+namespace Cross.Drawing.D3
 {
     public struct Vector3D
     {
@@ -15,6 +15,13 @@ namespace Cross.Drawing._3D.New
             _x = x;
             _y = y;
             _z = z;
+        }
+
+        public Vector3D(Point3D startPoint, Point3D endPoint)
+        {
+            _x = endPoint.X - startPoint.X;
+            _y = endPoint.Y - startPoint.Y;
+            _z = endPoint.Z - startPoint.Z;
         }
 
         /// <summary>
@@ -599,6 +606,22 @@ namespace Cross.Drawing._3D.New
         internal double _x;
         internal double _y;
         internal double _z;
+
+        public static bool isForeFace(Point3D pt1, Point3D pt2, Point3D pt3) // pts on a plane
+        {
+            var v1 = new Vector3D(pt2, pt1);
+            var v2 = new Vector3D(pt2, pt3);
+            var v = CrossProduct(v1, v2);
+            return DotProduct(v, new Vector3D(0, 0, 1)) < 0;
+        }
+
+        public static bool isBackFace(Point3D pt1, Point3D pt2, Point3D pt3)
+        {
+            var v1 = new Vector3D(pt2, pt1);
+            var v2 = new Vector3D(pt2, pt3);
+            var v = CrossProduct(v1, v2);
+            return DotProduct(v, new Vector3D(0, 0, 1)) > 0;
+        }
     }
 }
 

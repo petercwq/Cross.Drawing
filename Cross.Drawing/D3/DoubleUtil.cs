@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-namespace Cross.Drawing._3D.New
+
+namespace Cross.Drawing.D3
 {
     internal static class DoubleUtil
     {

@@ -15,6 +15,7 @@ namespace Demo3DRubikCube
         public Form1()
         {
             InitializeComponent();
+            this.DoubleBuffered = true;
         }
 
         Timer timer;
@@ -24,15 +25,15 @@ namespace Demo3DRubikCube
             base.OnLoad(e);
 
             // buffer = new Bitmap(Width, Height);
-            cub.Center = new Point3d(400, 400, 0);
-            cam.Location = new Point3d(400, 400, -1000);
+            cub.Center = new Point3D(400, 400, 0);
+            cam.Location = new Point3D(400, 400, -1000);
 
             timer = new Timer();
             timer.Interval = 50;
             timer.Tick += (s, ee) =>
             {
                 var index = count++ % 30 / 10;
-                var q = new Quaternion(new Vector3d(index == 0 ? 1 : 0, index == 1 ? 1 : 0, index == 2 ? 1 : 0), 10 * Math.PI / 180.0);
+                var q = new Quaternion(new Vector3D(index == 0 ? 1 : 0, index == 1 ? 1 : 0, index == 2 ? 1 : 0), 10);
                 cub.RotateAt(cub.Center, q);
                 Invalidate();
             };

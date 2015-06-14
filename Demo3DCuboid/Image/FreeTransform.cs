@@ -3,6 +3,8 @@ using System.Drawing;
 
 namespace Cross.Drawing.D3.Image
 {
+    using Point = System.Drawing.Point;
+
     public class FreeTransform
     {
         PointF[] vertex = new PointF[4];
@@ -103,27 +105,32 @@ namespace Cross.Drawing.D3.Image
 
             rect = new Rectangle((int)xmin, (int)ymin, (int)(xmax - xmin + 2), (int)(ymax - ymin + 2));
 
-            AB = new Vector(vertex[0], vertex[1]);
-            BC = new Vector(vertex[1], vertex[2]);
-            CD = new Vector(vertex[2], vertex[3]);
-            DA = new Vector(vertex[3], vertex[0]);
+            AB = new Vector(vertex[1].X - vertex[0].X, vertex[1].Y - vertex[0].Y);
+            BC = new Vector(vertex[2].X - vertex[1].X, vertex[2].Y - vertex[1].Y);
+            CD = new Vector(vertex[3].X - vertex[2].X, vertex[3].Y - vertex[2].Y);
+            DA = new Vector(vertex[0].X - vertex[3].X, vertex[0].Y - vertex[3].Y);
 
             // get unit vector
-            AB /= AB.Magnitude;
-            BC /= BC.Magnitude;
-            CD /= CD.Magnitude;
-            DA /= DA.Magnitude;
+            AB.Normalize();
+            BC.Normalize();
+            CD.Normalize();
+            DA.Normalize();
+        }
+
+        private Cross.Drawing.D3.Point ToPoint(ref PointF pt)
+        {
+            return new D3.Point(pt.X, pt.Y);
         }
 
         private bool isOnPlaneABCD(PointF pt) //  including point on border
         {
-            if (!Vector.IsCCW(pt, vertex[0], vertex[1]))
+            if (!Vector.IsCCW(ToPoint(ref pt), ToPoint(ref vertex[0]), ToPoint(ref vertex[1])))
             {
-                if (!Vector.IsCCW(pt, vertex[1], vertex[2]))
+                if (!Vector.IsCCW(ToPoint(ref pt), ToPoint(ref vertex[1]), ToPoint(ref vertex[2])))
                 {
-                    if (!Vector.IsCCW(pt, vertex[2], vertex[3]))
+                    if (!Vector.IsCCW(ToPoint(ref pt), ToPoint(ref vertex[2]), ToPoint(ref vertex[3])))
                     {
-                        if (!Vector.IsCCW(pt, vertex[3], vertex[0]))
+                        if (!Vector.IsCCW(ToPoint(ref pt), ToPoint(ref vertex[3]), ToPoint(ref vertex[0])))
                             return true;
                     }
                 }
@@ -156,10 +163,10 @@ namespace Cross.Drawing.D3.Image
 
                     if (isOnPlaneABCD(srcPt))
                     {
-                        dab = Math.Abs((new Vector(vertex[0], srcPt)).CrossProduct(AB));
-                        dbc = Math.Abs((new Vector(vertex[1], srcPt)).CrossProduct(BC));
-                        dcd = Math.Abs((new Vector(vertex[2], srcPt)).CrossProduct(CD));
-                        dda = Math.Abs((new Vector(vertex[3], srcPt)).CrossProduct(DA));
+                        dab = Math.Abs(Vector.CrossProduct(new Vector(srcPt.X - vertex[0].X, srcPt.Y - vertex[0].Y), AB));
+                        dbc = Math.Abs(Vector.CrossProduct(new Vector(srcPt.X - vertex[1].X, srcPt.Y - vertex[1].Y), BC));
+                        dcd = Math.Abs(Vector.CrossProduct(new Vector(srcPt.X - vertex[2].X, srcPt.Y - vertex[2].Y), CD));
+                        dda = Math.Abs(Vector.CrossProduct(new Vector(srcPt.X - vertex[3].X, srcPt.Y - vertex[3].Y), DA));
                         ptInPlane.X = (float)(srcW * (dda / (dda + dbc)));
                         ptInPlane.Y = (float)(srcH * (dab / (dab + dcd)));
 

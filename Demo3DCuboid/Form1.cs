@@ -27,8 +27,8 @@ namespace Demo3DCuboid
             base.OnLoad(e);
 
             // buffer = new Bitmap(Width, Height);
-            cub.Center = new Point3d(400, 240, 0);
-            cam.Location = new Point3d(400, 240, -500);
+            cub.Center = new Point3D(400, 240, 0);
+            cam.Location = new Point3D(400, 240, -500);
             ReDraw();
 
             timer = new Timer();
@@ -61,10 +61,10 @@ namespace Demo3DCuboid
                         break;
                 }
 
-                //var q = new Quaternion(new Vector3d(1, 0, 0), x * Math.PI / 180.0) *
-                //             new Quaternion(new Vector3d(0, 0, 1), y * Math.PI / 180.0) *
-                //            new Quaternion(new Vector3d(0, 1, 0), z * Math.PI / 180.0);
-                var q = new Quaternion(new Vector3d(x, y, z), 10 * Math.PI / 180.0);
+                //var q = new Quaternion(new Vector3D(1, 0, 0), x ) *
+                //             new Quaternion(new Vector3D(0, 0, 1), y ) *
+                //            new Quaternion(new Vector3D(0, 1, 0), z );
+                var q = new Quaternion(new Vector3D(x, y, z), 10);
                 cub.RotateAt(cub.Center, q);
                 ReDraw();
             };
@@ -117,7 +117,7 @@ namespace Demo3DCuboid
         {
             cubeX += 5;
             labelCrX.Text = cubeX.ToString();
-            Quaternion q = new Quaternion(new Vector3d(1, 0, 0), 5 * Math.PI / 180.0);
+            Quaternion q = new Quaternion(new Vector3D(1, 0, 0), 5);
             cub.RotateAt(cub.Center, q);
             ReDraw();
         }
@@ -126,7 +126,7 @@ namespace Demo3DCuboid
         {
             cubeX -= 5;
             labelCrX.Text = cubeX.ToString();
-            Quaternion q = new Quaternion(new Vector3d(1, 0, 0), -5 * Math.PI / 180.0);
+            Quaternion q = new Quaternion(new Vector3D(1, 0, 0), -5);
             cub.RotateAt(cub.Center, q);
             ReDraw();
         }
@@ -135,7 +135,7 @@ namespace Demo3DCuboid
         {
             cubeY += 5;
             labelCrY.Text = cubeY.ToString();
-            Quaternion q = new Quaternion(new Vector3d(0, 1, 0), 5 * Math.PI / 180.0);
+            Quaternion q = new Quaternion(new Vector3D(0, 1, 0), 5);
             cub.RotateAt(cub.Center, q);
             ReDraw();
         }
@@ -144,7 +144,7 @@ namespace Demo3DCuboid
         {
             cubeY -= 5;
             labelCrY.Text = cubeY.ToString();
-            Quaternion q = new Quaternion(new Vector3d(0, 1, 0), -5 * Math.PI / 180.0);
+            Quaternion q = new Quaternion(new Vector3D(0, 1, 0), -5);
             cub.RotateAt(cub.Center, q);
             ReDraw();
         }
@@ -153,7 +153,7 @@ namespace Demo3DCuboid
         {
             cubeZ += 5;
             labelCrZ.Text = cubeZ.ToString();
-            Quaternion q = new Quaternion(new Vector3d(0, 0, 1), 5 * Math.PI / 180.0);
+            Quaternion q = new Quaternion(new Vector3D(0, 0, 1), 5);
             cub.RotateAt(cub.Center, q);
             ReDraw();
         }
@@ -162,7 +162,7 @@ namespace Demo3DCuboid
         {
             cubeZ -= 5;
             labelCrZ.Text = cubeZ.ToString();
-            Quaternion q = new Quaternion(new Vector3d(0, 0, 1), -5 * Math.PI / 180.0);
+            Quaternion q = new Quaternion(new Vector3D(0, 0, 1), -5);
             cub.RotateAt(cub.Center, q);
             ReDraw();
         }
@@ -261,8 +261,8 @@ namespace Demo3DCuboid
         {
             cub = new Cuboid(150, 150, 150);
             cam = new Camera();
-            cub.Center = new Point3d(400, 240, 0);
-            cam.Location = new Point3d(400, 240, -500);
+            cub.Center = new Point3D(400, 240, 0);
+            cam.Location = new Point3D(400, 240, -500);
             ReDraw();
             i = 0;
             bmp = new Bitmap[6];
@@ -301,42 +301,42 @@ namespace Demo3DCuboid
 
         private void button24_Click(object sender, EventArgs e)
         {
-            cub.Center = new Point3d(cub.Center.X - 5, cub.Center.Y, cub.Center.Z);
+            cub.Center = new Point3D(cub.Center.X - 5, cub.Center.Y, cub.Center.Z);
             labelCx.Text = cub.Center.X.ToString();
             ReDraw();
         }
 
         private void button23_Click(object sender, EventArgs e)
         {
-            cub.Center = new Point3d(cub.Center.X + 5, cub.Center.Y, cub.Center.Z);
+            cub.Center = new Point3D(cub.Center.X + 5, cub.Center.Y, cub.Center.Z);
             labelCx.Text = cub.Center.X.ToString();
             ReDraw();
         }
 
         private void button22_Click(object sender, EventArgs e)
         {
-            cub.Center = new Point3d(cub.Center.X, cub.Center.Y - 5, cub.Center.Z);
+            cub.Center = new Point3D(cub.Center.X, cub.Center.Y - 5, cub.Center.Z);
             labelCy.Text = cub.Center.Y.ToString();
             ReDraw();
         }
 
         private void button21_Click(object sender, EventArgs e)
         {
-            cub.Center = new Point3d(cub.Center.X, cub.Center.Y + 5, cub.Center.Z);
+            cub.Center = new Point3D(cub.Center.X, cub.Center.Y + 5, cub.Center.Z);
             labelCy.Text = cub.Center.Y.ToString();
             ReDraw();
         }
 
         private void button20_Click(object sender, EventArgs e)
         {
-            cub.Center = new Point3d(cub.Center.X, cub.Center.Y, cub.Center.Z + 5);
+            cub.Center = new Point3D(cub.Center.X, cub.Center.Y, cub.Center.Z + 5);
             labelCz.Text = cub.Center.Z.ToString();
             ReDraw();
         }
 
         private void button19_Click(object sender, EventArgs e)
         {
-            cub.Center = new Point3d(cub.Center.X, cub.Center.Y, cub.Center.Z - 5);
+            cub.Center = new Point3D(cub.Center.X, cub.Center.Y, cub.Center.Z - 5);
             labelCz.Text = cub.Center.Z.ToString();
             ReDraw();
         }
