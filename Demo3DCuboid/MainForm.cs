@@ -11,6 +11,7 @@ namespace Demo3D
 
             AddButtonFor("Cuboid Demo", () => new Form1().ShowDialog());
             AddButtonFor("RubikCube Demo", () => new Form2().ShowDialog());
+            AddButtonFor("RubikCube2 Demo", () => new Form3().ShowDialog());
 
         }
 
